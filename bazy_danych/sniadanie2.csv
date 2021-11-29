@@ -1,6 +1,6 @@
 Nazwa_dania;Produkty;Kalorie;Bia³ko ;Punkty;Link
-Jab³ko;"[[""Jab³ko"", 1, 0]]";0;0;0;NaN
-Panini z szynk¹ i serem;"[[""Chleb"", 4, 0], [""Mozarella"", 1, 0], [""Szynka parmeñska"", 4, 0], [""Pomidor"", 1, 0], [""Oliwa"", 10]]";0;0;0;https://akademiasmaku.pl/przepis/panini-z-szynka-i-serem,5042
-Omlet z szynk¹ i serem;"[[""Jajka"", 3, 0], [""Szynka"", 3, 0], [""Mas³o"", 10], [""Ser ¿ó³ty"", 10]]";0;0;0;https://www.winiary.pl/przepisy/omlet-ze-szczypiorkiem-serem-i-szynka/
-Kanapki z gruszk¹ i fig¹;"[[""Chleb"",4,0], [""Ricotta"", 100], [""Figa"", 2, 0], [""Gruszka"", 2, 0], [""Miód"", 30], [""Szynka parmeñska"", 4, 0]]";0;0;0;https://aniastarmach.pl/przepis/najlepsze-kanapki-z-gruszka-i-figa/
-Hummus;"[[""Puszka ciecierzycy"", 1, 0], [""Cytryna"", 1, 0], [""Pasta tahini"", 75], [""Oliwa"", 75]]";0;0;0;https://aniastarmach.pl/przepis/hummus/
+Jab³ko;[[Jab³ko, 1, 0]];0;0;0;NaN
+Panini z szynk¹ i serem;[[Chleb, 4, 0], [Mozarella, 1, 0], [Szynka parmeñska, 4, 0], [Pomidor, 1, 0], [Oliwa, 10]];0;0;0;https://akademiasmaku.pl/przepis/panini-z-szynka-i-serem,5042
+Omlet z szynk¹ i serem;[[Jajka, 3, 0], [Szynka, 3, 0], [Mas³o, 10], [Ser ¿ó³ty, 10]];0;0;0;https://www.winiary.pl/przepisy/omlet-ze-szczypiorkiem-serem-i-szynka/
+Kanapki z gruszk¹ i fig¹;[[Chleb,4,0], [Ricotta, 100], [Figa, 2, 0], [Gruszka, 2, 0], [Miód, 30], [Szynka parmeñska, 4, 0]];0;0;0;https://aniastarmach.pl/przepis/najlepsze-kanapki-z-gruszka-i-figa/
+Hummus;[[Puszka ciecierzycy, 1, 0], [Cytryna, 1, 0], [Pasta tahini, 75], [Oliwa, 75]];0;0;0;https://aniastarmach.pl/przepis/hummus/

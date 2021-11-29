@@ -1,24 +1,24 @@
 Produkt_nazwa;Cena;Sztuka;Waga;Kalorie
-"""Mˆ¹ka tortowa""";2,8;NaN;1000;200
-"""Mleko kokosowe""";10,99;NaN;400;100
-"""Olej""";9,99;NaN;1000;50
-"""Makaron œwiderki""";4,19;NaN;500;10
-"""Mˆ¹ka do pizzy""";6,49;NaN;1000;10
-"""Mˆka ziemniaczana""";4,49;NaN;500;10
-"""Mˆ¹ka kukurydziana";3,59;NaN;1000;10
-"""M¹ˆka krupczatka""";3,29;NaN;1000;10
-"""M¹ˆka ¿ytnia""";8,99;NaN;1000;10
-"""Makaron spaghetti""";4,99;NaN;400;20
-"""Makaron nitki""";5,29;NaN;400;20
-"""Makaron tagiatelle""";7,99;NaN;500;20
-"""Makaron lasagne""";9,99;NaN;500;20
-"""Ry¿ bia³y""";5,29;NaN;1000;20
-"""Ry¿ jaœminowy""";4,79;NaN;400;20
-"""Kasza jaglana""";4,69;NaN;400;20
-"""Kasza pêpczak""";2,99;NaN;400;20
-"""Soczewica czerwona""";4,99;NaN;350;20
-"""Soczewica zielona""";4,99;NaN;350;20
-"""Ciecierzyca""";7,99;NaN;400;30
+Mˆ¹ka tortowa;2,8;NaN;1000;200
+Mleko kokosowe;10,99;NaN;400;100
+Olej;9,99;NaN;1000;50
+Makaron œwiderki;4,19;NaN;500;10
+Mˆ¹ka do pizzy;6,49;NaN;1000;10
+Mˆ¹ka ziemniaczana;4,49;NaN;500;10
+Mˆ¹ka kukurydziana;3,59;NaN;1000;10
+M¹ˆka krupczatka;3,29;NaN;1000;10
+M¹ˆka ¿ytnia;8,99;NaN;1000;10
+Makaron spaghetti;4,99;NaN;400;20
+Makaron nitki;5,29;NaN;400;20
+Makaron tagiatelle;7,99;NaN;500;20
+Makaron lasagne;9,99;NaN;500;20
+Ry¿ bia³y;5,29;NaN;1000;20
+Ry¿ jaœminowy;4,79;NaN;400;20
+Kasza jaglana;4,69;NaN;400;20
+Kasza pêpczak;2,99;NaN;400;20
+Soczewica czerwona;4,99;NaN;350;20
+Soczewica zielona;4,99;NaN;350;20
+Ciecierzyca;7,99;NaN;400;30
 ;;;;
 ;;;;
 ;;;;
