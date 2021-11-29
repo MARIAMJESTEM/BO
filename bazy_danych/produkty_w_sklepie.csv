@@ -1,31 +1,80 @@
-Produkt_nazwa;Cena;Sztuka;Waga;Kalorie
-Mˆ¹ka tortowa;2,8;NaN;1000;200
-Mleko kokosowe;10,99;NaN;400;100
-Olej;9,99;NaN;1000;50
-Makaron œwiderki;4,19;NaN;500;10
-Mˆ¹ka do pizzy;6,49;NaN;1000;10
-Mˆ¹ka ziemniaczana;4,49;NaN;500;10
-Mˆ¹ka kukurydziana;3,59;NaN;1000;10
-M¹ˆka krupczatka;3,29;NaN;1000;10
-M¹ˆka ¿ytnia;8,99;NaN;1000;10
-Makaron spaghetti;4,99;NaN;400;20
-Makaron nitki;5,29;NaN;400;20
-Makaron tagiatelle;7,99;NaN;500;20
-Makaron lasagne;9,99;NaN;500;20
-Ry¿ bia³y;5,29;NaN;1000;20
-Ry¿ jaœminowy;4,79;NaN;400;20
-Kasza jaglana;4,69;NaN;400;20
-Kasza pêpczak;2,99;NaN;400;20
+Nazwa;Cena;Sztuka;Waga;Kalorie
+Mˆ¹ka tortowa;4,99;NaN;350;20
+Mleko kokosowe;4,99;NaN;350;20
+Olej;4,99;NaN;350;20
+Makaron œwiderki;4,99;NaN;350;20
+Mˆ¹ka do pizzy;4,99;NaN;350;20
+Mˆ¹ka ziemniaczana;4,99;NaN;350;20
+Mˆ¹ka kukurydziana;4,99;NaN;350;20
+M¹ˆka krupczatka;4,99;NaN;350;20
+M¹ˆka ¿ytnia;4,99;NaN;350;20
+Makaron spaghetti;4,99;NaN;350;20
+Makaron nitki;4,99;NaN;350;20
+Makaron tagiatelle;4,99;NaN;350;20
+Makaron lasagne;4,99;NaN;350;20
+Ry¿ bia³y;4,99;NaN;350;20
+Ry¿ jaœminowy;4,99;NaN;350;20
+Kasza jaglana;4,99;NaN;350;20
+Kasza pêpczak;4,99;NaN;350;20
 Soczewica czerwona;4,99;NaN;350;20
 Soczewica zielona;4,99;NaN;350;20
 Ciecierzyca;7,99;NaN;400;30
-;;;;
-;;;;
-;;;;
-;;;;
-;;;;
-;;;;
-;;;;
-;;;;
-;;;;
-;;;s;
+P³atki owsiane;2,99;NaN;500;363
+Mleko;2,89;NaN;1000;50
+Kakao;7,99;NaN;150;303
+Cukier;3,49;NaN;1000;400
+Mas³o orzechowe;11,99;NaN;340;642
+Maliny;12,99;NaN;280;42
+Syrop klonowy;22,99;NaN;180;265
+Pomidor;3,22;1;NaN;20
+Mas³o;6,89;NaN;200;746
+Jajka;14,3;10;NaN;147
+Czosnek;1,99;12;NaN;146
+Jogurt naturalny;1,99;NaN;180;280
+Chleb;4,7;18;NaN;257
+Awokado;7,99;1;NaN;160
+Majonez;6,49;NaN;310;631
+Banan ;1,5;1;NaN;90
+Serek homogenizowany;3,4;NaN;200;99
+Soda oczyszczona;1,32;NaN;70;0
+Czekolada mleczna;3,49;NaN;90;530
+Jab³ko;0,3;1;NaN;52
+Mozarella;3,2;1;NaN;247
+Szynka parmeñska;8,89;7;NaN;208
+Oliwa;33;NaN;1000;884,1
+Szynka;5,99;8;NaN;77
+Ser ¿ó³ty;4,79;;135;75
+Ricotta;5,49;1;250;143
+Figa;4,19;1;NaN;74
+Gruszka;0,6;1;NaN;57
+Miód;43;NaN;1000;304
+Puszka ciecierzycy;3,49;1;400;364,5
+Cytryna;3,49;1;NaN;364,5
+Pasta tahini;3,49;1;NaN;364,5
+Filet z kurczaka;3,49;1;NaN;364,5
+Przyprawa curry;3,49;1;NaN;364,5
+Cebula;3,49;1;NaN;364,5
+Marchew;3,49;1;NaN;364,5
+Papryka;3,49;1;NaN;364,5
+Imbir;3,49;1;NaN;364,5
+Bulion;3,49;1;NaN;364,5
+Œmietana 18%;3,49;1;NaN;364,5
+M¹ka pszenna;3,49;1;NaN;364,5
+Por;3,49;1;NaN;364,5
+Ziemniak;3,49;1;NaN;364,5
+Pietruszka;3,49;1;NaN;364,5
+Serek topiony;3,49;1;NaN;364,5
+Kurki;3,49;1;NaN;364,5
+Truskawki;3,49;1;NaN;364,5
+Boczek;3,49;1;NaN;364,5
+¯urek z butelki;3,49;1;NaN;364,5
+Kie³basa;3,49;1;NaN;364,5
+Krewetki;3,49;1;NaN;364,5
+Mango;3,49;1;NaN;364,5
+Sa³ata;3,49;1;NaN;364,5
+Cebula czerwona;3,49;1;NaN;364,5
+Ser feta;3,49;1;NaN;364,5
+Broku³ ;3,49;1;NaN;364,5
+Œmietana 30%;3,49;1;NaN;364,5
+Bagietka;3,49;1;NaN;364,5
+Pieczarki;3,49;1;NaN;364,5

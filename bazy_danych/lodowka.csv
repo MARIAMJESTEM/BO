@@ -1,21 +1,21 @@
-Nazwa;Sztuka;Waga;Punkty
-Mˆ¹ka tortowa;NaN;1000;0
-Mleko kokosowe;NaN;0;0
-Olej;NaN;0;0
-Makaron œwiderki;NaN;0;0
-Mˆ¹ka do pizzy;NaN;0;0
-M¹ˆka ziemniaczana;NaN;0;0
-Mˆ¹ka kukurydziana;NaN;0;0
-M¹ˆka krupczatka;NaN;0;0
-M¹ˆka ¿ytnia;NaN;0;0
-Makaron spaghetti;NaN;400;0
-Makaron nitki;NaN;400;0
-Makaron tagiatelle;NaN;500;0
-Makaron lasagne;NaN;500;0
-Ry¿ bia³y;NaN;1000;0
-Ry¿ jaœminowy;NaN;400;0
-Kasza jaglana;NaN;400;0
-Kasza pêpczak;NaN;400;0
-Soczewica czerwona;NaN;350;0
-Soczewica zielona;NaN;350;0
-Ciecierzyca;NaN;400;0
+Nazwa;Sztuka;Waga;Punkty;Data_waznosci
+Mˆ¹ka tortowa;NaN;1000;0;29.11.2021
+Mleko kokosowe;NaN;0;0;30.11.2021
+Olej;NaN;0;0;01.12.2021
+Makaron œwiderki;NaN;0;0;02.12.2021
+Mˆ¹ka do pizzy;NaN;0;0;03.12.2021
+M¹ˆka ziemniaczana;NaN;0;0;04.12.2021
+Mˆ¹ka kukurydziana;NaN;0;0;05.12.2021
+M¹ˆka krupczatka;NaN;0;0;06.12.2021
+M¹ˆka ¿ytnia;NaN;0;0;07.12.2021
+Makaron spaghetti;NaN;400;0;08.12.2021
+Makaron nitki;NaN;400;0;09.12.2021
+Makaron tagiatelle;NaN;500;0;10.12.2021
+Makaron lasagne;NaN;500;0;11.12.2021
+Ry¿ bia³y;NaN;1000;0;12.12.2021
+Ry¿ jaœminowy;NaN;400;0;13.12.2021
+Kasza jaglana;NaN;400;0;14.12.2021
+Kasza pêpczak;NaN;400;0;15.12.2021
+Soczewica czerwona;NaN;350;0;16.12.2021
+Soczewica zielona;NaN;350;0;17.12.2021
+Ciecierzyca;NaN;400;;18.12.2021
