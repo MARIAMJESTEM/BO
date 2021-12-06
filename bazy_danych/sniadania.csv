@@ -1,7 +1,7 @@
-﻿Nazwa_dania;Produkty;Kalorie;Białko ;Punkty;Link
-Pieczona owsianka brownie;[[Płatki owsiane, 100], [Mleko, 440], [Kakao, 30], [Cukier, 30], [Masło orzechowe,30 ], [Maliny, 200], [Syrop klonowy, 15]];0;0;0;https://www.kwestiasmaku.com/przepis/pieczona-owsianka-brownie
-Szakszuka;[[Pomidor, 2, 0 ], [Masło, 7], [Czosnek, 2, 0], [Jajka, 2, 0]];0;0;0;https://www.kwestiasmaku.com/dania_dla_dwojga/sniadania/jajka_w_pomidorach/przepis.html
-Owsianka z owocami;[[Płatki owsiane, 400], [Jogurt naturalny, 200], [Syrop klonowy, 30], [Maliny, 200]];0;0;0;https://www.kwestiasmaku.com/przepis/owsianka-z-owocami
-Kanapki z awokdao;[[Jajka ,2, 0], [Chleb, 4, 0], [Awokado,1, 0], [Majonez, 30]];0;0;0;https://www.kwestiasmaku.com/przepis/kanapki-z-awokado-jajkiem-i-rzezucha
-Koktajl bananowy;[[Banan, 1,0 ], [Płatki owsiane, 75], [Masło orzechowe, 15], [Cukier, 30]];0;0;0;https://www.kwestiasmaku.com/przepis/koktajl-bananowy
-Pancakes;[[Serek homogenizowany, 200], [Jajka, 2,0], [Mąka tortowa, 100], [Soda oczyszczona, 5], [Czekolada mleczna, 50]];0;0;0;https://www.kwestiasmaku.com/przepis/puszyste-placuszki-pancakes-z-czekolada
+﻿Nazwa_dania;Produkty;Kalorie;Białko;Punkty;Tabu;Link
+Pieczona owsianka brownie;[[Płatki owsiane, 100], [Mleko, 440], [Kakao, 30], [Cukier, 30], [Masło orzechowe,30 ], [Maliny, 200], [Syrop klonowy, 15]];1110.25;44.36;-130.66;0;https://www.kwestiasmaku.com/przepis/pieczona-owsianka-brownie
+Szakszuka;[[Pomidor, 2, 0 ], [Masło, 7], [Czosnek, 2, 0], [Jajka, 2, 0]];678.22;39.823;-52.8;0;https://www.kwestiasmaku.com/dania_dla_dwojga/sniadania/jajka_w_pomidorach/przepis.html
+Owsianka z owocami;[[Płatki owsiane, 400], [Jogurt naturalny, 200], [Syrop klonowy, 30], [Maliny, 200]];2175.5;65.0;-81.92;0;https://www.kwestiasmaku.com/przepis/owsianka-z-owocami
+Kanapki z awokdao;[[Jajka,2, 0], [Chleb, 4, 0], [Awokado,1, 0], [Majonez, 30]];1671.3;64.3;-66.96000000000001;0;https://www.kwestiasmaku.com/przepis/kanapki-z-awokado-jajkiem-i-rzezucha
+Koktajl bananowy;[[Banan, 1,0 ], [Płatki owsiane, 75], [Masło orzechowe, 15], [Cukier, 30]];578.55;14.975;-39.94;0;https://www.kwestiasmaku.com/przepis/koktajl-bananowy
+Pancakes;[[Serek homogenizowany, 200], [Jajka, 2,0], [Mąka tortowa, 100], [Soda oczyszczona, 5], [Czekolada mleczna, 50]];1104.0;72.8;-45.019999999999996;0;https://www.kwestiasmaku.com/przepis/puszyste-placuszki-pancakes-z-czekolada

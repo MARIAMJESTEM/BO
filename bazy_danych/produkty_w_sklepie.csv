@@ -1,80 +1,81 @@
 ﻿Nazwa;Cena;Sztuka;Waga;Kalorie;Białko;Punkty
-Mąka tortowa;4,99;NaN;1000;347;9,2;-9,98
-Mleko kokosowe;9,99;NaN;400;230;2,3;-19,98
-Olej;9,89;NaN;1000;884,1;0;-19,78
-Makaron świderki;4,59;NaN;500;131;5;-9,18
-Mąka do pizzy;5,18;NaN;1000;352;13;-10,36
-Mąka ziemniaczana;6,07;NaN;1000;356,8;7;-12,14
-Mąka kukurydziana;3,57;NaN;1000;369;7;-7,14
-Mąka krupczatka;3,55;NaN;1000;342;10,3;-7,1
-Mąka żytnia;13,07;NaN;500;348,7;11;-26,14
-Makaron spaghetti;3,89;NaN;500;157,7;6;-7,78
-Makaron nitki;3,69;NaN;500;296;11,27;-7,38
-Makaron tagiatelle;7,39;NaN;250;288;11;-14,78
-Makaron lasagne;7,99;NaN;500;348;10,7;-15,98
-Ryż biały;3,39;NaN;400;130;2,7;-6,78
-Ryż jaśminowy;7,99;NaN;1000;110;7,6;-15,98
-Kasza jaglana;8,49;NaN;1000;350;10,5;-16,98
-Kasza pępczak;2,99;NaN;400;350;12,5;-5,98
-Soczewica czerwona;13,65;NaN;1000;116,4;17,8;-27,3
-Soczewica zielona;10,79;NaN;1000;351;24,2;-21,58
-Ciecierzyca;7,2;NaN;1000;354,5;19;-14,4
-Płatki owsiane;2,99;NaN;500;363;13,5;-5,98
-Mleko;2,89;NaN;1000;50;3,4;-5,78
-Kakao;7,99;NaN;150;303;20;-15,98
-Cukier;3,49;NaN;1000;400;0;-6,98
-Masło orzechowe;11,99;NaN;340;642;25;-23,98
-Maliny;12,99;NaN;280;42;1,2;-25,98
-Syrop klonowy;22,99;NaN;180;265;0;-45,98
-Pomidor;3,22;1;NaN;20;0,88;-6,44
-Masło;6,89;NaN;200;746;0,9;-13,78
-Jajka;14,3;10;NaN;147;13;-28,6
-Czosnek;1,99;12;NaN;146;6;-3,98
-Jogurt naturalny;1,99;NaN;180;280;4,3;-3,98
-Chleb;4,7;18;NaN;257;9;-9,4
-Awokado;7,99;1;NaN;160;2;-15,98
-Majonez;6,49;NaN;310;631;1;-12,98
-Banan ;1,5;1;NaN;90;1,1;-3
-Serek homogenizowany;3,4;NaN;200;99;16,8;-6,8
-Soda oczyszczona;1,32;NaN;70;0;0;-2,64
-Czekolada mleczna;3,49;NaN;90;530;8;-6,98
-Jabłko;0,3;1;NaN;52;0,3;-0,6
-Mozarella;3,2;1;NaN;247;28;-6,4
-Szynka parmeńska;8,89;7;NaN;208;26;-17,78
-Oliwa;33;NaN;1000;884,1;0;-66
-Szynka;5,99;8;NaN;77;21;-11,98
-Ser żółty;4,79;;135;75;25;-9,58
-Ricotta;5,49;1;250;143;11;-10,98
-Figa;4,19;1;NaN;74;3,3;-8,38
-Gruszka;0,6;1;NaN;57;0,4;-1,2
-Miód;43;NaN;1000;304;0,3;-86
-Puszka ciecierzycy;3,49;1;400;364,5;7,05;-6,98
-Cytryna;1,2;1;NaN;28,9;1,1;-2,4
-Pasta tahini;16,99;1;460;594,9;17;-33,98
-Filet z kurczaka;15;NaN;1000;164,9;31;-30
-Przyprawa curry;9,5;NaN;500;216;16;-19
-Cebula;1,3;1;NaN;39,4;1,1;-2,6
-Marchew;2,2;1;NaN;41,3;0,9;-4,4
-Papryka;3,49;1;NaN;282,3;14;-6,98
-Imbir;6,3;1;NaN;79,6;1,8;-12,6
-Bulion;0,6;1;NaN;15;14,6;-1,2
-Śmietana 18%;3,17;1;NaN;195,5;2,7;-6,34
-Mąka pszenna;2,49;NaN;1000;364,5;10;-4,98
-Por;1,99;1;NaN;60,9;1,5;-3,98
-Ziemniak;1,6;NaN;1000;76,7;2;-3,2
-Pietruszka;1,99;1;NaN;36,1;2,6;-3,98
-Serek topiony;2,53;1;NaN;215,1;16;-5,06
-Kurki;60;NaN;1000;32;9,9;-120
-Truskawki;7,99;NaN;500;32,5;0,7;-15,98
-Boczek;3,49;1;NaN;364,5;0;-6,98
-Żurek z butelki;4,99;1;NaN;55;2;-9,98
-Kiełbasa;10;NaN;550;346,1;14;-20
-Krewetki;39,29;1;400;99,2;24;-78,58
-Mango;5,5;1;NaN;59,8;0,8;-11
-Sałata;2,69;1;NaN;14,8;1,4;-5,38
-Cebula czerwona;1,02;1;NaN;39,7;1,2;-2,04
-Ser feta;5,6;1;NaN;263,6;14;-11,2
-Brokuł ;3;1;NaN;35;3;-6
-Śmietana 30%;5,48;1;NaN;195,5;2,7;-10,96
-Bagietka;1,99;1;NaN;218;6,9;-3,98
-Pieczarki;4,98;1;NaN;28;2,2;-9,96
+Mąka tortowa;4.99;NaN;1000;347;9.2;-9.98
+Mleko kokosowe;9.99;NaN;400;230;2.3;-19.98
+Olej;9.89;NaN;1000;884.1;0;-19.78
+Makaron świderki;4.59;NaN;500;131;5;-9.18
+Mąka do pizzy;5.18;NaN;1000;352;13;-10.36
+Mąka ziemniaczana;6.07;NaN;1000;356.8;7;-12.14
+Mąka kukurydziana;3.57;NaN;1000;369;7;-7.14
+Mąka krupczatka;3.55;NaN;1000;342;10.3;-7.1
+Mąka żytnia;13.07;NaN;500;348.7;11;-26.14
+Makaron spaghetti;3.89;NaN;500;157.7;6;-7.78
+Makaron nitki;3.69;NaN;500;296;11.27;-7.38
+Makaron tagiatelle;7.39;NaN;250;288;11;-14.78
+Makaron lasagne;7.99;NaN;500;348;10.7;-15.98
+Ryż biały;3.39;NaN;400;130;2.7;-6.78
+Ryż jaśminowy;7.99;NaN;1000;110;7.6;-15.98
+Kasza jaglana;8.49;NaN;1000;350;10.5;-16.98
+Kasza pępczak;2.99;NaN;400;350;12.5;-5.98
+Soczewica czerwona;13.65;NaN;1000;116.4;17.8;-27.3
+Soczewica zielona;10.79;NaN;1000;351;24.2;-21.58
+Ciecierzyca;7.2;NaN;1000;354.5;19;-14.4
+Płatki owsiane;2.99;NaN;500;363;13.5;-5.98
+Mleko;2.89;NaN;1000;50;3.4;-5.78
+Kakao;7.99;NaN;150;303;20;-15.98
+Cukier;3.49;NaN;1000;400;0;-6.98
+Masło orzechowe;11.99;NaN;340;642;25;-23.98
+Maliny;12.99;NaN;280;42;1.2;-25.98
+Syrop klonowy;22.99;NaN;180;265;0;-45.98
+Pomidor;3.22;1;NaN;20;0.88;-6.44
+Masło;6.89;NaN;200;746;0.9;-13.78
+Jajka;14.3;10;NaN;147;13;-28.6
+Czosnek;1.99;12;NaN;146;6;-3.98
+Jogurt naturalny;1.99;NaN;180;280;4.3;-3.98
+Chleb;4.7;18;NaN;257;9;-9.4
+Awokado;7.99;1;NaN;160;2;-15.98
+Majonez;6.49;NaN;310;631;1;-12.98
+Banan;1.5;1;NaN;90;1.1;-3
+Serek homogenizowany;3.4;NaN;200;99;16.8;-6.8
+Soda oczyszczona;1.32;NaN;70;0;0;-2.64
+Czekolada mleczna;3.49;NaN;90;530;8;-6.98
+Jabłko;0.3;1;NaN;52;0.3;-0.6
+Mozarella;3.2;1;NaN;247;28;-6.4
+Szynka parmeńska;8.89;7;NaN;208;26;-17.78
+Oliwa;33;NaN;1000;884.1;0;-66
+Szynka;5.99;8;NaN;77;21;-11.98
+Ser żółty;4.79;;135;75;25;-9.58
+Ricotta;5.49;1;250;143;11;-10.98
+Figa;4.19;1;NaN;74;3.3;-8.38
+Gruszka;0.6;1;NaN;57;0.4;-1.2
+Miód;43;NaN;1000;304;0.3;-86
+Puszka ciecierzycy;3.49;1;400;364.5;7.05;-6.98
+Cytryna;1.2;1;NaN;28.9;1.1;-2.4
+Pasta tahini;16.99;1;460;594.9;17;-33.98
+Filet z kurczaka;15;NaN;1000;164.9;31;-30
+Przyprawa curry;9.5;NaN;500;216;16;-19
+Cebula;1.3;1;NaN;39.4;1.1;-2.6
+Marchew;2.2;1;NaN;41.3;0.9;-4.4
+Papryka;3.49;1;NaN;282.3;14;-6.98
+Imbir;6.3;1;NaN;79.6;1.8;-12.6
+Bulion;0.6;1;NaN;15;14.6;-1.2
+Śmietana 18%;3.17;1;NaN;195.5;2.7;-6.34
+Mąka pszenna;2.49;NaN;1000;364.5;10;-4.98
+Por;1.99;1;NaN;60.9;1.5;-3.98
+Ziemniak;1.6;NaN;1000;76.7;2;-3.2
+Pietruszka;1.99;1;NaN;36.1;2.6;-3.98
+Serek topiony;2.53;1;NaN;215.1;16;-5.06
+Kurki;60;NaN;1000;32;9.9;-120
+Truskawki;7.99;NaN;500;32.5;0.7;-15.98
+Boczek;3.49;1;NaN;364.5;0;-6.98
+Żurek z butelki;4.99;1;NaN;55;2;-9.98
+Kiełbasa;10;NaN;550;346.1;14;-20
+Krewetki;39.29;1;400;99.2;24;-78.58
+Mango;5.5;1;NaN;59.8;0.8;-11
+Sałata;2.69;1;NaN;14.8;1.4;-5.38
+Cebula czerwona;1.02;1;NaN;39.7;1.2;-2.04
+Ser feta;5.6;1;NaN;263.6;14;-11.2
+Brokuł;3;1;NaN;35;3;-6
+Śmietana18;2.58;NaN;200;195.5;2.7;-5.16
+Śmietana30;3.51;NaN;200;195.5;2.7;-7.02
+Bagietka;1.99;1;NaN;218;6.9;-3.98
+Pieczarki;4.98;1;NaN;28;2.2;-9.96

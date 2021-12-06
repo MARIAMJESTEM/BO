@@ -2,10 +2,10 @@ import core
 import add
 from core import sniadania, sniadania2, obiad, kolacja
 
-# baza = [sniadania, sniadania2, obiad, kolacja]
-# pora = ['1S','2S','O','K']
-pora = '1S'
-baza = [sniadania]
+baza = [sniadania, sniadania2]
+pora = ['1S','2S']
+# pora = '0'
+# baza = [obiad]
 
 p = 0
 for b in baza:
