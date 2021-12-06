@@ -1,6 +1,6 @@
-Nazwa_dania;Produkty;Kalorie;Białko ;Punkty;Link
+﻿Nazwa_dania;Produkty;Kalorie;Białko ;Punkty;Link
 Krewetki z mango;[[Krewetki, 300], [Imbir, 2,0], [Czosnek, 2], [Olej, 30], [Mango, 1, 0]];0;0;0;https://www.kwestiasmaku.com/przepis/krewetki-z-mango
 Sałatka BLT;[[Boczek, 125], [Sałata, 200], [Pomidor,2, 0], [Cebula, 1, 0], [Oliwa, 15]];0;0;0;https://www.kwestiasmaku.com/przepis/salatka-blt
 Pieczone warzywa;[[Ziemniaki, 200], [Papryka, 3, 0], [Cebula czerwona, 1, 0], [Czosnek, 4, 0], [Oliwa, 75], [Ser feta, 1, 0]];0;0;0;https://www.kwestiasmaku.com/przepis/zapiekanka-warzywna-z-serem-feta
-Medaliony warzywne ;[[Brokuł, 1, 0], [Por, 1, 0], [Oliwa, 15], [Jajka, 3, 0], [Śmietana 30%, 75], [Ser Żółty, 4, 0]];0;0;0;https://www.kwestiasmaku.com/przepis/medaliony-warzywne
-Zapiekanki z pieczarkami i serem ;[[Bagietka, 1, 0], [Pieczarki, 400], [Cebula 1, 0], [Masło, 30], [Ser Żółty, 150]];0;0;0;https://www.kwestiasmaku.com/przepis/zapiekanki
+Medaliony warzywne ;[[Brokuł, 1, 0], [Por, 1, 0], [Oliwa, 15], [Jajka, 3, 0], [Śmietana 30%, 75], [Ser żółty, 4, 0]];0;0;0;https://www.kwestiasmaku.com/przepis/medaliony-warzywne
+Zapiekanki z pieczarkami i serem ;[[Bagietka, 1, 0], [Pieczarki, 400], [Cebula 1, 0], [Masło, 30], [Ser żółty, 150]];0;0;0;https://www.kwestiasmaku.com/przepis/zapiekanki
