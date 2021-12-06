@@ -1,7 +1,6 @@
 ﻿Nazwa_dania;Produkty;Kalorie;Białko;Punkty;Tabu;Link
-Kurczak w sosie curry;[[Filet z kurczaka, 600], [Przyprawa curry, 10], [Oliwa, 30], [Cebula, 1, 0], [Marchew, 1, 0], [Papryka, 1, 0], [Czosnek, 1, 0], [Imbir, 1, 0], [Mąka pszenna, 15], [Bulion, 150], [Śmietana18, 150]];0;0;0;https://www.kwestiasmaku.com/przepis/kurczak-w-sosie-curry
-Zupa pieczarkowa z kurczakiem;[[Cebula, 1, 0], [Masło, 30], [Oliwa, 15], [Marchew, 1, 0], [Por, 1, 0],[Ziemniak, 400],[Pietruszka, 1, 0], [Bulion, 1500], [Filet z kurczaka, 200], [Serek topiony, 100], [Smietana18, 125]];0;0;0;https://www.kwestiasmaku.com/przepis/zupa-pieczarkowa-z-kurczakiem
-Kurczak z kurkami;[[Filet z kurczaka, 500], [Kurki, 150], [Cebula, 1, 0], [Bulion, 125], [Śmietana18, 125]];0;0;0;https://www.kwestiasmaku.com/przepis/kurczak-z-kurkami
-Makaron z truskawkami;[[Makaron świderki, 150], [Truskawki, 400], [Cukier, 50], [Śmietana18, 125]];0;0;0;https://www.kwestiasmaku.com/przepis/makaron-z-truskawkami
-Żurek;[[Boczek, 250], [Bulion, 2000], [Żurek z butelki, 500], [Śmietana18, 200], [Kiełbasa, 350]];0;0;0;https://www.kwestiasmaku.com/przepis/zurek-blyskawiczny
-
+Kurczak w sosie curry;[[Filet z kurczaka, 600], [Przyprawa curry, 10], [Oliwa, 30], [Cebula, 1, 0], [Marchew, 1, 0], [Papryka, 1, 0], [Czosnek, 1, 0], [Imbir, 1, 0], [Mąka pszenna, 15], [Bulion, 150], [Śmietana18, 150]];2235.255;238.85000000000002;-156.89999999999995;0;https://www.kwestiasmaku.com/przepis/kurczak-w-sosie-curry
+Zupa pieczarkowa z kurczakiem;[[Cebula, 1, 0], [Masło, 30], [Oliwa, 15], [Marchew, 1, 0], [Por, 1, 0],[Ziemniak, 400],[Pietruszka, 1, 0], [Bulion, 1500], [Filet z kurczaka, 200], [Serek topiony, 100], [Śmietana18, 125]];1855.1899999999998;314.745;-139.36;0;https://www.kwestiasmaku.com/przepis/zupa-pieczarkowa-z-kurczakiem
+Kurczak z kurkami;[[Filet z kurczaka, 500], [Kurki, 150], [Cebula, 1, 0], [Bulion, 125], [Śmietana18, 125]];1175.025;192.575;-158.95999999999998;0;https://www.kwestiasmaku.com/przepis/kurczak-z-kurkami
+Makaron z truskawkami;[[Makaron świderki, 150], [Truskawki, 400], [Cukier, 50], [Śmietana18, 125]];770.875;13.675;-28.12;0;https://www.kwestiasmaku.com/przepis/makaron-z-truskawkami
+Żurek;[[Boczek, 250], [Bulion, 2000], [Żurek z butelki, 500], [Śmietana18, 200], [Kiełbasa, 350]];3088.6000000000004;356.4;-43.32;0;https://www.kwestiasmaku.com/przepis/zurek-blyskawiczny
