@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 import random
 import datetime
+from copy import deepcopy
+import math
 
 #Wczytanie baz danych do programu
 sniadania = pd.read_csv("bazy_danych\sniadania.csv", sep = ';')
@@ -10,6 +12,7 @@ obiad = pd.read_csv("bazy_danych\obiad.csv", sep = ';')
 podwieczorek = pd.read_csv("bazy_danych\sniadanie2.csv", sep = ';')
 kolacja = pd.read_csv("bazy_danych\kolacja.csv", sep = ';')
 lodowka = pd.read_csv("bazy_danych\lodowka.csv", sep =';')
+l_pomocnicza = pd.read_csv("bazy_danych\lodowka.csv", sep =';')
 s = pd.read_csv("bazy_danych\produkty_w_sklepie.csv", sep =';')
 sklep = s.set_index("Nazwa")
 
@@ -82,7 +85,44 @@ def read_sklad(idx = 0, baza = '', produkt = 0):
     return list
 
 
-def calculation_points_for_dish(idx: int = 0, baza: str = '', produkt = 0):
+# def actualization_fridge(lod, pro):
+#     if len(pro) == 2:
+#         l = lod[lod['Nazwa'] == pro[0]]
+#         if pro[1] > l['Waga'][l.index[0]]:
+#             s = sklep['Waga'][pro[0]]
+#             ns = pro[1] - l['Waga'][l.index[0]]
+#             p = np.ceil(ns/s)
+#             ss = p*s-ns
+#             sum = sklep["Punkty"][pro[0]] * p
+#             lod['Waga'][l.index[0]] = ss
+#             lod['Data_waznosci'][l.index[0]] = find_current_date() + datetime.timedelta(days = 14)
+#         elif pro[1] == l['Waga'][l.index[0]]:
+#             lod = lod.drop([l.index[0]], axis=0)
+#             sum = l['Punkty'][l.index[0]]
+#         else:
+#             lod['Waga'][l.index[0]] = l['Waga'][l.index[0]] - pro[1]
+#             sum = l['Punkty'][l.index[0]]
+#
+#     if len(pro) == 3:
+#         l = lod[lod['Nazwa'] == pro[0]]
+#         if pro[1] > l['Sztuka'][l.index[0]]:
+#             s = sklep['Sztuka'][pro[0]]
+#             ns = pro[1] - l['Sztuka'][l.index[0]]
+#             p = np.ceil(ns / s)
+#             ss = p * s - ns  # tu coś brakuje
+#             sum = sklep["Punkty"][pro[0]] * p
+#             lod['Sztuka'][l.index[0]] = ss
+#             lod['Data_waznosci'][l.index[0]] = find_current_date() + datetime.timedelta(days=14) # dodaliśmy 14 dni ale huj wi czy to działa
+#         elif pro[1] == l['Sztuka'][l.index[0]]:
+#             lod = lod.drop(l.index[0], axis=0)
+#             sum = l['Punkty'][l.index[0]]
+#         else:
+#             lod['Sztuka'][l.index[0]] = l['Sztuka'][l.index[0]] - pro[1]
+#             sum = l['Punkty'][l.index[0]]
+#
+#     return lod, sum
+
+def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 0):
     """
     Funkcja licząca punkty za danie
 
@@ -97,14 +137,64 @@ def calculation_points_for_dish(idx: int = 0, baza: str = '', produkt = 0):
     else:
         list = read_sklad(produkt = produkt)
     for j in range(len(list)):
-        c = list[j][0]
-        df = lodowka[lodowka["Nazwa"] == c]
+        nazwa = list[j][0]
+        df = lodowka[lodowka["Nazwa"] == nazwa]
         if df.empty == True:
-            sum += sklep["Punkty"][c]
-        else:
-            sum += max(df["Punkty"])
+            if len(list[j]) == 2:
+                s = sklep["Waga"][nazwa]
+                ns = list[j][1]
+                p = np.ceil(ns / s)
+                ss = p * s - ns
+                sum += sklep["Punkty"][nazwa] * p
+                if ss != 0:
+                    df = {"Nazwa": list[j][0], "Sztuka": np.nan, "Waga": ss, "Punkty": 0, "Data_waznosci": find_current_date() + datetime.timedelta(days=14)}
+                    lod = lod.append(df, ignore_index=True)
 
-    return sum
+            if len(list[j]) == 3:
+                s = sklep["Sztuka"][nazwa]
+                ns = list[j][1]
+                p = np.ceil(ns / s)
+                ss = p * s - ns
+                sum += sklep["Punkty"][nazwa] * p
+                if ss != 0:
+                    df = {"Nazwa": list[j][0], "Sztuka": ss, "Waga": np.nan, "Punkty": 0, "Data_waznosci": find_current_date() + datetime.timedelta(days=14)}
+                    lod = lod.append(df, ignore_index=True)
+        else:
+            if len(list[j]) == 2:
+                l = lod[lod['Nazwa'] == list[j][0]]
+                if list[j][1] > l['Waga'][l.index[0]]:
+                    s = sklep['Waga'][list[j][0]]
+                    ns = list[j][1] - l['Waga'][l.index[0]]
+                    p = np.ceil(ns / s)
+                    ss = p * s - ns
+                    sum += sklep["Punkty"][list[j][0]] * p
+                    lod['Waga'][l.index[0]] = ss
+                    lod['Data_waznosci'][l.index[0]] = find_current_date() + datetime.timedelta(days=14)
+                elif list[j][1] == l['Waga'][l.index[0]]:
+                    lod = lod.drop([l.index[0]], axis=0)
+                    sum += l['Punkty'][l.index[0]]
+                else:
+                    lod['Waga'][l.index[0]] = l['Waga'][l.index[0]] - list[j][1]
+                    sum += l['Punkty'][l.index[0]]
+
+            if len(list[j]) == 3:
+                l = lod[lod['Nazwa'] == list[j][0]]
+                if list[j][1] > l['Sztuka'][l.index[0]]:
+                    s = sklep['Sztuka'][list[j][0]]
+                    ns = list[j][1] - l['Sztuka'][l.index[0]]
+                    p = np.ceil(ns / s)
+                    ss = p * s - ns  # tu coś brakuje
+                    sum += sklep["Punkty"][list[j][0]] * p
+                    lod['Sztuka'][l.index[0]] = ss
+                    lod['Data_waznosci'][l.index[0]] = find_current_date() + datetime.timedelta(days=14)
+                elif list[j][1] == l['Sztuka'][l.index[0]]:
+                    lod = lod.drop(l.index[0], axis=0)
+                    sum += l['Punkty'][l.index[0]]
+                else:
+                    lod['Sztuka'][l.index[0]] = l['Sztuka'][l.index[0]] - list[j][1]
+                    sum += l['Punkty'][l.index[0]]
+
+    return lod, sum
 
 
 def roz_start(n: int):
@@ -160,8 +250,55 @@ def append_tabu(nazwa, baza, tabu):
     df = baza[baza["Nazwa_dania"] == nazwa] #zamina liczby tabu na tabu musze wyciągnąc indeks chyba
     df['Tabu'] == tabu
 
-# append_tabu("Jabłko",sniadania2,3)
-# print(sniadania2[['Nazwa_dania','Tabu']])
+
+def aktualization(result):
+    nbaza = [sniadania, sniadania2, obiad, podwieczorek, kolacja]
+    suma = 0
+    lod = deepcopy(lodowka)
+    for r,b in zip(result, nbaza):
+        df = b[b['Nazwa_dania'] == r]
+        l, s = calculation_points_for_dish(lod,df.index[0],b)
+        lod = l
+        suma += s
+    return lod, suma
+
+
+
+def tabu(iter, bs):
+    """
+
+    :param iter: ilośc iteracji
+    :param bs: wybór sposobu znalezienia bazy startowej 0 lub 1
+    :return: wynik końcowy
+    """
+
+    roz_s = roz_start(bs)
+    r = roz_s
+    pkt, lod = aktualization(roz_s)
+    for i in range(iter):
+        for s in range(len(sniadania)):
+            if s == roz_s[0]:
+                r[0] = sniadania['Nazwa_dania'[s]]
+                pkt, lod = aktualization(r)
+        for s in range(len(sniadania2)):
+            if s == roz_s[1]:
+                r[1] = sniadania2['Nazwa_dania'[s]]
+                pkt, lod = aktualization(r)
+        for s in range(len(obiad)):
+            if s == roz_s[2]:
+                r[2] = obiad['Nazwa_dania'[s]]
+                pkt, lod = aktualization(r)
+        for s in range(len(podwieczorek)):
+            if s == roz_s[3]:
+                r[3] = podwieczorek['Nazwa_dania'[s]]
+                pkt, lod = aktualization(r)
+        for s in range(len(kolacja)):
+            if s == roz_s[4]:
+                r[4] = kolacja['Nazwa_dania'[s]]
+                pkt, lod = aktualization(r)
+
+
+
 
 
 
