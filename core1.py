@@ -276,8 +276,9 @@ def ranking_new(baza_dania, rezultat, lista_rankingowa_z_lodowka = []):
     for index, row in baza_dania.iterrows():
         if baza_dania.iloc[index, 0] != rezultat[numer_w_liscie_rezultat]:
             rezultat[numer_w_liscie_rezultat] = baza_dania.iloc[index, 0]
+            wynik = rezultat[:]
             lod, sum = aktualization(rezultat)
-            lista_rankingowa_z_lodowka.append([baza_dania.iloc[index, 0],sum,numer_w_liscie_rezultat])
+            lista_rankingowa_z_lodowka.append([wynik,sum,numer_w_liscie_rezultat])
 
     #sortowanie po sumie żeby utowrzyć ranking
     for i in range(len(lista_rankingowa_z_lodowka) - 1):
@@ -297,7 +298,6 @@ def tabu(iter, bs):
     """
 
     roz_s = roz_start(bs)
-    r = deepcopy(roz_s)
     lod_str, pkt_str = aktualization(roz_s)
 
     lst = ranking_new(sniadania, roz_s)
