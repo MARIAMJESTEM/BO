@@ -270,20 +270,19 @@ def aktualization(result):
     return lod, suma
 
 
-#calculation_pionts_for_dish zwraca nany w sumie i nie chce mi się szukać błędu :( ale moje działa jak złoto
-def ranking(baza_dania, rezultat):
-    klucz_do_nazw_posilkow = {"sniadania": 1, "sniadania2": 2, "obiad": 3, "podwieczorek ": 4, "kolacja ": 5}
-    lista_rankingowa_z_lodowka = []
+def ranking_new(baza_dania, rezultat, lista_rankingowa_z_lodowka = []):
+    klucz_do_nazw_posilkow = {"sniadania": 1, "sniadania2": 2, "obiad": 3, "podwieczorek": 4, "kolacja": 5}
     numer_w_liscie_rezultat = klucz_do_nazw_posilkow[baza_dania.name] - 1
     for index, row in baza_dania.iterrows():
-        rezultat[numer_w_liscie_rezultat] = baza_dania.iloc[index, 0]
-        lod, sum = aktualization(rezultat)
-        lista_rankingowa_z_lodowka.append([baza_dania.iloc[index, 0],sum,lod])
+        if baza_dania.iloc[index, 0] != rezultat[numer_w_liscie_rezultat]:
+            rezultat[numer_w_liscie_rezultat] = baza_dania.iloc[index, 0]
+            lod, sum = aktualization(rezultat)
+            lista_rankingowa_z_lodowka.append([baza_dania.iloc[index, 0],sum,numer_w_liscie_rezultat])
 
     #sortowanie po sumie żeby utowrzyć ranking
     for i in range(len(lista_rankingowa_z_lodowka) - 1):
         for j in range(0, len(lista_rankingowa_z_lodowka) - i - 1):
-            if lista_rankingowa_z_lodowka[j][1] > lista_rankingowa_z_lodowka[j + 1][1]:
+            if lista_rankingowa_z_lodowka[j][1] < lista_rankingowa_z_lodowka[j + 1][1]:
                 lista_rankingowa_z_lodowka[j], lista_rankingowa_z_lodowka[j + 1] = lista_rankingowa_z_lodowka[j + 1], lista_rankingowa_z_lodowka[j]
 
     return lista_rankingowa_z_lodowka
@@ -298,29 +297,20 @@ def tabu(iter, bs):
     """
 
     roz_s = roz_start(bs)
-    r = roz_s
-    pkt, lod = aktualization(roz_s)
-    for i in range(iter):
-        for s in range(len(sniadania)):
-            if s == roz_s[0]:
-                r[0] = sniadania['Nazwa_dania'[s]]
-                pkt, lod = aktualization(r)
-        for s in range(len(sniadania2)):
-            if s == roz_s[1]:
-                r[1] = sniadania2['Nazwa_dania'[s]]
-                pkt, lod = aktualization(r)
-        for s in range(len(obiad)):
-            if s == roz_s[2]:
-                r[2] = obiad['Nazwa_dania'[s]]
-                pkt, lod = aktualization(r)
-        for s in range(len(podwieczorek)):
-            if s == roz_s[3]:
-                r[3] = podwieczorek['Nazwa_dania'[s]]
-                pkt, lod = aktualization(r)
-        for s in range(len(kolacja)):
-            if s == roz_s[4]:
-                r[4] = kolacja['Nazwa_dania'[s]]
-                pkt, lod = aktualization(r)
+    r = deepcopy(roz_s)
+    lod_str, pkt_str = aktualization(roz_s)
+
+    lst = ranking_new(sniadania, roz_s)
+    lst = ranking_new(sniadania2, roz_s, lst)
+    lst = ranking_new(obiad, roz_s, lst)
+    lst = ranking_new(podwieczorek, roz_s, lst)
+    lst = ranking_new(kolacja, roz_s, lst)
+    for i in range(len(lst)):
+        print(lst[i])
+
+tabu(0, 1)
+
+
 
 
 

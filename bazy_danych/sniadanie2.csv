@@ -1,6 +1,6 @@
 ﻿Nazwa_dania;Produkty;Kalorie;Białko;Punkty;Tabu;Link
-Jabłko;[[Jabłko, 1,0]] 52.0;0.3;-0.6;0;link
-Panini z szynką i serem;[[Chleb, 4, 0], [Mozarella, 1, 0], [Szynka parmeńska, 4, 0], [Pomidor, 1, 0], [Oliwa, 10]];2215.41;168.88;-106.02;0;https://akademiasmaku.pl/przepis/panini-z-szynka-i-serem
-Omlet z szynką i serem;[[Jajka, 3, 0], [Szynka, 3, 0], [Masło, 10], [Ser żółty, 10]];754.1;104.59;-63.94;0;https://www.winiary.pl/przepisy/omlet-ze-szczypiorkiem-serem-i-szynka/
-Kanapki z gruszką i figą;[[Chleb,4,0], [Ricotta, 100], [Figa, 2, 0], [Gruszka, 2, 0], [Miód, 30], [Szynka parmeńska, 4, 0]];2356.2;158.49;-133.74;0;https://aniastarmach.pl/przepis/najlepsze-kanapki-z-gruszka-i-figa/
-Hummus;[[Puszka ciecierzycy, 1, 0], [Cytryna, 1, 0], [Pasta tahini, 75], [Oliwa, 75]];1502.65;20.wrz;-109.36;0;https://aniastarmach.pl/przepis/hummus
+Jabłko;[[Jabłko,1,0]];52.0;0.3;-0.6;0;link
+Panini z szynką i serem;[[Chleb,4,0], [Mozarella,1,0], [Szynka parmeńska,4,0], [Pomidor, 1, 0], [Oliwa, 10]];2215.41;168.88;-106.02;0;https://akademiasmaku.pl/przepis/panini-z-szynka-i-serem
+Omlet z szynką i serem;[[Jajka,3,0], [Szynka,3,0], [Masło,10], [Ser żółty,10]];754.1;104.59;-63.94;0;https://www.winiary.pl/przepisy/omlet-ze-szczypiorkiem-serem-i-szynka/
+Kanapki z gruszką i figą;[[Chleb,4,0], [Ricotta, 100], [Figa,2,0], [Gruszka,2,0], [Miód,30], [Szynka parmeńska,4, 0]];2356.2;158.49;-133.74;0;https://aniastarmach.pl/przepis/najlepsze-kanapki-z-gruszka-i-figa/
+Hummus;[[Puszka ciecierzycy,1,0], [Cytryna,1,0], [Pasta tahini,75], [Oliwa,75]];1502.65;20.wrz;-109.36;0;https://aniastarmach.pl/przepis/hummus
