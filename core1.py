@@ -288,6 +288,18 @@ def ranking_new(baza_dania, rezultat, lista_rankingowa_z_lodowka = []):
 
     return lista_rankingowa_z_lodowka
 
+def tabu_list_actualization(tabu_list: list):
+    """
+    Funkcja aktualizuje ilość iteracji na które elementy zostały umieszczone w liście tabu
+        :param tabu_list: lista tabu postaci [[nazwa_dania1, ilosc iteracji1], [nazwa_dania2, ilosc_iteracji2]]
+        """
+    for i in tabu_list:
+        if i[1] > 1:
+            i[1] -=1
+        else:
+            tabu_list.remove(i)
+    return tabu_list
+
 
 def tabu(iter, bs):
     """
@@ -296,7 +308,6 @@ def tabu(iter, bs):
     :param bs: wybór sposobu znalezienia bazy startowej 0 lub 1
     :return: wynik końcowy
     """
-
     roz_s = roz_start(bs)
     lod_str, pkt_str = aktualization(roz_s)
 
