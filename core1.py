@@ -253,10 +253,6 @@ def standard_deviation_calories_and_protein(result):
 
     return np.std([K,CAL]), np.std([B,PRO])
 
-def append_tabu(nazwa, baza, tabu):
-    df = baza[baza["Nazwa_dania"] == nazwa] #zamina liczby tabu na tabu musze wyciągnąc indeks chyba
-    df['Tabu'] == tabu
-
 
 def aktualization(result):
     nbaza = [sniadania, sniadania2, obiad, podwieczorek, kolacja]
@@ -289,26 +285,76 @@ def ranking_new(baza_dania, rezultat, lista_rankingowa_z_lodowka = []):
     return lista_rankingowa_z_lodowka
 
 
-def tabu(iter, bs):
+def tabu(iter, bs, t_idx, t_iter = 5):
     """
 
     :param iter: ilośc iteracji
     :param bs: wybór sposobu znalezienia bazy startowej 0 lub 1
+    :param t_idx: 0 stała lista tabu zestawu na stałe, 1 zablokowanie dania na tabu_iter rund
     :return: wynik końcowy
     """
 
     roz_s = roz_start(bs)
+    r = roz_s[:]
     lod_str, pkt_str = aktualization(roz_s)
+    best_roz_s = roz_s
+    best_pkt = pkt_str
+    best_lod = lod_str
+    tabu_list = []
+    i = 0
+    baz = [sniadania, sniadania2, obiad, podwieczorek, kolacja]
 
-    lst = ranking_new(sniadania, roz_s)
-    lst = ranking_new(sniadania2, roz_s, lst)
-    lst = ranking_new(obiad, roz_s, lst)
-    lst = ranking_new(podwieczorek, roz_s, lst)
-    lst = ranking_new(kolacja, roz_s, lst)
-    for i in range(len(lst)):
-        print(lst[i])
+    for it in range(iter):
+        lst = ranking_new(sniadania, r)
+        lst = ranking_new(sniadania2, r, lst)
+        lst = ranking_new(obiad, r, lst)
+        lst = ranking_new(podwieczorek, r, lst)
+        lst = ranking_new(kolacja, r, lst)
+        print(lst)
 
-tabu(0, 1)
+        if t_idx == 0:    #nie dodałem jeszcze kryterium aspiracji,  czy napewno tu trzeba ją tu dawac ?
+            while True:
+                if lst[i][0] not in tabu_list:
+                    tabu_list.append(lst[i][0])
+                    break
+
+                i += 1
+
+            if lst[i][1] > best_pkt:
+                best_pkt = lst[i][1]
+                best_roz_s = lst[i][0]
+                # best_lod = lst[i][3] # dla lodówki jeszcze nie dodane
+
+        if t_idx == 1:
+            while True:
+                numer = lst[i][2]
+                k = baz[numer]
+                df = k[k["Nazwa_dania"] == lst[i][0][numer]]
+                if k['Tabu'][df.index[0]] != 0 and lst[i][1] > best_pkt:
+                    k['Tabu'][df.index[0]] = t_iter
+                    break
+
+                if k['Tabu'][df.index[0]] == 0:
+                    k['Tabu'][df.index[0]] = t_iter
+                    break
+
+                i += 1
+
+            if lst[i][1] > best_pkt:
+                best_pkt = lst[i][1]
+                best_roz_s = lst[i][0]
+                # best_lod = lst[i][3] # dla lodówki jeszcze nie dodane
+
+        r = lst[i][0]
+        i = 0
+        lst = []
+
+    print(best_lod,"\n", best_pkt, "\n", best_roz_s)
+
+
+
+tabu(10, 1, 0)
+
 
 
 
