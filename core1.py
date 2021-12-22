@@ -3,7 +3,6 @@ import numpy as np
 import random
 import datetime
 from copy import deepcopy
-import math
 
 #Wczytanie baz danych do programu
 sniadania = pd.read_csv("bazy_danych\sniadania.csv", sep = ';')
@@ -11,7 +10,7 @@ sniadania2 = pd.read_csv("bazy_danych\sniadanie2.csv", sep = ';')
 obiad = pd.read_csv("bazy_danych\obiad.csv", sep = ';')
 podwieczorek = pd.read_csv("bazy_danych\sniadanie2.csv", sep = ';')
 kolacja = pd.read_csv("bazy_danych\kolacja.csv", sep = ';')
-lodowka = pd.read_csv("bazy_danych\lodowka.csv", sep =';')
+lodowka = pd.read_csv("bazy_danych\lodowka2.csv", sep =';')
 
 sniadania.name = "sniadania"
 sniadania2.name = "sniadania2"
@@ -19,7 +18,7 @@ obiad.name = "obiad"
 podwieczorek.name = "podwieczorek"
 kolacja.name = "kolacja"
 
-l_pomocnicza = pd.read_csv("bazy_danych\lodowka.csv", sep =';')
+l_pomocnicza = pd.read_csv("bazy_danych\lodowka2.csv", sep =';')
 s = pd.read_csv("bazy_danych\produkty_w_sklepie.csv", sep =';')
 sklep = s.set_index("Nazwa")
 
@@ -258,7 +257,7 @@ def aktualization(result):
     nbaza = [sniadania, sniadania2, obiad, podwieczorek, kolacja]
     suma = 0
     lod = deepcopy(lodowka)
-    for r,b in zip(result, nbaza):
+    for r,b in zip(reversed(result), reversed(nbaza)):
         df = b[b['Nazwa_dania'] == r]
         l, s = calculation_points_for_dish(lod,df.index[0],b)
         lod = l
@@ -297,7 +296,7 @@ def tabu_list_actualization(tabu_list: list):
     return tabu_list
 
 
-def tabu(iter, bs, t_idx, t_iter = 5):
+def tabu(iter, bs, t_idx, t_iter = 7):
     """
 
     :param iter: ilośc iteracji
@@ -308,25 +307,25 @@ def tabu(iter, bs, t_idx, t_iter = 5):
     roz_s = roz_start(bs)
     r = roz_s[:]
     lod_str, pkt_str = aktualization(roz_s)
-    best_roz_s = roz_s
+    best_roz_s = roz_s[:]
     best_pkt = pkt_str
-    best_lod = lod_str
+    best_lod = lod_str[:]
     tabu_list = []
     i = 0
     baz = [sniadania, sniadania2, obiad, podwieczorek, kolacja]
 
     for it in range(iter):
-        lst = ranking_new(sniadania, r)
+        lst = ranking_new(sniadania, r, [])
         lst = ranking_new(sniadania2, r, lst)
         lst = ranking_new(obiad, r, lst)
         lst = ranking_new(podwieczorek, r, lst)
         lst = ranking_new(kolacja, r, lst)
-        print(lst)
 
         if t_idx == 0:    #nie dodałem jeszcze kryterium aspiracji,  czy napewno tu trzeba ją tu dawac ?
             while True:
                 if lst[i][0] not in tabu_list:
-                    tabu_list.append(lst[i][0])
+                    tab = lst[i][0][:]
+                    tabu_list.append(tab)
                     break
 
                 i += 1
@@ -341,11 +340,11 @@ def tabu(iter, bs, t_idx, t_iter = 5):
                 numer = lst[i][2]
                 k = baz[numer]
                 df = k[k["Nazwa_dania"] == lst[i][0][numer]]
-                if k['Tabu'][df.index[0]] != 0 and lst[i][1] > best_pkt:
+                if k['Tabu'][df.index[0]] != 0 and lst[i][1] > best_pkt:  #kryterium aspiracji
                     k['Tabu'][df.index[0]] = t_iter
                     break
 
-                if k['Tabu'][df.index[0]] == 0:
+                if k['Tabu'][df.index[0]] == 0: #blokowanie tabu jeśli nie było to zabronione wcześniej
                     k['Tabu'][df.index[0]] = t_iter
                     break
 
@@ -356,15 +355,20 @@ def tabu(iter, bs, t_idx, t_iter = 5):
                 best_roz_s = lst[i][0]
                 # best_lod = lst[i][3] # dla lodówki jeszcze nie dodane
 
+
         r = lst[i][0]
-        i = 0
+        r1 = lst[i][1]
+
         lst = []
+        i = 0
+        print(r,r1)
+        # print(tabu_list)
 
     print(best_lod,"\n", best_pkt, "\n", best_roz_s)
 
 
 
-tabu(10, 1, 0)
+tabu(20, 1, 1)
 
 
 
