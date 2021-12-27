@@ -91,13 +91,19 @@ def append_new_dish(name: str, produkt: str, pora: str, link: str):
         df = pd.DataFrame({'Nazwa_dania': [name], 'Produkty': [produkt], 'Kalorie': [Kal], 'Białko': [Bia], "Punkty": [pkt], 'Tabu': [0], 'Link': [link]})
         df.to_csv('bazy_danych\sniadania.csv', sep=';', mode='a', index=False, header=False)
 
-    if pora == "2S" or pora == "P":
+    if pora == "2S":
         df = pd.DataFrame({'Nazwa_dania': [name], 'Produkty': [produkt], 'Kalorie': [Kal], 'Białko': [Bia], "Punkty": [pkt], 'Tabu': [0], 'Link': [link]})
         df.to_csv('bazy_danych\sniadanie2.csv', sep=';', mode='a', index=False, header=False)
 
     if pora == "O":
         df = pd.DataFrame({'Nazwa_dania': [name], 'Produkty': [produkt], 'Kalorie': [Kal], 'Białko': [Bia], "Punkty": [pkt], 'Tabu': [0], 'Link': [link]})
         df.to_csv('bazy_danych\obiad.csv', sep=';', mode='a', index=False, header=False)
+
+    if pora == "P":
+        df = pd.DataFrame(
+            {'Nazwa_dania': [name], 'Produkty': [produkt], 'Kalorie': [Kal], 'Białko': [Bia], "Punkty": [pkt],
+             'Tabu': [0], 'Link': [link]})
+        df.to_csv('bazy_danych\podwieczorek.csv', sep=';', mode='a', index=False, header=False)
 
     if pora == "K":
         df = pd.DataFrame({'Nazwa_dania': [name], 'Produkty': [produkt], 'Kalorie': [Kal], 'Białko': [Bia], "Punkty": [pkt], 'Tabu': [0], 'Link': [link]})

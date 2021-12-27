@@ -3,6 +3,7 @@ import numpy as np
 import random
 import datetime
 from copy import deepcopy
+import matplotlib.pyplot as plt
 
 #Wczytanie baz danych do programu
 sniadania = pd.read_csv("bazy_danych\sniadania.csv", sep = ';')
@@ -144,7 +145,7 @@ def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 
         list = read_sklad(produkt = produkt)
     for j in range(len(list)):
         nazwa = list[j][0]
-        df = lodowka[lodowka["Nazwa"] == nazwa]
+        df = lod[lod["Nazwa"] == nazwa]
         if df.empty == True:
             if len(list[j]) == 2:
                 s = sklep["Waga"][nazwa]
@@ -313,6 +314,7 @@ def tabu(iter, bs, t_idx, t_iter = 7):
     tabu_list = []
     i = 0
     baz = [sniadania, sniadania2, obiad, podwieczorek, kolacja]
+    l = []
 
     for it in range(iter):
         lst = ranking_new(sniadania, r, [])
@@ -361,14 +363,18 @@ def tabu(iter, bs, t_idx, t_iter = 7):
 
         lst = []
         i = 0
-        print(r,r1)
+        # print(r,r1)
         # print(tabu_list)
+        l.append(r1)
 
     print(best_lod,"\n", best_pkt, "\n", best_roz_s)
+    return l
 
 
 
-tabu(20, 1, 1)
+l = tabu(1000, 1, 0)
+plt.plot(l)
+plt.show()
 
 
 
