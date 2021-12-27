@@ -1,81 +1,85 @@
-ï»¿Nazwa;Cena;Sztuka;Waga;Kalorie;BiaÅ‚ko;Punkty
-MÄ…ka tortowa;4.99;NaN;1000;347;9.2;-9.98
-Mleko kokosowe;9.99;NaN;400;230;2.3;-19.98
-Olej;9.89;NaN;1000;884.1;0;-19.78
-Makaron Å›widerki;4.59;NaN;500;131;5;-9.18
-MÄ…ka do pizzy;5.18;NaN;1000;352;13;-10.36
-MÄ…ka ziemniaczana;6.07;NaN;1000;356.8;7;-12.14
-MÄ…ka kukurydziana;3.57;NaN;1000;369;7;-7.14
-MÄ…ka krupczatka;3.55;NaN;1000;342;10.3;-7.1
-MÄ…ka Å¼ytnia;13.07;NaN;500;348.7;11;-26.14
-Makaron spaghetti;3.89;NaN;500;157.7;6;-7.78
-Makaron nitki;3.69;NaN;500;296;11.27;-7.38
-Makaron tagiatelle;7.39;NaN;250;288;11;-14.78
-Makaron lasagne;7.99;NaN;500;348;10.7;-15.98
-RyÅ¼ biaÅ‚y;3.39;NaN;400;130;2.7;-6.78
-RyÅ¼ jaÅ›minowy;7.99;NaN;1000;110;7.6;-15.98
-Kasza jaglana;8.49;NaN;1000;350;10.5;-16.98
-Kasza pÄ™pczak;2.99;NaN;400;350;12.5;-5.98
-Soczewica czerwona;13.65;NaN;1000;116.4;17.8;-27.3
-Soczewica zielona;10.79;NaN;1000;351;24.2;-21.58
-Ciecierzyca;7.2;NaN;1000;354.5;19;-14.4
-PÅ‚atki owsiane;2.99;NaN;500;363;13.5;-5.98
-Mleko;2.89;NaN;1000;50;3.4;-5.78
-Kakao;7.99;NaN;150;303;20;-15.98
-Cukier;3.49;NaN;1000;400;0;-6.98
-MasÅ‚o orzechowe;11.99;NaN;340;642;25;-23.98
-Maliny;12.99;NaN;280;42;1.2;-25.98
+Nazwa;Cena;Sztuka;Waga;Kalorie;Bia³ko;Punkty
+M¹ka tortowa;kwi.99;NaN;1000;347;09.lut;-9.98
+Mleko kokosowe;wrz.99;NaN;400;230;02.mar;-19.98
+Olej;wrz.89;NaN;1000;884.1;0;-19.78
+Makaron œwiderki;kwi.59;NaN;500;131;5;-9.18
+M¹ka do pizzy;maj.18;NaN;1000;352;13;-10.36
+M¹ka ziemniaczana;06.lip;NaN;1000;356.8;7;-12.14
+M¹ka kukurydziana;mar.57;NaN;1000;369;7;-7.14
+M¹ka krupczatka;mar.55;NaN;1000;342;10.mar;-7.1
+M¹ka ¿ytnia;13.lip;NaN;500;348.7;11;-26.14
+Makaron spaghetti;mar.89;NaN;500;157.7;6;-7.78
+Makaron nitki;mar.69;NaN;500;296;lis.27;-7.38
+Makaron tagiatelle;lip.39;NaN;250;288;11;-14.78
+Makaron lasagne;lip.99;NaN;500;348;10.lip;-15.98
+Ry¿ bia³y;mar.39;NaN;400;130;02.lip;-6.78
+Ry¿ jaœminowy;lip.99;NaN;1000;110;07.cze;-15.98
+Kasza jaglana;sie.49;NaN;1000;350;10.maj;-16.98
+Kasza pêpczak;lut.99;NaN;400;350;12.maj;-5.98
+Soczewica czerwona;13.65;NaN;1000;116.4;17.sie;-27.3
+Soczewica zielona;paŸ.79;NaN;1000;351;24.lut;-21.58
+Ciecierzyca;07.lut;NaN;1000;354.5;19;-14.4
+P³atki owsiane;lut.99;NaN;500;363;13.maj;-5.98
+Mleko;lut.89;NaN;1000;50;03.kwi;-5.78
+Kakao;lip.99;NaN;150;303;20;-15.98
+Cukier;mar.49;NaN;1000;400;0;-6.98
+Mas³o orzechowe;lis.99;NaN;340;642;25;-23.98
+Maliny;gru.99;NaN;280;42;01.lut;-25.98
 Syrop klonowy;22.99;NaN;180;265;0;-45.98
-Pomidor;3.22;1;NaN;20;0.88;-6.44
-MasÅ‚o;6.89;NaN;200;746;0.9;-13.78
-Jajka;14.3;10;NaN;147;13;-28.6
-Czosnek;1.99;12;NaN;146;6;-3.98
-Jogurt naturalny;1.99;NaN;180;280;4.3;-3.98
-Chleb;4.7;18;NaN;257;9;-9.4
-Awokado;7.99;1;NaN;160;2;-15.98
-Majonez;6.49;NaN;310;631;1;-12.98
-Banan;1.5;1;NaN;90;1.1;-3
-Serek homogenizowany;3.4;NaN;200;99;16.8;-6.8
-Soda oczyszczona;1.32;NaN;70;0;0;-2.64
-Czekolada mleczna;3.49;NaN;90;530;8;-6.98
-JabÅ‚ko;0.3;1;NaN;52;0.3;-0.6
-Mozarella;3.2;1;NaN;247;28;-6.4
-Szynka parmeÅ„ska;8.89;7;NaN;208;26;-17.78
+Pomidor;mar.22;1;NaN;20;0.88;-6.44
+Mas³o;cze.89;NaN;200;746;0.9;-13.78
+Jajka;14.mar;10;NaN;147;13;-28.6
+Czosnek;sty.99;12;NaN;146;6;-3.98
+Jogurt naturalny;sty.99;NaN;180;280;04.mar;-3.98
+Chleb;04.lip;18;NaN;257;9;-9.4
+Awokado;lip.99;1;NaN;160;2;-15.98
+Majonez;cze.49;NaN;310;631;1;-12.98
+Banan;01.maj;1;NaN;90;01.sty;-3
+Serek homogenizowany;03.kwi;NaN;200;99;16.sie;-6.8
+Soda oczyszczona;sty.32;NaN;70;0;0;-2.64
+Czekolada mleczna;mar.49;NaN;90;530;8;-6.98
+Jab³ko;0.3;1;NaN;52;0.3;-0.6
+Mozarella;03.lut;1;NaN;247;28;-6.4
+Szynka parmeñska;sie.89;7;NaN;208;26;-17.78
 Oliwa;33;NaN;1000;884.1;0;-66
-Szynka;5.99;8;NaN;77;21;-11.98
-Ser Å¼Ã³Å‚ty;4.79;NaN;135;75;25;-9.58
-Ricotta;5.49;1;250;143;11;-10.98
-Figa;4.19;1;NaN;74;3.3;-8.38
+Szynka;maj.99;8;NaN;77;21;-11.98
+Ser ¿ó³ty;kwi.79;NaN;135;75;25;-9.58
+Ricotta;maj.49;1;250;143;11;-10.98
+Figa;kwi.19;1;NaN;74;03.mar;-8.38
 Gruszka;0.6;1;NaN;57;0.4;-1.2
-MiÃ³d;43;NaN;1000;304;0.3;-86
-Puszka ciecierzycy;3.49;1;400;364.5;7.05;-6.98
-Cytryna;1.2;1;NaN;28.9;1.1;-2.4
+Miód;43;NaN;1000;304;0.3;-86
+Puszka ciecierzycy;mar.49;1;400;364.5;07.maj;-6.98
+Cytryna;01.lut;1;NaN;28.wrz;01.sty;-2.4
 Pasta tahini;16.99;1;460;594.9;17;-33.98
 Filet z kurczaka;15;NaN;1000;164.9;31;-30
-Przyprawa curry;9.5;NaN;500;216;16;-19
-Cebula;1.3;1;NaN;39.4;1.1;-2.6
-Marchew;2.2;1;NaN;41.3;0.9;-4.4
-Papryka;3.49;1;NaN;282.3;14;-6.98
-Imbir;6.3;1;NaN;79.6;1.8;-12.6
-Bulion;0.6;NaN;1000;15;14.6;-1.2
-Åšmietana 18%;3.17;1;NaN;195.5;2.7;-6.34
-MÄ…ka pszenna;2.49;NaN;1000;364.5;10;-4.98
-Por;1.99;1;NaN;60.9;1.5;-3.98
-Ziemniak;1.6;NaN;1000;76.7;2;-3.2
-Pietruszka;1.99;1;NaN;36.1;2.6;-3.98
-Serek topiony;2.53;0;100;215.1;16;-5.06
-Kurki;60;NaN;1000;32;9.9;-120
-Truskawki;7.99;NaN;500;32.5;0.7;-15.98
-Boczek;3.49;NaN;150;364.5;0;-6.98
-Å»urek z butelki;4.99;NaN;1000;55;2;-9.98
-KieÅ‚basa;10;NaN;550;346.1;14;-20
+Przyprawa curry;09.maj;NaN;500;216;16;-19
+Cebula;01.mar;1;NaN;39.4;01.sty;-2.6
+Marchew;02.lut;1;NaN;41.3;0.9;-4.4
+Papryka;mar.49;1;NaN;282.3;14;-6.98
+Imbir;06.mar;1;NaN;79.6;01.sie;-12.6
+Bulion;0.6;NaN;1000;15;14.cze;-1.2
+Œmietana 18%;mar.17;1;NaN;195.5;02.lip;-6.34
+M¹ka pszenna;lut.49;NaN;1000;364.5;10;-4.98
+Por;sty.99;1;NaN;60.9;01.maj;-3.98
+Ziemniak;01.cze;NaN;1000;76.7;2;-3.2
+Pietruszka;sty.99;1;NaN;36.1;02.cze;-3.98
+Serek topiony;lut.53;0;100;215.1;16;-5.06
+Kurki;60;NaN;1000;32;09.wrz;-120
+Truskawki;lip.99;NaN;500;32.5;0.7;-15.98
+Boczek;mar.49;NaN;150;364.5;0;-6.98
+¯urek z butelki;kwi.99;NaN;1000;55;2;-9.98
+Kie³basa;10;NaN;550;346.1;14;-20
 Krewetki;39.29;1;400;99.2;24;-78.58
-Mango;5.5;1;NaN;59.8;0.8;-11
-SaÅ‚ata;2.69;0;200;14.8;1.4;-5.38
-Cebula czerwona;1.02;1;NaN;39.7;1.2;-2.04
-Ser feta;5.6;1;NaN;263.6;14;-11.2
-BrokuÅ‚;3;1;NaN;35;3;-6
-Åšmietana18;2.58;NaN;200;195.5;2.7;-5.16
-Åšmietana30;3.51;NaN;200;195.5;2.7;-7.02
-Bagietka;1.99;1;NaN;218;6.9;-3.98
-Pieczarki;4.98;NaN;450;28;2.2;-9.96
+Mango;05.maj;1;NaN;59.8;0.8;-11
+Sa³ata;lut.69;0;200;14.sie;01.kwi;-5.38
+Cebula czerwona;01.lut;1;NaN;39.7;01.lut;-2.04
+Ser feta;05.cze;1;NaN;263.6;14;-11.2
+Broku³;3;1;NaN;35;3;-6
+Œmietana18;lut.58;NaN;200;195.5;02.lip;-5.16
+Œmietana30;mar.51;NaN;200;195.5;02.lip;-7.02
+Bagietka;sty.99;1;NaN;218;06.wrz;-3.98
+Pieczarki;kwi.98;NaN;450;28;02.lut;-9.96
+Bu³ka;0.30;1;NaN;293;5;-1
+Granat;2.49;1;NaN;82.7;1.67;-5
+Jogobella truskawkowa;2.19;1;NaN;100;4;-4
+Jogobella wiœniowa;2.20;1;NaN;100;4;-4
