@@ -37,24 +37,24 @@ Dodakowo naszym zadaniem było wykorzystanie metody metaheurystycznej **Tabu Sea
 * Metoda losowa z priorytetami (wybiera najlepszych sąsiadów z losowych baz)
 
 ## Todo
-[] Bazy danych 
-[x] Dodawanie produktów i dań 
-[x] Obliczanie punktów, kalorii i białka za konkretne danie
-[] Blokowanie powtarzania tych samych dań 
-[] Promowanie odpowiednich dań na dany dzień
-[] Naprawa błędów i bugów
-[] Gui
-[] Testy jednostkowe
+- [] Bazy danych 
+- [x] Dodawanie produktów i dań 
+- [x] Obliczanie punktów, kalorii i białka za konkretne danie
+- [] Blokowanie powtarzania tych samych dań 
+- [] Promowanie odpowiednich dań na dany dzień
+- [] Naprawa błędów i bugów
+- [] Gui
+- [] Testy jednostkowe
 
 ## Technologie
 Aplikacja powstaje w **Pythonie** wersji **3.9** (powinna działać we wczesniejszych również), zostały użyne dodatkowo biblioteki:
--pandas
--numpy
--tkinter
+* pandas
+* numpy
+* tkinter
 
 ## Pomoce naukowe
-*[tkinter tutorial](https://www.youtube.com/watch?v=YXPyB4XeYLA&t=1820s)
-*[tkinter tutorial github](https://github.com/flatplanet/Intro-To-TKinter-Youtube-Course)
+* [tkinter tutorial](https://www.youtube.com/watch?v=YXPyB4XeYLA&t=1820s)
+* [tkinter tutorial github](https://github.com/flatplanet/Intro-To-TKinter-Youtube-Course)
 
  
  
