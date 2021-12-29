@@ -27,16 +27,15 @@ kolacja.name = "kolacja"
 CAL = 3000
 PRO = 1000
 
-actualna_data = 28-11-2021
 
 
-def find_current_date():
+def find_current_date(z):
     """
     Funkcja wyznaczająca aktualną datę
 
     :return: Aktualna data
     """
-    return datetime.datetime.now().date()
+    return '2022-01-' + str(z)
 
 
 def calculate_product_to_fridge_points(date):
@@ -118,7 +117,7 @@ def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 
                 ss = p * s - ns
                 sum += sklep["Punkty"][nazwa] * p
                 if ss != 0:
-                    df = {"Nazwa": list[j][0], "Sztuka": np.nan, "Waga": ss, "Punkty": 0, "Data_waznosci": find_current_date() + datetime.timedelta(days=14)}
+                    df = {"Nazwa": list[j][0], "Sztuka": np.nan, "Waga": ss, "Punkty": 0, "Data_waznosci": '2022-01-15'}
                     lod = lod.append(df, ignore_index=True)
 
             if len(list[j]) == 3:
@@ -128,7 +127,7 @@ def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 
                 ss = p * s - ns
                 sum += sklep["Punkty"][nazwa] * p
                 if ss != 0:
-                    df = {"Nazwa": list[j][0], "Sztuka": ss, "Waga": np.nan, "Punkty": 0, "Data_waznosci": find_current_date() + datetime.timedelta(days=14)}
+                    df = {"Nazwa": list[j][0], "Sztuka": ss, "Waga": np.nan, "Punkty": 0, "Data_waznosci": '2022-01-15'}
                     lod = lod.append(df, ignore_index=True)
         else:
             if len(list[j]) == 2:
@@ -140,7 +139,7 @@ def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 
                     ss = p * s - ns
                     sum += sklep["Punkty"][list[j][0]] * p
                     lod['Waga'][l.index[0]] = ss
-                    lod['Data_waznosci'][l.index[0]] = find_current_date() + datetime.timedelta(days=14)
+                    lod['Data_waznosci'][l.index[0]] = '2022-01-15'
                 elif list[j][1] == l['Waga'][l.index[0]]:
                     lod = lod.drop([l.index[0]], axis=0)
                     sum += l['Punkty'][l.index[0]]
@@ -157,7 +156,7 @@ def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 
                     ss = p * s - ns  # tu coś brakuje
                     sum += sklep["Punkty"][list[j][0]] * p
                     lod['Sztuka'][l.index[0]] = ss
-                    lod['Data_waznosci'][l.index[0]] = find_current_date() + datetime.timedelta(days=14)
+                    lod['Data_waznosci'][l.index[0]] = '2022-01-15'
                 elif list[j][1] == l['Sztuka'][l.index[0]]:
                     lod = lod.drop(l.index[0], axis=0)
                     sum += l['Punkty'][l.index[0]]
@@ -342,7 +341,7 @@ def tabu_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -200):
             if lst[i][0] not in tabu_list:
                 tab = lst[i][0][:]
                 tabu_list[tabu_licz] = tab
-                break
+                break #co w momencie jak nic z nowej listy nie możemy zniszczyć bo wszystko już tam jest
 
             i += 1
 
@@ -363,6 +362,7 @@ def tabu_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -200):
             break
 
         l.append(r1)
+
     print(best_pkt, best_roz_s, best_lod)
     return l
 
@@ -422,10 +422,40 @@ def tabu_product(iter, bs, l_iter, metod, metoda_iter = 4, cut_par = -200):
         l.append(r1)
         tabu_list_actualization()
 
-    print(best_pkt, best_roz_s, best_lod)
-    return l
+    return l, best_pkt, best_roz_s, best_lod
 
 
 l = tabu_set(500,1,20,2)
 plt.plot(l)
 plt.show()
+
+# def week_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -200):
+#     for i in range(7):
+#         # preferencje()
+#         w, bp, br, bl = tabu_set(iter, bs, llist, metod, metoda_iter, cut_par)
+#         plt.plot(w)
+#         plt.show()
+#         lodowka = deepcopy(bl)
+        # append_kara() # dodanie funkcji kary dla poszczególnych dań w zależności od kiedty zostało to dodane
+
+        # policz_koszt() # w liczeniu punktów za set, zwróć listę Marysia
+
+        # to razem: Piotrek
+        #     dodaj dzień()
+        #     funkcja przeładowania lodówki()
+
+        # return wyniki
+
+
+
+# wyświetlanie wykresu i wyniku
+
+#sprawdzenie czy nie ma błędów
+
+# dodanie pozycji do baz
+# przeładowanie podwieczorków
+
+
+#dodać pieduły sprawdzające poprawności
+#zrobić dokumentacje
+#przyspieszyć procesy

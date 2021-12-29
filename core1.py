@@ -284,17 +284,19 @@ def ranking_new(baza_dania, rezultat, lista_rankingowa_z_lodowka = []):
 
     return lista_rankingowa_z_lodowka
 
-def tabu_list_actualization(tabu_list: list):
+def tabu_list_actualization():
     """
-    Funkcja aktualizuje ilość iteracji na które elementy zostały umieszczone w liście tabu
-        :param tabu_list: lista tabu postaci [[nazwa_dania1, ilosc iteracji1], [nazwa_dania2, ilosc_iteracji2]]
+    Funkcja aktualizuje ilość iteracji na które elementy zostały umieszczone w liście tabu. Ilość iteracji jest zmieniana
+    w bazie danych
+
         """
-    for i in tabu_list:
-        if i[1] > 1:
-            i[1] -=1
-        else:
-            tabu_list.remove(i)
-    return tabu_list
+    lista_posilkow= [sniadania, sniadania2, obiad, podwieczorek, kolacja]
+    for i in lista_posilkow:
+        znalezione_tabu = i.loc[i['Tabu'] > 0]
+        if len(znalezione_tabu) > 0:
+            for j in range(len(znalezione_tabu)):
+                i.loc[znalezione_tabu.index[j],"Tabu"] -= 1
+    return lista_posilkow
 
 
 def tabu(iter, bs, t_idx, t_iter = 7):
@@ -313,6 +315,7 @@ def tabu(iter, bs, t_idx, t_iter = 7):
     best_lod = lod_str[:]
     tabu_list = []
     i = 0
+    plt=[]
     baz = [sniadania, sniadania2, obiad, podwieczorek, kolacja]
     l = []
 
@@ -339,17 +342,20 @@ def tabu(iter, bs, t_idx, t_iter = 7):
 
         if t_idx == 1:
             while True:
+
                 numer = lst[i][2]
                 k = baz[numer]
                 df = k[k["Nazwa_dania"] == lst[i][0][numer]]
+
                 if k['Tabu'][df.index[0]] != 0 and lst[i][1] > best_pkt:  #kryterium aspiracji
+                    plt.append([k['Nazwa_dania'][df.index[0]], "kryterium spiracji"])
                     k['Tabu'][df.index[0]] = t_iter
                     break
 
                 if k['Tabu'][df.index[0]] == 0: #blokowanie tabu jeśli nie było to zabronione wcześniej
+                    plt.append(k['Nazwa_dania'][df.index[0]])
                     k['Tabu'][df.index[0]] = t_iter
                     break
-
                 i += 1
 
             if lst[i][1] > best_pkt:
@@ -361,20 +367,21 @@ def tabu(iter, bs, t_idx, t_iter = 7):
         r = lst[i][0]
         r1 = lst[i][1]
 
-        lst = []
+
         i = 0
         # print(r,r1)
         # print(tabu_list)
         l.append(r1)
+        #print(r,r1)
+        # print(tabu_list)
+        print(plt)
+        print(lst)
+        print(r1, "\n")
+        lst = []
 
     print(best_lod,"\n", best_pkt, "\n", best_roz_s)
     return l
 
-
-
-l = tabu(1000, 1, 0)
-plt.plot(l)
-plt.show()
 
 
 
