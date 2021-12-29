@@ -1,7 +1,12 @@
-﻿Nazwa_dania;Produkty;Kalorie;Białko;Punkty;Tabu;Link
-Pieczona owsianka brownie;[[Płatki owsiane, 100], [Mleko, 440], [Kakao, 30], [Cukier, 30], [Masło orzechowe,30 ], [Maliny, 200], [Syrop klonowy, 15]];1110.25;44.36;-130.66;0;https://www.kwestiasmaku.com/przepis/pieczona-owsianka-brownie
-Szakszuka;[[Pomidor, 2, 0 ], [Masło, 7], [Czosnek, 2, 0], [Jajka, 2, 0]];678.22;39.823;-52.8;0;https://www.kwestiasmaku.com/dania_dla_dwojga/sniadania/jajka_w_pomidorach/przepis.html
-Owsianka z owocami;[[Płatki owsiane, 400], [Jogurt naturalny, 200], [Syrop klonowy, 30], [Maliny, 200]];2175.5;65.0;-81.92;0;https://www.kwestiasmaku.com/przepis/owsianka-z-owocami
-Kanapki z awokdao;[[Jajka,2, 0], [Chleb, 4, 0], [Awokado,1, 0], [Majonez, 30]];1671.3;64.3;-66.96000000000001;0;https://www.kwestiasmaku.com/przepis/kanapki-z-awokado-jajkiem-i-rzezucha
-Koktajl bananowy;[[Banan, 1,0 ], [Płatki owsiane, 75], [Masło orzechowe, 15], [Cukier, 30]];578.55;14.975;-39.94;0;https://www.kwestiasmaku.com/przepis/koktajl-bananowy
-Pancakes;[[Serek homogenizowany, 200], [Jajka, 2,0], [Mąka tortowa, 100], [Soda oczyszczona, 5], [Czekolada mleczna, 50]];1104.0;72.8;-45.019999999999996;0;https://www.kwestiasmaku.com/przepis/puszyste-placuszki-pancakes-z-czekolada
+﻿Nazwa_dania;Produkty;Kalorie;Białko;Punkty;Tabu
+Pieczona owsianka brownie;[[Płatki owsiane,100],[Mleko,440],[Kakao,30],[Cukier,30],[Masło orzechowe,30],[Maliny,200],[Syrop klonowy,15]];1110.25;44.36;-77.74;0
+Szakszuka;[[Pomidor,2,0],[Masło,7],[Czosnek,2,0],[Jajka,2,0]];678.22;39.823;-3.98;0
+Owsianka z owocami;[[Płatki owsiane,400],[Jogurt naturalny,200],[Syrop klonowy,30],[Maliny,200]];2175.5;65.0;-85.9;0
+Kanapki z awokdao;[[Jajka,2,0],[Chleb,4,0], [Awokado,1,0],[Majonez,30]];1671.3;64.3;-28.96;0
+Pancakes;[[Serek homogenizowany,200],[Jajka,2,0],[Mąka tortowa,100],[Soda oczyszczona,5], [Czekolada mleczna,50]];1104.0;72.8;-19.42;0
+Parówki z kanapkami;[[Parówki,3,0],[Chleb,3,0],[Masło,15],[Keczup,20]];1283.3000000000002;46.894999999999996;-17.18;0
+Kanapki z szynką i serem;[[Chleb,4,0],[Szynka,4,0],[Ser żółty,100],[Keczup,20],[Masło,15]];1545.3000000000002;145.39499999999998;-19.16;0
+Kanapki z mozarellą i pomidorami;[[Chleb,4,0],[Mozarella,1,0],[Pomidor,2,0],[Masło,15]];1426.9;65.89500000000001;-6.4;0
+Jajecznica;[[Jajka,4,0],[Pomidor,1,0],[Masło,30],[Ser żółty,50]];869.3;65.65;0;0
+Płatki z mlekiem;[[Mleko,340],[Płatki owsiane,70]];424.1;21.009999999999998;-5.78;0
+Panini z szynką i serem;[[Chleb,4,0],[Mozarella,1,0],[Szynka parmeńska,4,0],[Pomidor, 1, 0],[Oliwa, 10]];2215.41;168.88;-24.18;0

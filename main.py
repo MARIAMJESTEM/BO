@@ -1,6 +1,6 @@
 from tkinter import *
 import add
-import core
+#import core
 
 
 root = Tk()

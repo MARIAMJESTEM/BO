@@ -34,12 +34,12 @@ Jogurt naturalny;1.99;NaN;180;280;04.3;-3.98
 Chleb;04.7;18;NaN;257;9;-9.4
 Awokado;7.99;1;NaN;160;2;-15.98
 Majonez;6.49;NaN;310;631;1;-12.98
-Banan;01.5;1;NaN;90;01.1;-3
+Banan;1.5;1;NaN;90;1.1;-3
 Serek homogenizowany;03.4;NaN;200;99;16.8;-6.8
 Soda oczyszczona;1.32;NaN;70;0;0;-2.64
 Czekolada mleczna;3.49;NaN;90;530;8;-6.98
 Jabłko;0.3;1;NaN;52;0.3;-0.6
-Mozarella;03.2;1;NaN;247;28;-6.4
+Mozarella;3.2;1;NaN;247;28;-6.4
 Szynka parmeńska;8.89;7;NaN;208;26;-17.78
 Oliwa;33;NaN;1000;884.1;0;-66
 Szynka;5.99;8;NaN;77;21;-11.98
@@ -58,7 +58,6 @@ Marchew;02.2;1;NaN;41.3;0.9;-4.4
 Papryka;3.49;1;NaN;282.3;14;-6.98
 Imbir;06.3;1;NaN;79.6;01.8;-12.6
 Bulion;0.6;NaN;1000;15;14.6;-1.2
-Śmietana 18%;3.17;1;NaN;195.5;02.7;-6.34
 Mąka pszenna;2.49;NaN;1000;364.5;10;-4.98
 Por;1.99;1;NaN;60.9;01.5;-3.98
 Ziemniak;01.6;NaN;1000;76.7;2;-3.2
@@ -70,7 +69,7 @@ Boczek;3.49;NaN;150;364.5;0;-6.98
 Żurek z butelki;4.99;NaN;1000;55;2;-9.98
 Kiełbasa;10;NaN;550;346.1;14;-20
 Krewetki;39.29;1;400;99.2;24;-78.58
-Mango;05.5;1;NaN;59.8;0.8;-11
+Mango;5.5;1;NaN;59.8;0.8;-11
 Sałata;2.69;0;200;14.8;01.4;-5.38
 Cebula czerwona;01.2;1;NaN;39.7;01.2;-2.04
 Ser feta;05.6;1;NaN;263.6;14;-11.2
@@ -83,6 +82,10 @@ Bułka;0.30;1;NaN;293;5;-1
 Granat;2.49;1;NaN;82.7;1.67;-5
 Jogobella truskawkowa;2.19;1;NaN;100;4;-4
 Jogobella wiśniowa;2.20;1;NaN;100;4;-4
-;;;;;;
-;;;;;;
-;;;;;;
+Parówki;4.99;6;NaN;126;6.5;-10
+Keczup;3.59;NaN;380;112;1.3;-7.18
+Drożdżówka z jabłkiem;3.00;1;NaN;283;6;-6
+Drożdżówka z serem;3.00;1;NaN;311;5.13;-6
+Pomarańcz;0.5;1;NaN;47.1;2.2;-1
+Cukinia;1;1;NaN;20;2.7;-2
+Burak;0.4;1;NaN;43;1.6;-0.8

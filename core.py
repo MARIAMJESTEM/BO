@@ -10,7 +10,7 @@ import math
 sniadania = pd.read_csv("bazy_danych\sniadania.csv", sep = ';')
 sniadania2 = pd.read_csv("bazy_danych\sniadanie2.csv", sep = ';')
 obiad = pd.read_csv("bazy_danych\obiad.csv", sep = ';')
-podwieczorek = pd.read_csv("bazy_danych\sniadanie2.csv", sep = ';')
+podwieczorek = pd.read_csv("bazy_danych\podwieczorek.csv", sep = ';')
 kolacja = pd.read_csv("bazy_danych\kolacja.csv", sep = ';')
 lodowka = pd.read_csv("bazy_danych\lodowka2.csv", sep =';')
 l_pomocnicza = pd.read_csv("bazy_danych\lodowka2.csv", sep =';')
@@ -425,9 +425,9 @@ def tabu_product(iter, bs, l_iter, metod, metoda_iter = 4, cut_par = -200):
     return l, best_pkt, best_roz_s, best_lod
 
 
-l = tabu_set(500,1,20,2)
-plt.plot(l)
-plt.show()
+# l = tabu_set(500,1,20,2)
+# plt.plot(l)
+# plt.show()
 
 # def week_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -200):
 #     for i in range(7):

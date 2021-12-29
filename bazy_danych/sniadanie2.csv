@@ -1,6 +1,10 @@
-﻿Nazwa_dania;Produkty;Kalorie;Białko;Punkty;Tabu;Link
-Jabłko;[[Jabłko,1,0]];52.0;0.3;-0.6;0;link
-Panini z szynką i serem;[[Chleb,4,0], [Mozarella,1,0], [Szynka parmeńska,4,0], [Pomidor, 1, 0], [Oliwa, 10]];2215.41;168.88;-106.02;0;https://akademiasmaku.pl/przepis/panini-z-szynka-i-serem
-Omlet z szynką i serem;[[Jajka,3,0], [Szynka,3,0], [Masło,10], [Ser żółty,10]];754.1;104.59;-63.94;0;https://www.winiary.pl/przepisy/omlet-ze-szczypiorkiem-serem-i-szynka/
-Kanapki z gruszką i figą;[[Chleb,4,0], [Ricotta, 100], [Figa,2,0], [Gruszka,2,0], [Miód,30], [Szynka parmeńska,4, 0]];2356.2;158.49;-133.74;0;https://aniastarmach.pl/przepis/najlepsze-kanapki-z-gruszka-i-figa/
-Hummus;[[Puszka ciecierzycy,1,0], [Cytryna,1,0], [Pasta tahini,75], [Oliwa,75]];1502.65;20.wrz;-109.36;0;https://aniastarmach.pl/przepis/hummus
+﻿Nazwa_dania;Produkty;Kalorie;Białko;Punkty;Tabu
+Koktajl bananowy;[[Banan,1,0],[Płatki owsiane,75],[Masło orzechowe,15],[Cukier,30]];578.55;14.975;-3.0;0
+Omlet z szynką i serem;[[Jajka,3,0],[Szynka,3,0],[Masło,10],[Ser żółty,10]];754.1;104.59;-11.98;0
+Hummus;[[Puszka ciecierzycy,1,0],[Cytryna,1,0],[Pasta tahini,75],[Oliwa,75]];1502.65;21.35;-43.36;0
+Drożdżówka z jabłkiem;[[Drożdżówka z jabłkiem,1,0]];283.0;6.0;-6.0;0
+Drożdżówka z serem;[[Drożdżówka z serem,1,0]];311.0;5.13;-6.0;0
+Sałatka owocowa;[[Jabłko,1,0],[Banan,1,0],[Pomarańcz,1,0]];189.1;3.6000000000000005;-4.6;0
+Sałatka z kurczakiem;[[Sałata,100],[Filet z kurczaka,300],[Pomidor,1,0],[Cebula,1,0],[Cukinia,1,0]];588.9;99.08;-9.98;0
+Sałatka z szynką;[[Sałata,100],[Szynka,4,0],[Pomidor,1,0],[Cebula,1,0],[Oliwa,20]];559.02;87.38;-19.96;0
+Sałatka wegańska;[[Sałata,100],[Pomidor,1,0],[Cebula,1,0],[Oliwa,20],[Burak,1,0],[Cukinia,1,0]];314.02;7.680000000000001;-10.780000000000001;0

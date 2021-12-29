@@ -1,6 +1,7 @@
 import core
-from core import sklep
+from core import sklep, lodowka
 import pandas as pd
+from copy import deepcopy
 
 def calculate_product_to_store_points(price):
     """
@@ -76,7 +77,8 @@ def add_product_to_fridge(name, date, pieces='NaN', weight='NaN'):
     df = pd.DataFrame({'Nazwa': [name], 'Sztuka': [pieces], 'Waga': [weight], 'Punkty': [points],'Data': [date]})
     df.to_csv('bazy_danych\lodowka.csv', sep=';', mode='a', index=False, header=False)
 
-def append_new_dish(name: str, produkt: str, pora: str, link: str):
+
+def append_new_dish(name: str, produkt: str, pora: str):
     """
     Funkcja dodająca nowe danie
 
@@ -86,27 +88,28 @@ def append_new_dish(name: str, produkt: str, pora: str, link: str):
     :param link: Link do przepisu
     """
     Kal, Bia = calculation_calories_and_proteins_for_dish(0,0,produkt)
-    pkt = core.calculation_points_for_dish(0,0,produkt)
+    l = deepcopy(lodowka)
+    lod, pkt = core.calculation_points_for_dish(l,0,0,produkt)
     if pora == "1S":
-        df = pd.DataFrame({'Nazwa_dania': [name], 'Produkty': [produkt], 'Kalorie': [Kal], 'Białko': [Bia], "Punkty": [pkt], 'Tabu': [0], 'Link': [link]})
+        df = pd.DataFrame({'Nazwa_dania': [name], 'Produkty': [produkt], 'Kalorie': [Kal], 'Białko': [Bia], "Punkty": [pkt], 'Tabu': [0]})
         df.to_csv('bazy_danych\sniadania.csv', sep=';', mode='a', index=False, header=False)
 
     if pora == "2S":
-        df = pd.DataFrame({'Nazwa_dania': [name], 'Produkty': [produkt], 'Kalorie': [Kal], 'Białko': [Bia], "Punkty": [pkt], 'Tabu': [0], 'Link': [link]})
+        df = pd.DataFrame({'Nazwa_dania': [name], 'Produkty': [produkt], 'Kalorie': [Kal], 'Białko': [Bia], "Punkty": [pkt], 'Tabu': [0]})
         df.to_csv('bazy_danych\sniadanie2.csv', sep=';', mode='a', index=False, header=False)
 
     if pora == "O":
-        df = pd.DataFrame({'Nazwa_dania': [name], 'Produkty': [produkt], 'Kalorie': [Kal], 'Białko': [Bia], "Punkty": [pkt], 'Tabu': [0], 'Link': [link]})
+        df = pd.DataFrame({'Nazwa_dania': [name], 'Produkty': [produkt], 'Kalorie': [Kal], 'Białko': [Bia], "Punkty": [pkt], 'Tabu': [0]})
         df.to_csv('bazy_danych\obiad.csv', sep=';', mode='a', index=False, header=False)
 
     if pora == "P":
         df = pd.DataFrame(
             {'Nazwa_dania': [name], 'Produkty': [produkt], 'Kalorie': [Kal], 'Białko': [Bia], "Punkty": [pkt],
-             'Tabu': [0], 'Link': [link]})
+             'Tabu': [0]})
         df.to_csv('bazy_danych\podwieczorek.csv', sep=';', mode='a', index=False, header=False)
 
     if pora == "K":
-        df = pd.DataFrame({'Nazwa_dania': [name], 'Produkty': [produkt], 'Kalorie': [Kal], 'Białko': [Bia], "Punkty": [pkt], 'Tabu': [0], 'Link': [link]})
+        df = pd.DataFrame({'Nazwa_dania': [name], 'Produkty': [produkt], 'Kalorie': [Kal], 'Białko': [Bia], "Punkty": [pkt], 'Tabu': [0]})
         df.to_csv('bazy_danych\kolacja.csv', sep=';', mode='a', index=False, header=False)
 
 
