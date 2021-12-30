@@ -37,7 +37,7 @@ Dodakowo naszym zadaniem było wykorzystanie metody metaheurystycznej **Tabu Sea
 * Metoda losowa z priorytetami (wybiera najlepszych sąsiadów z losowych baz)
 
 ## Todo
-- [] Bazy danych 
+- [x] Bazy danych 
 - [x] Dodawanie produktów i dań 
 - [x] Obliczanie punktów, kalorii i białka za konkretne danie
 - [] Blokowanie powtarzania tych samych dań 

@@ -1,6 +1,11 @@
-﻿Nazwa_dania;Produkty;Kalorie;Białko;Punkty;Tabu;Link
-Kurczak w sosie curry;[[Filet z kurczaka, 600], [Przyprawa curry, 10], [Oliwa, 30], [Cebula, 1, 0], [Marchew, 1, 0], [Papryka, 1, 0], [Czosnek, 1, 0], [Imbir, 1, 0], [Mąka pszenna, 15], [Bulion, 150], [Śmietana18, 150]];2235.255;238.85000000000002;-156.89999999999995;0;https://www.kwestiasmaku.com/przepis/kurczak-w-sosie-curry
-Zupa pieczarkowa z kurczakiem;[[Cebula, 1, 0], [Masło, 30], [Oliwa, 15], [Marchew, 1, 0], [Por, 1, 0],[Ziemniak, 400],[Pietruszka, 1, 0], [Bulion, 1500], [Filet z kurczaka, 200], [Serek topiony, 100], [Śmietana18, 125]];1855.1899999999998;314.745;-139.36;0;https://www.kwestiasmaku.com/przepis/zupa-pieczarkowa-z-kurczakiem
-Kurczak z kurkami;[[Filet z kurczaka, 500], [Kurki, 150], [Cebula, 1, 0], [Bulion, 125], [Śmietana18, 125]];1175.025;192.575;-158.95999999999998;0;https://www.kwestiasmaku.com/przepis/kurczak-z-kurkami
-Makaron z truskawkami;[[Makaron świderki, 150], [Truskawki, 400], [Cukier, 50], [Śmietana18, 125]];770.875;13.675;-28.12;0;https://www.kwestiasmaku.com/przepis/makaron-z-truskawkami
-Żurek;[[Boczek, 250], [Bulion, 2000], [Żurek z butelki, 500], [Śmietana18, 200], [Kiełbasa, 350]];3088.6000000000004;356.4;-43.32;0;https://www.kwestiasmaku.com/przepis/zurek-blyskawiczny
+﻿Nazwa_dania;Produkty;Kalorie;Białko;Punkty;Tabu
+Kurczak w sosie curry;[[Filet z kurczaka,300],[Przyprawa curry,10],[Oliwa,20],[Cebula,1,0],[Marchew,1,0],[Papryka,1,0],[Czosnek,1,0],[Imbir,1,0],[Mąka pszenna,15],[Bulion,150],[Śmietana18,150]];1652.145;145.85;-50.760000000000005;0
+Zupa pieczarkowa z kurczakiem;[[Cebula,1,0],[Masło,30],[Oliwa,15],[Marchew,1,0],[Por,1,0],[Ziemniak,200],[Pietruszka,1,0],[Bulion,1000],[Filet z kurczaka,200],[Serek topiony,100],[Śmietana18,125]];1626.79;237.745;-21.22;0
+Kurczak z kurkami;[[Filet z kurczaka,300],[Kurki,150],[Cebula,1,0],[Bulion,125],[Śmietana18,125]];845.225;130.575;-123.8;0
+Makaron z truskawkami;[[Makaron świderki,150],[Truskawki,400],[Cukier,50],[Śmietana18,125]];770.875;13.675;-25.16;0
+Żurek;[[Boczek,50],[Bulion,1000],[Żurek z butelki,200],[Śmietana18,100],[Kiełbasa,150]];1156.9;173.7;-8.18;0
+Spaghetti Bolognese;[[Mięso mielone,150],[Cebula,1,0],[Czosnek,2,0],[Olej,25],[Sos spaghetti,175],[Makaron spaghetti,250]];1498.425;69.96000000000001;-68.53999999999999;0
+Spaghetti carbonare;[[Makaron spaghetti,150],[Jajka,2,0],[Boczek,50],[Czosnek,2,0],[Ser feta,1,0]];1268.4;61.0;-29.94;0
+Naleśniki ze szpinakiem;[[Szpinak,250],[Pomidor,1,0],[Ser feta,1,0],[Mleko,100],[Jajka,2,0],[Mąka pszenna,150]];1231.85;66.53;-22.48;0
+Naleśniki z mięsem mielonym;[[Mięso mielone,150],[Mleko,100],[Jajka,2,0],[Mąka pszenna,150],[Pomidor,1,0],[Sos spaghetti,175]];1462.5;87.14;-40.18;0
+Makaron z kurczakiem;[[Filet z kurczaka,300],[Makaron świderki,150],[Pomidor,1,0],[Cebula,1,0],[Sos spaghetti,175]];906.35;112.83999999999999;-20.18;0
