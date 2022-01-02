@@ -13,8 +13,10 @@ obiad = pd.read_csv("bazy_danych\obiad.csv", sep = ';')
 podwieczorek = pd.read_csv("bazy_danych\podwieczorek.csv", sep = ';')
 kolacja = pd.read_csv("bazy_danych\kolacja.csv", sep = ';')
 lodowka = pd.read_csv("bazy_danych\lodowka.csv", sep =';')
-l_pomocnicza = pd.read_csv("bazy_danych\lodowka2.csv", sep =';')
+#l_pomocnicza = pd.read_csv("bazy_danych\lodowka2.csv", sep =';')
 s = pd.read_csv("bazy_danych\produkty_w_sklepie.csv", sep =';')
+
+
 sklep = s.set_index("Nazwa")
 
 sniadania.name = "sniadania"
@@ -101,6 +103,8 @@ def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 
     :param produkt: Lista produktów jeśli dodajemy nowy prosukt
     :return: Punkty za danie
     """
+    lodowka=lod #do usuniecia bo testowe, tak btw to nie potrzebnie pisane tu jest lodowka zamiast lod
+    lista = []
     sum = 0
     if produkt == 0:
         list = read_sklad(idx, baza)
@@ -116,30 +120,39 @@ def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 
                 p = np.ceil(ns / s)
                 ss = p * s - ns
                 sum += sklep["Punkty"][nazwa] * p
+                cena = np.float(sklep["Cena"][nazwa]) * p
                 if ss != 0:
                     df = {"Nazwa": list[j][0], "Sztuka": np.nan, "Waga": ss, "Punkty": 0, "Data_waznosci": '2022-01-15'}
                     lod = lod.append(df, ignore_index=True)
+                lista.append([nazwa, np.nan, p*s, cena])
 
             if len(list[j]) == 3:
-                s = sklep["Sztuka"][nazwa]
-                ns = list[j][1]
+                s = sklep["Sztuka"][nazwa] # po ile sztuk jest sprzedawane w sklepie
+                ns = list[j][1] #ilosc sztuk potrzebnych
                 p = np.ceil(ns / s)
                 ss = p * s - ns
                 sum += sklep["Punkty"][nazwa] * p
                 if ss != 0:
                     df = {"Nazwa": list[j][0], "Sztuka": ss, "Waga": np.nan, "Punkty": 0, "Data_waznosci": '2022-01-15'}
                     lod = lod.append(df, ignore_index=True)
+                    lista.append([nazwa,ss, np.nan])
+                cena = np.float(sklep["Cena"][nazwa]) * p
+                lista.append([nazwa, p, np.nan, cena])
+
+
         else:
             if len(list[j]) == 2:
                 l = lod[lod['Nazwa'] == list[j][0]]
-                if list[j][1] > l['Waga'][l.index[0]]:
+                if list[j][1] > l['Waga'][l.index[0]]:#jeśli nie mamy wystarczającej ilości w lodówce
                     s = sklep['Waga'][list[j][0]]
-                    ns = list[j][1] - l['Waga'][l.index[0]]
+                    ns = list[j][1] - l['Waga'][l.index[0]]#tyle ile nam brakuje
                     p = np.ceil(ns / s)
                     ss = p * s - ns
                     sum += sklep["Punkty"][list[j][0]] * p
                     lod['Waga'][l.index[0]] = ss
                     lod['Data_waznosci'][l.index[0]] = '2022-01-15'
+                    cena = np.float(sklep["Cena"][nazwa]) * p
+                    lista.append([nazwa, np.nan, p*s, cena])
                 elif list[j][1] == l['Waga'][l.index[0]]:
                     lod = lod.drop([l.index[0]], axis=0)
                     sum += l['Punkty'][l.index[0]]
@@ -153,7 +166,9 @@ def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 
                     s = sklep['Sztuka'][list[j][0]]
                     ns = list[j][1] - l['Sztuka'][l.index[0]]
                     p = np.ceil(ns / s)
-                    ss = p * s - ns  # tu coś brakuje
+                    ss = p * s - ns
+                    cena = np.float(sklep["Cena"][nazwa]) * p
+                    lista.append([nazwa, p * s, np.nan, cena])
                     sum += sklep["Punkty"][list[j][0]] * p
                     lod['Sztuka'][l.index[0]] = ss
                     lod['Data_waznosci'][l.index[0]] = '2022-01-15'
@@ -164,7 +179,8 @@ def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 
                     lod['Sztuka'][l.index[0]] = l['Sztuka'][l.index[0]] - list[j][1]
                     sum += l['Punkty'][l.index[0]]
 
-    return lod, sum
+    return lod, sum, lista
+
 
 
 def roz_start(n: int):
@@ -218,15 +234,17 @@ def standard_deviation_calories_and_protein(result):
 
 
 def aktualization(result):
+    lista_zakupow = []
     nbaza = [sniadania, sniadania2, obiad, podwieczorek, kolacja]
     suma = 0
     lod = deepcopy(lodowka)
     for r,b in zip(result, nbaza):
         df = b[b['Nazwa_dania'] == r]
-        l, s = calculation_points_for_dish(lod,df.index[0],b)
+        l, s , lista_zak_jedno_danie = calculation_points_for_dish(lod,df.index[0],b)
+        lista_zakupow = lista_zakupow + lista_zak_jedno_danie
         lod = l
         suma += s
-    return lod, suma
+    return lod, suma, lista_zakupow
 
 def sort(lista_rankingowa_z_lodowka):
     for i in range(len(lista_rankingowa_z_lodowka) - 1):
@@ -243,8 +261,8 @@ def ranking_new(baza_dania, rezultat, lista_rankingowa_z_lodowka = []):
         if baza_dania.iloc[index, 0] != rezultat[numer_w_liscie_rezultat]:
             rezultat[numer_w_liscie_rezultat] = baza_dania.iloc[index, 0]
             wynik = rezultat[:]
-            lod, sum = aktualization(rezultat)
-            lista_rankingowa_z_lodowka.append([wynik,sum,numer_w_liscie_rezultat, lod])
+            lod, sum, lista_zak = aktualization(rezultat)
+            lista_rankingowa_z_lodowka.append([wynik,sum,numer_w_liscie_rezultat, lod, lista_zak])
 
     #sortowanie po sumie żeby utowrzyć ranking
     lista_rankingowa_z_lodowka = sort(lista_rankingowa_z_lodowka)
@@ -280,8 +298,8 @@ def ranking_random(rezultat, iter, max = 0):
         rr.append([r_baz,l_baz])
         rezultat[r_baz] = baz_w['Nazwa_dania'][l_baz]
         wynik = rezultat[:]
-        lod, sum = aktualization(rezultat)
-        lista_rankingowa_z_lodowka.append([wynik, sum, r_baz, lod])
+        lod, sum , lista_zak= aktualization(rezultat)
+        lista_rankingowa_z_lodowka.append([wynik, sum, r_baz, lod, lista_zak])
         rezultat = rs[:]
 
     lista_rankingowa_z_lodowka = sort(lista_rankingowa_z_lodowka)
@@ -303,7 +321,7 @@ def tabu_list_actualization():
 
 def tabu_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -200):
     """
-    Metoda funkcji tabu z listą zabronień zestawów odopwiednich dań
+    Metoda funkcji tabu z listą zabronień zestawów odpowiednich dań
 
     :param iter: ilość iteracji
     :param bs: wybór sposobu znalezienia bazy startowej 0 - losowa baza lub 1 - najlepsza baza
@@ -316,7 +334,7 @@ def tabu_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -200):
 
     roz_s = roz_start(bs)
     r = roz_s[:]
-    lod_str, pkt_str = aktualization(roz_s)
+    lod_str, pkt_str, lista_zak = aktualization(roz_s)
     best_roz_s = roz_s[:]
     best_pkt = pkt_str
     best_lod = lod_str[:]
@@ -370,7 +388,7 @@ def tabu_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -200):
 def tabu_product(iter, bs, l_iter, metod, metoda_iter = 4, cut_par = -200):
     roz_s = roz_start(bs)
     r = roz_s[:]
-    lod_str, pkt_str = aktualization(roz_s)
+    lod_str, pkt_str, lista_zak = aktualization(roz_s)
     best_roz_s = roz_s[:]
     best_pkt = pkt_str
     best_lod = lod_str[:]
