@@ -449,7 +449,7 @@ def tabu_set(iter, bs, llist, metod, lod, metoda_iter, cut_par):
     """
 
     roz_s = roz_start(bs)
-    print(roz_s)
+    # print(roz_s)
     r = roz_s[:]
     lod_str, pkt_str, lista_zak = aktualization(roz_s, lod)
     best_roz_s = roz_s[:]
@@ -714,14 +714,11 @@ def week_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -500):
                 df = b[b['Nazwa_dania'] == j]
                 b['Bonus'][df.index[0]] = ((len(wynik) - i - 1) * 5) - 65
 
-        # for i in baz:
-        #     for j in range(len(baz[i]))
-        # lod, pkt = calculation_points_for_dish(lod, )
         reload_points_for_dishes(lod)
 
 
 
-week_set(10,1,10,0,metoda_iter = 5)
+# week_set(10,1,10,0,metoda_iter = 5)
 
 # wyświetlanie wykresu i wyniku
 

@@ -1,5 +1,5 @@
 import core
-from core import sklep, lodowka
+from core import sklep, lodowka, actual_data
 import pandas as pd
 from copy import deepcopy
 
@@ -75,7 +75,7 @@ def add_product_to_fridge(name, date, pieces='NaN', weight='NaN'):
     :param pieces: Ilość sztuk
     :param weight: Waga produktu
     """
-    points = core.calculate_product_to_fridge_points(date)
+    points = core.calculate_product_to_fridge_points(date, '2022-01-01')
     df = pd.DataFrame({'Nazwa': [name], 'Sztuka': [pieces], 'Waga': [weight], 'Punkty': [points], 'Data': [date]})
     df.to_csv('bazy_danych\lodowka.csv', sep=';', mode='a', index=False, header=False)
 
@@ -90,7 +90,7 @@ def append_new_dish(name: str, produkt: str, pora: str):
     """
     Kal, Bia = calculation_calories_and_proteins_for_dish(0, '', produkt)
     l = deepcopy(lodowka)
-    lod, pkt = core.calculation_points_for_dish(l, 0, '', produkt)
+    lod, pkt, lst = core.calculation_points_for_dish(l, 0, '', produkt)
     if pora == "1S":
         df = pd.DataFrame({'Nazwa_dania': [name], 'Produkty': [produkt], 'Kalorie': [Kal], 'Białko': [Bia], "Punkty": [pkt], 'Tabu': [0]})
         df.to_csv('bazy_danych\sniadania.csv', sep=';', mode='a', index=False, header=False)
