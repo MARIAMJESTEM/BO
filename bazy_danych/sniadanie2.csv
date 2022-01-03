@@ -1,11 +1,11 @@
-﻿Nazwa_dania;Produkty;Kalorie;Białko;Punkty;Tabu
-Koktajl bananowy;[[Banan,1,0],[Płatki owsiane,75],[Masło orzechowe,15],[Cukier,30]];578.55;14.975;-3.0;0
-Omlet z szynką i serem;[[Jajka,3,0],[Szynka,3,0],[Masło,10],[Ser żółty,10]];754.1;104.59;-11.98;0
-Hummus;[[Puszka ciecierzycy,1,0],[Cytryna,1,0],[Pasta tahini,45],[Oliwa,25]];882.13;16.25;-43.36;0
-Drożdżówka z jabłkiem;[[Drożdżówka z jabłkiem,1,0]];283.0;6.0;-6.0;0
-Drożdżówka z serem;[[Drożdżówka z serem,1,0]];311.0;5.13;-6.0;0
-Sałatka owocowa;[[Jabłko,2,0],[Banan,2,0],[Pomarańcz,2,0]];378.2;7.200000000000001;-9.2;0
-Sałatka z kurczakiem;[[Sałata,100],[Filet z kurczaka,300],[Pomidor,1,0],[Cebula,1,0],[Cukinia,1,0]];588.9;99.08;-9.98;0
-Sałatka z szynką;[[Sałata,100],[Szynka,4,0],[Pomidor,1,0],[Cebula,1,0],[Oliwa,20]];559.02;87.38;-19.96;0
-Sałatka wegańska;[[Sałata,100],[Pomidor,1,0],[Cebula,1,0],[Oliwa,20],[Burak,1,0],[Cukinia,1,0]];314.02;7.680000000000001;-10.780000000000001;0
-Bułki z serem i szynką;[[Chleb,2,0],[Szynka,2,0],[Masło,10],[Ser żółty,20]];503.6;65.09;-11.98;0
+﻿Nazwa_dania;Produkty;Kalorie;Białko;Punkty;Tabu;Bonus
+Koktajl bananowy;[[Banan,1,0],[Płatki owsiane,75],[Masło orzechowe,15],[Cukier,30]];578.55;14.975;-3.0;0;0
+Omlet z szynką i serem;[[Jajka,3,0],[Szynka,3,0],[Masło,10],[Ser żółty,10]];754.1;104.59;0;0;0
+Hummus;[[Puszka ciecierzycy,1,0],[Cytryna,1,0],[Pasta tahini,45],[Oliwa,25]];882.13;16.25;-43.36;0;0
+Drożdżówka z jabłkiem;[[Drożdżówka z jabłkiem,1,0]];283.0;6.0;-6.0;0;0
+Drożdżówka z serem;[[Drożdżówka z serem,1,0]];311.0;5.13;-6.0;0;0
+Sałatka owocowa;[[Jabłko,2,0],[Banan,2,0],[Pomarańcz,2,0]];378.2;7.200000000000001;-9.2;0;0
+Sałatka z kurczakiem;[[Sałata,100],[Filet z kurczaka,300],[Pomidor,1,0],[Cebula,1,0],[Cukinia,1,0]];588.9;99.08;-9.98;0;0
+Sałatka z szynką;[[Sałata,100],[Szynka,4,0],[Pomidor,1,0],[Cebula,1,0],[Oliwa,20]];559.02;87.38;-7.98;0;0
+Sałatka wegańska;[[Sałata,100],[Pomidor,1,0],[Cebula,1,0],[Oliwa,20],[Burak,1,0],[Cukinia,1,0]];314.02;7.680000000000001;-10.780000000000001;0;0
+Bułki z serem i szynką;[[Chleb,2,0],[Szynka,2,0],[Masło,10],[Ser żółty,20]];503.6;65.09;0;0;0

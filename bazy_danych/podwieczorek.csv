@@ -1,11 +1,11 @@
-﻿Nazwa_dania;Produkty;Kalorie;Białko;Punkty;Tabu
-Bułki z pomidorem;[[Bułka,2,0],[Masło,20],[Pomidor,1,0]];755.2;11.06;-2.0;0
-Banan;[[Banan,2,0]];180.0;2.2;-6.0;0
-Bułki z awokado;[[Awokado,1,0],[Bułka,2,0],[Masło,20]];895.2;12.18;-17.98;0
-Gruszka;[[Gruszka,2,0]];114.0;0.8;-2.4;0
-Mango;[[Mango,1,0]];59.8;0.8;-11.0;0
-Granat;[[Granat,1,0]];82.7;1.67;-5.0;0
-Jogobella truskawkowa;[[Jogobella truskawkowa,1,0]];100.0;4.0;-4.0;0
-Jogobella wiśniowa;[[Jogobella wiśniowa,1,0]];100.0;4.0;-4.0;0
-Sałatka owocowa mix;[[Jabłko,2,0],[Banan,2,0],[Pomarańcz,2,0]];378.2;7.200000000000001;-9.2;0
-Drożdżówka z serem mix;[[Drożdżówka z serem,1,0]];311.0;5.13;-6.0;0
+﻿Nazwa_dania;Produkty;Kalorie;Białko;Punkty;Tabu;Bonus
+Bułki z pomidorem;[[Bułka,2,0],[Masło,20],[Pomidor,1,0]];755.2;11.06;-2.0;0;0
+Banan;[[Banan,2,0]];180.0;2.2;-6.0;0;0
+Bułki z awokado;[[Awokado,1,0],[Bułka,2,0],[Masło,20]];895.2;12.18;-17.98;0;0
+Gruszka;[[Gruszka,2,0]];114.0;0.8;-2.4;0;0
+Mango;[[Mango,1,0]];59.8;0.8;-11.0;0;0
+Granat;[[Granat,1,0]];82.7;1.67;-5.0;0;0
+Jogobella truskawkowa;[[Jogobella truskawkowa,1,0]];100.0;4.0;0;0;0
+Jogobella wiśniowa;[[Jogobella wiśniowa,1,0]];100.0;4.0;-4.0;0;0
+Sałatka owocowa mix;[[Jabłko,2,0],[Banan,2,0],[Pomarańcz,2,0]];378.2;7.200000000000001;-9.2;0;0
+Drożdżówka z serem mix;[[Drożdżówka z serem,1,0]];311.0;5.13;-6.0;0;0
