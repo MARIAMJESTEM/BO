@@ -187,6 +187,69 @@ def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 
 
     return lod, sum, lista
 
+def calculation_points_for_dish_only(lod = 0, idx: int = 0, baza: str = ''):
+    """
+    Funkcja licząca punkty za danie
+    :param idx: Indeks w bazie
+    :param baza: Baza
+    :return: Punkty za danie
+    """
+
+    sum = 0
+    list = read_sklad(idx, baza)
+
+    for j in range(len(list)):
+        nazwa = list[j][0]
+        df = lod[lod["Nazwa"] == nazwa]
+        if df.empty == True:
+            if len(list[j]) == 2:
+                s = sklep["Waga"][nazwa]
+                ns = list[j][1]
+                p = np.ceil(ns / s)
+                ss = p * s - ns
+                sum += sklep["Punkty"][nazwa] * p
+
+            if len(list[j]) == 3:
+                s = sklep["Sztuka"][nazwa] # po ile sztuk jest sprzedawane w sklepie
+                ns = list[j][1] #ilosc sztuk potrzebnych
+                p = np.ceil(ns / s)
+                ss = p * s - ns
+                sum += sklep["Punkty"][nazwa] * p
+        else:
+            if len(list[j]) == 2:
+                l = lod[lod['Nazwa'] == list[j][0]]
+                if list[j][1] > l['Waga'][l.index[0]]:#jeśli nie mamy wystarczającej ilości w lodówce
+                    s = sklep['Waga'][list[j][0]]
+                    ns = list[j][1] - l['Waga'][l.index[0]]#tyle ile nam brakuje
+                    p = np.ceil(ns / s)
+                    ss = p * s - ns
+                    sum += sklep["Punkty"][list[j][0]] * p
+                elif list[j][1] == l['Waga'][l.index[0]]:
+                    sum += l['Punkty'][l.index[0]]
+                else:
+                    sum += l['Punkty'][l.index[0]]
+
+            if len(list[j]) == 3:
+                l = lod[lod['Nazwa'] == list[j][0]]
+                if list[j][1] > l['Sztuka'][l.index[0]]:
+                    s = sklep['Sztuka'][list[j][0]]
+                    ns = list[j][1] - l['Sztuka'][l.index[0]]
+                    p = np.ceil(ns / s)
+                    ss = p * s - ns
+                    sum += sklep["Punkty"][list[j][0]] * p
+                elif list[j][1] == l['Sztuka'][l.index[0]]:
+                    sum += l['Punkty'][l.index[0]]
+                else:
+                    sum += l['Punkty'][l.index[0]]
+
+    return sum
+
+def reload_points_for_dishes(lod):
+    lista_posilkow = [sniadania, sniadania2, obiad,podwieczorek, kolacja]
+    for i in lista_posilkow:
+        for j in range(len(i)-1):
+            suma = calculation_points_for_dish_only(lod, j , i)
+            i["Punkty"][j] = suma
 
 
 def roz_start(n: int):
@@ -345,6 +408,7 @@ def tabu_set(iter, bs, llist, metod, lod, metoda_iter, cut_par):
     """
 
     roz_s = roz_start(bs)
+    print(roz_s)
     r = roz_s[:]
     lod_str, pkt_str, lista_zak = aktualization(roz_s, lod)
     best_roz_s = roz_s[:]
@@ -508,9 +572,11 @@ def week_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -500):
         # for i in baz:
         #     for j in range(len(baz[i]))
         # lod, pkt = calculation_points_for_dish(lod, )
+        reload_points_for_dishes(lod)
 
 
-week_set(50,0,20,1,metoda_iter = 9)
+
+week_set(10,1,10,0,metoda_iter = 5)
 
 # wyświetlanie wykresu i wyniku
 
