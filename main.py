@@ -1,7 +1,7 @@
 from tkinter import *
 import add
-#import core
-
+import core
+import datetime
 
 root = Tk()
 root.title("Menu")
@@ -41,8 +41,19 @@ def open_produkt():
     label6.pack()
     e6.pack()
 
-    def dodaj_produkt(name, price, calories, protein, pieces='NaN', weight='NaN'):
-        add.add_product_to_store(name, price, calories, protein, pieces, weight)
+    def dodaj_produkt():
+        sztuki = e5.get()
+        if sztuki != '':
+            sztuki = float(sztuki)
+        else:
+            sztuki = 'NaN'
+
+        waga = e6.get()
+        if waga != '':
+            waga = float(waga)
+        else:
+            waga = 'NaN'
+        add.add_product_to_store(str(e1.get()), float(e2.get()), float(e3.get()), float(e4.get()), sztuki, waga)
         e1.delete(0, END)
         e2.delete(0, END)
         e3.delete(0, END)
@@ -50,10 +61,8 @@ def open_produkt():
         e5.delete(0, END)
         e6.delete(0, END)
 
-    enter_button = Button(top, text="Dodaj", height=x, width=y, fg=fg, bg=bg, activebackground=ab,
-                          command=dodaj_produkt(e1.get(), e2.get(), e3.get(), e4.get(), e5.get(), e6.get())).pack()
-    button_quit_top = Button(top, text='Wyjdź', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
-                         command=top.destroy).pack()
+    e_button = Button(top, text="Dodaj", height=x, width=y, fg=fg, bg=bg, activebackground=ab, command=dodaj_produkt).pack()
+    button_quit_top = Button(top, text='Wyjdź', height=x, width=y, fg=fg, bg=bg, activebackground=ab, command=top.destroy).pack()
 
 
 def open_produkt_lodowka():
@@ -77,15 +86,26 @@ def open_produkt_lodowka():
     label4.pack()
     e4.pack()
 
-    def dodaj_do_lodowki(name, date, pieces='NaN', weight='NaN'):
-        add.add_product_to_fridge(name, date, pieces, weight)
+    def dodaj_do_lodowki():
+        sztuki = e3.get()
+        if sztuki != '':
+            sztuki = float(sztuki)
+        else:
+            sztuki = 'NaN'
+
+        waga = e4.get()
+        if waga != '':
+            waga = float(waga)
+        else:
+            waga = 'NaN'
+        add.add_product_to_fridge(str(e1.get()), str(e2.get()), sztuki, waga)
         e1.delete(0, END)
         e2.delete(0, END)
         e3.delete(0, END)
         e4.delete(0, END)
 
     enter_button = Button(top, text="Dodaj", height=x, width=y, fg=fg, bg=bg, activebackground=ab,
-                          command=dodaj_do_lodowki(e1.get(), e2.get(), e3.get(), e4.get())).pack()
+                          command=dodaj_do_lodowki).pack()
     button_quit_top = Button(top, text='Wyjdź', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
                              command=top.destroy).pack()
 
@@ -111,15 +131,15 @@ def open_posilek():
     label4.pack()
     e4.pack()
 
-    def dodaj_posilek(name, produkt, pora, link):
-        add.append_new_dish(name, produkt, pora, link)
+    def dodaj_posilek():
+        add.append_new_dish(str(e1.get()), str(e2.get()), str(e3.get()))
         e1.delete(0, END)
         e2.delete(0, END)
         e3.delete(0, END)
         e4.delete(0, END)
 
     enter_button = Button(top, text="Dodaj", height=x, width=y, fg=fg, bg=bg, activebackground=ab,
-                          command=dodaj_posilek(e1.get(), e2.get(), e3.get(), e4.get())).pack()
+                          command=dodaj_posilek).pack()
     button_quit_top = Button(top, text='Wyjdź', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
                              command=top.destroy).pack()
 

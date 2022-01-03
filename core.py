@@ -6,7 +6,6 @@ import random
 import datetime
 from copy import deepcopy
 import matplotlib.pyplot as plt
-import math
 
 # Wczytanie baz danych do programu
 sniadania = pd.read_csv("bazy_danych\sniadania.csv", sep = ';')
@@ -29,7 +28,7 @@ PRO = 1000
 
 actual_data = datetime.date.fromisoformat('2022-01-01')
 
-# lista_priorytetów = []
+lista_priorytetów = [('2022-01-02', 'Krewetki z mango', kolacja)]
 
 def calculate_product_to_fridge_points(date, actual):
     """
@@ -109,6 +108,8 @@ def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 
     :param produkt: Lista produktów jeśli dodajemy nowy prosukt
     :return: Punkty za danie
     """
+     #do usuniecia bo testowe, tak btw to nie potrzebnie pisane tu jest lodowka zamiast lod
+    lista = []
     sum = 0
     if produkt == 0:
         list = read_sklad(idx, baza)
@@ -124,30 +125,40 @@ def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 
                 p = np.ceil(ns / s)
                 ss = p * s - ns
                 sum += sklep["Punkty"][nazwa] * p
+                cena = np.float(sklep["Cena"][nazwa]) * p
                 if ss != 0:
                     df = {"Nazwa": list[j][0], "Sztuka": np.nan, "Waga": ss, "Punkty": 0, "Data_waznosci": actual_data + datetime.timedelta(days=14)}
                     lod = lod.append(df, ignore_index=True)
+                lista.append([nazwa, np.nan, p*s, cena])
 
             if len(list[j]) == 3:
-                s = sklep["Sztuka"][nazwa]
-                ns = list[j][1]
+                s = sklep["Sztuka"][nazwa] # po ile sztuk jest sprzedawane w sklepie
+                ns = list[j][1] #ilosc sztuk potrzebnych
                 p = np.ceil(ns / s)
                 ss = p * s - ns
                 sum += sklep["Punkty"][nazwa] * p
                 if ss != 0:
                     df = {"Nazwa": list[j][0], "Sztuka": ss, "Waga": np.nan, "Punkty": 0, "Data_waznosci": actual_data + datetime.timedelta(days=14)}
                     lod = lod.append(df, ignore_index=True)
+                    lista.append([nazwa,ss, np.nan])
+                cena = np.float(sklep["Cena"][nazwa]) * p
+                lista.append([nazwa, p, np.nan, cena])
+
+
         else:
             if len(list[j]) == 2:
                 l = lod[lod['Nazwa'] == list[j][0]]
-                if list[j][1] > l['Waga'][l.index[0]]:
+                if list[j][1] > l['Waga'][l.index[0]]:#jeśli nie mamy wystarczającej ilości w lodówce
                     s = sklep['Waga'][list[j][0]]
-                    ns = list[j][1] - l['Waga'][l.index[0]]
+                    ns = list[j][1] - l['Waga'][l.index[0]]#tyle ile nam brakuje
                     p = np.ceil(ns / s)
                     ss = p * s - ns
                     sum += sklep["Punkty"][list[j][0]] * p
                     lod['Waga'][l.index[0]] = ss
                     lod['Data_waznosci'][l.index[0]] = actual_data + datetime.timedelta(days=14)
+                    lod['Data_waznosci'][l.index[0]] = '2022-01-15'
+                    cena = np.float(sklep["Cena"][nazwa]) * p
+                    lista.append([nazwa, np.nan, p*s, cena])
                 elif list[j][1] == l['Waga'][l.index[0]]:
                     lod = lod.drop([l.index[0]], axis=0)
                     sum += l['Punkty'][l.index[0]]
@@ -162,6 +173,8 @@ def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 
                     ns = list[j][1] - l['Sztuka'][l.index[0]]
                     p = np.ceil(ns / s)
                     ss = p * s - ns
+                    cena = np.float(sklep["Cena"][nazwa]) * p
+                    lista.append([nazwa, p * s, np.nan, cena])
                     sum += sklep["Punkty"][list[j][0]] * p
                     lod['Sztuka'][l.index[0]] = ss
                     lod['Data_waznosci'][l.index[0]] = actual_data + datetime.timedelta(days=14)
@@ -172,7 +185,8 @@ def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 
                     lod['Sztuka'][l.index[0]] = l['Sztuka'][l.index[0]] - list[j][1]
                     sum += l['Punkty'][l.index[0]]
 
-    return lod, sum
+    return lod, sum, lista
+
 
 
 def roz_start(n: int):
@@ -207,7 +221,7 @@ def roz_start(n: int):
         return w_baz
 
 
-def standard_deviation_calories_and_protein(result):
+def standard_deviation_calories_and_protein(result): #kalorie
     """
     Funkcja wyznaczająca odchylenie standardowe dla kalorii i białka
 
@@ -226,17 +240,21 @@ def standard_deviation_calories_and_protein(result):
 
 
 def aktualization(result,lod_s):
+    lista_zakupow = []
     nbaza = [sniadania, sniadania2, obiad, podwieczorek, kolacja]
     suma = 0
     lod = deepcopy(lod_s)
     for r,b in zip(result, nbaza):
         df = b[b['Nazwa_dania'] == r]
-        l, s = calculation_points_for_dish(lod,df.index[0],b)
+        l, s, lista_zak_jedno_danie = calculation_points_for_dish(lod,df.index[0],b)
+        lista_zakupow = lista_zakupow + lista_zak_jedno_danie
         lod = l
         bonus = df['Bonus'][df.index[0]]
         suma += s
         suma += bonus
-    return lod, suma
+
+    return lod, suma, lista_zakupow
+
 
 
 def sort(lista_rankingowa_z_lodowka):
@@ -254,8 +272,8 @@ def ranking_new(baza_dania, rezultat, lista_rankingowa_z_lodowka, lod):
         if baza_dania.iloc[index, 0] != rezultat[numer_w_liscie_rezultat]:
             rezultat[numer_w_liscie_rezultat] = baza_dania.iloc[index, 0]
             wynik = rezultat[:]
-            lod, sum = aktualization(rezultat, lod)
-            lista_rankingowa_z_lodowka.append([wynik,sum,numer_w_liscie_rezultat, lod])
+            lod, sum, lista_zak = aktualization(rezultat, lod)
+            lista_rankingowa_z_lodowka.append([wynik,sum,numer_w_liscie_rezultat, lod, lista_zak])
 
     #sortowanie po sumie żeby utowrzyć ranking
     lista_rankingowa_z_lodowka = sort(lista_rankingowa_z_lodowka)
@@ -291,8 +309,8 @@ def ranking_random(rezultat, iter, lod, max = 0):
         rr.append([r_baz,l_baz])
         rezultat[r_baz] = baz_w['Nazwa_dania'][l_baz]
         wynik = rezultat[:]
-        lod, sum = aktualization(rezultat, lod)
-        lista_rankingowa_z_lodowka.append([wynik, sum, r_baz, lod])
+        lod, sum , lista_zak= aktualization(rezultat, lod)
+        lista_rankingowa_z_lodowka.append([wynik, sum, r_baz, lod, lista_zak])
         rezultat = rs[:]
 
     lista_rankingowa_z_lodowka = sort(lista_rankingowa_z_lodowka)
@@ -328,7 +346,7 @@ def tabu_set(iter, bs, llist, metod, lod, metoda_iter, cut_par):
 
     roz_s = roz_start(bs)
     r = roz_s[:]
-    lod_str, pkt_str = aktualization(roz_s, lod)
+    lod_str, pkt_str, lista_zak = aktualization(roz_s, lod)
     best_roz_s = roz_s[:]
     best_pkt = pkt_str
     best_lod = lod_str[:]
@@ -397,7 +415,7 @@ def tabu_product(iter, bs, l_iter, metod, lod, metoda_iter, cut_par):
     """
     roz_s = roz_start(bs)
     r = roz_s[:]
-    lod_str, pkt_str = aktualization(roz_s, lod)
+    lod_str, pkt_str, lista_zak = aktualization(roz_s, lod)
     best_roz_s = roz_s[:]
     best_pkt = pkt_str
     best_lod = lod_str[:]
@@ -458,7 +476,7 @@ def week_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -500):
     lod = deepcopy(lodowka)
     actual = '2022-01-01'
     lod = actual_lod(lod,actual)
-    for i in range(7):
+    for iteracja in range(7):
         w, bp, br, bl = tabu_set(iter, bs, llist, metod, lod, metoda_iter, cut_par)
 
         plt.plot(w)
@@ -468,24 +486,31 @@ def week_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -500):
         print(actual,'\n',br)
         wynik.append(br)
 
-        actual = '2022-01-0' + str(i + 2)
+        actual = '2022-01-0' + str(iteracja + 2)
         lod = bl[:]
         lod = actual_lod(lod, actual)
 
+        for lsti in lista_priorytetów:
+            if lsti[0] == actual:
+                bb = lsti[2]
+                df = bb[bb['Nazwa_dania'] == lsti[1]]
+                bb['Bonus'][df.index[0]] = 1000
+            if lsti[0] == '2022-01-0' + str(iteracja):
+                bb = lsti[2]
+                df = bb[bb['Nazwa_dania'] == lsti[1]]
+                bb['Bonus'][df.index[0]] = 0
 
-        for i in range(len(wynik)): #funkcja kary
-            for j,b in zip(wynik[i], baz):
+        for i in range(len(wynik)):  # funkcja kary
+            for j, b in zip(wynik[i], baz):
                 df = b[b['Nazwa_dania'] == j]
-                b['Bonus'][df.index[0]] = ((len(wynik) - i - 1)*5) - 35
+                b['Bonus'][df.index[0]] = ((len(wynik) - i - 1) * 5) - 65
+
+        # for i in baz:
+        #     for j in range(len(baz[i]))
+        # lod, pkt = calculation_points_for_dish(lod, )
 
 
-        #zakończ
-        # append_kara() # dodanie funkcji kary dla poszczególnych dań w zależności od kiedty zostało to dodane
-
-        # policz_koszt() # w liczeniu punktów za set, zwróć listę Marysia
-
-
-week_set(100,1,20,2)
+week_set(50,0,20,1,metoda_iter = 9)
 
 # wyświetlanie wykresu i wyniku
 
