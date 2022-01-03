@@ -6,6 +6,7 @@ import random
 import datetime
 from copy import deepcopy
 import matplotlib.pyplot as plt
+pd.set_option('mode.chained_assignment', None)
 
 # Wczytanie baz danych do programu
 sniadania = pd.read_csv("bazy_danych\sniadania.csv", sep = ';')
@@ -49,7 +50,7 @@ def calculate_product_to_fridge_points(date, actual):
 
 def actual_lod(lod, actual):
     """
-    Funkcja zwracająca podówke  znowa punktacją
+    Funkcja zwracająca lodówke  z nową punktacją
 
     :param lod: lodówka aktualna
     :return: lodówka nowa
@@ -244,15 +245,8 @@ def calculation_points_for_dish_only(lod = 0, idx: int = 0, baza: str = ''):
 
     return sum
 
-def reload_points_for_dishes(lod):
-    lista_posilkow = [sniadania, sniadania2, obiad,podwieczorek, kolacja]
-    for i in lista_posilkow:
-        for j in range(len(i)-1):
-            suma = calculation_points_for_dish_only(lod, j , i)
-            i["Punkty"][j] = suma
 
-
-def roz_start(n: int):
+def roz_start(n: int): #0 losowy sposób, 1 najlepsze danie czyli największa ilość punktów za danie w bazie
     """
     Funkcja wyznaczająca rozwiązanie początkowe
 
@@ -284,7 +278,7 @@ def roz_start(n: int):
         return w_baz
 
 
-def standard_deviation_calories_and_protein(result): #kalorie
+def standard_deviation_calories_and_protein(result): #NIEUŻYWANE
     """
     Funkcja wyznaczająca odchylenie standardowe dla kalorii i białka
 
@@ -303,15 +297,23 @@ def standard_deviation_calories_and_protein(result): #kalorie
 
 
 def aktualization(result,lod_s):
+    """
+        Funkcja działa jak calculation_ponits_for_dish tylko że dla całego rozwiązania a nie jednego dania
+
+        :param result: rozwiązanie dla którego akualizowana jest lodówka i liczone są punkty
+        :param lod_s: aktualizowana lodówka
+        :return: lod- końcowa lodówka po zmianach, suma - ile ma punktów całe rozwiązanie, lista_zakupow- czego brakuje i trzeba dokupić
+        """
     lista_zakupow = []
     nbaza = [sniadania, sniadania2, obiad, podwieczorek, kolacja]
     suma = 0
     lod = deepcopy(lod_s)
     for r,b in zip(result, nbaza):
         df = b[b['Nazwa_dania'] == r]
-        l, s, lista_zak_jedno_danie = calculation_points_for_dish(lod,df.index[0],b)
+        l, s, lista_zak_jedno_danie = calculation_points_for_dish(lod,df.index[0],b) #zwraca punkty za danie z zatuktualizowaną lodówką i listą zakupów
         lista_zakupow = lista_zakupow + lista_zak_jedno_danie
         lod = l
+        #to jakieś bonusy filipa które nie wiem jesczsze jak działają / już wiem i mądrze działają !!!!!
         bonus = df['Bonus'][df.index[0]]
         suma += s
         suma += bonus
@@ -320,26 +322,65 @@ def aktualization(result,lod_s):
 
 
 
-def sort(lista_rankingowa_z_lodowka):
+def sort(lista_rankingowa_z_lodowka): #sortowanie bąbelkowe listy rankingowej
+    """
+           Funkcja sortuje listę z daniami
+
+           :param lista_rankingowa_z_lodowka: wstępna lista rankingowa
+           :return: zwraca posortowaną listę rankingową
+           """
     for i in range(len(lista_rankingowa_z_lodowka) - 1):
         for j in range(0, len(lista_rankingowa_z_lodowka) - i - 1):
-            if lista_rankingowa_z_lodowka[j][1] < lista_rankingowa_z_lodowka[j + 1][1]:
+            if lista_rankingowa_z_lodowka[j][0][1] < lista_rankingowa_z_lodowka[j + 1][0][1]:
                 lista_rankingowa_z_lodowka[j], lista_rankingowa_z_lodowka[j + 1] = lista_rankingowa_z_lodowka[j + 1], lista_rankingowa_z_lodowka[j]
 
     return lista_rankingowa_z_lodowka
 
-def ranking_new(baza_dania, rezultat, lista_rankingowa_z_lodowka, lod):
+def ranking_new(baza_dania, rezultat, lista_rankingowa_z_lodowka, lod):#pierwotna funkcja
+    """
+               Funkcja tworzy ranking najlepszych dań dla jednego posiłku
+               :param baza_dania: baza dla której będzie tworzony ranking dań
+               :return: zwraca posortowaną listę rankingową
+               """
     klucz_do_nazw_posilkow = {"sniadania": 1, "sniadania2": 2, "obiad": 3, "podwieczorek": 4, "kolacja": 5}
     numer_w_liscie_rezultat = klucz_do_nazw_posilkow[baza_dania.name] - 1
     for index, row in baza_dania.iterrows():
         if baza_dania.iloc[index, 0] != rezultat[numer_w_liscie_rezultat]:
             rezultat[numer_w_liscie_rezultat] = baza_dania.iloc[index, 0]
             wynik = rezultat[:]
-            lod, sum, lista_zak = aktualization(rezultat, lod)
-            lista_rankingowa_z_lodowka.append([wynik,sum,numer_w_liscie_rezultat, lod, lista_zak])
+            lodd, sum, lista_zak = aktualization(rezultat, lod)
+            lista_rankingowa_z_lodowka.append([wynik,sum,numer_w_liscie_rezultat, lodd, lista_zak])
 
     #sortowanie po sumie żeby utowrzyć ranking
     lista_rankingowa_z_lodowka = sort(lista_rankingowa_z_lodowka)
+    return lista_rankingowa_z_lodowka
+
+def ranking_new2(baza_dania, rezultat, lista_rankingowa_z_lodowka, lod):
+    """
+               Funkcja tworzy ranking najlepszych dań dla jednego posiłku
+               :param baza_dania: baza dla której będzie tworzony ranking dań
+               :return: zwraca posortowaną listę rankingową
+               """
+    klucz_do_nazw_posilkow = {"sniadania": 1, "sniadania2": 2, "obiad": 3, "podwieczorek": 4, "kolacja": 5}
+    numer_w_liscie_rezultat = klucz_do_nazw_posilkow[baza_dania.name] - 1
+    to_co_przyszlo = rezultat[numer_w_liscie_rezultat]
+
+    #startowe żeby lepiej porównywać wynik
+    rezultat[numer_w_liscie_rezultat] = baza_dania.iloc[0, 0]  # o tu
+    lodd, sum, lista_zak = aktualization(rezultat, lod)
+    for index, row in baza_dania.iterrows():
+        if index > 0:
+            if baza_dania.iloc[index, 0] != to_co_przyszlo: #jeżeli nazwa dania jest różna od nazwy dania z naszego rezultatu dla tego samego posiłku
+                #to podmieniamy to danie na nowe
+                rezultat_pomocniczy = rezultat[:]
+                rezultat_pomocniczy[numer_w_liscie_rezultat] = baza_dania.iloc[index, 0]
+                lodd2, sum2, lista_zak2 = aktualization(rezultat_pomocniczy, lod)
+
+                if sum2 > sum:
+                    rezultat = rezultat_pomocniczy
+    lodd_koncowa, sum_koncowa, lista_zak_koncowa = aktualization(rezultat, lod)
+    lista_rankingowa_z_lodowka.append([rezultat,sum,numer_w_liscie_rezultat, lodd_koncowa, lista_zak_koncowa]) # i dodajemy z tą opcją do listy
+
     return lista_rankingowa_z_lodowka
 
 
@@ -372,8 +413,8 @@ def ranking_random(rezultat, iter, lod, max = 0):
         rr.append([r_baz,l_baz])
         rezultat[r_baz] = baz_w['Nazwa_dania'][l_baz]
         wynik = rezultat[:]
-        lod, sum , lista_zak= aktualization(rezultat, lod)
-        lista_rankingowa_z_lodowka.append([wynik, sum, r_baz, lod, lista_zak])
+        lodd, sum , lista_zak= aktualization(rezultat, lod)
+        lista_rankingowa_z_lodowka.append([wynik, sum, r_baz, lodd, lista_zak])
         rezultat = rs[:]
 
     lista_rankingowa_z_lodowka = sort(lista_rankingowa_z_lodowka)
@@ -464,7 +505,7 @@ def tabu_set(iter, bs, llist, metod, lod, metoda_iter, cut_par):
     return l, best_pkt, best_roz_s, best_lod
 
 
-def tabu_product(iter, bs, l_iter, metod, lod, metoda_iter, cut_par):
+def tabu_product(iter, bs, l_iter, metod, lod, metoda_iter =0, cut_par=-500):
     """
     Metoda funkcji tabu dla blokowanych dań
 
@@ -494,9 +535,9 @@ def tabu_product(iter, bs, l_iter, metod, lod, metoda_iter, cut_par):
             lst = ranking_new(obiad, r, lst, lod)
             lst = ranking_new(podwieczorek, r, lst, lod)
             lst = ranking_new(kolacja, r, lst, lod)
-        if metod == 1:
+        if metod == 1: #to dla mnie jest bezsensu biorąc pod uwagę rozwiązanaie losowe
             lst = ranking_random(r, metoda_iter, lod)
-        if metod == 2:
+        if metod == 2:#i to też
             lst = ranking_random(r, metoda_iter, lod, max=1)
 
         while True:
@@ -520,8 +561,8 @@ def tabu_product(iter, bs, l_iter, metod, lod, metoda_iter, cut_par):
             best_roz_s = lst[i][0]
             best_lod = lst[i][3]
 
-        r = lst[i][0]
-        r1 = lst[i][1]
+        r = lst[i][0] #rezultat który był wyliczony teraz
+        r1 = lst[i][1] #ile miał punktó taki zestaw
         lst = []
         i = 0
 
@@ -533,6 +574,109 @@ def tabu_product(iter, bs, l_iter, metod, lod, metoda_iter, cut_par):
 
     return l, best_pkt, best_roz_s, best_lod
 
+def tabu_product_wersja_2(lod, ilosc_iteracji = 5, na_ile_blokujemy_tabu = 10, wybor_sposobu_znalezienia_bazy_startowej = 0, cut_par = -500):
+    baz = [sniadania, sniadania2, obiad, podwieczorek, kolacja]
+    rozwiazanie_startowe = roz_start(wybor_sposobu_znalezienia_bazy_startowej)
+    lod_str, pkt_str, lista_zak = aktualization(rozwiazanie_startowe, lod)
+    best_pkt = pkt_str
+    best_roz_s = rozwiazanie_startowe
+    best_lod = lod_str
+    best_lista = lista_zak#r= rozwiazanie_startowe[:] tutaj zmienia się rozwiązanie startowe pomimo tego ze go nie ruszamy
+    r = deepcopy(rozwiazanie_startowe)
+    for i in range(ilosc_iteracji):
+        rozw_sniadania = r[:]
+        rozw_sniadania2 = r[:]
+        rozw_obiad = r[:]
+        rozw_podwieczorek = r[:]
+        rozw_kolacja = r[:]
+        lst1 = ranking_new2(sniadania,rozw_sniadania , [], lod)
+        lst2 = ranking_new2(sniadania2, rozw_sniadania2, [], lod)
+        lst3 = ranking_new2(obiad, rozw_obiad, [], lod)
+        lst4 = ranking_new2(podwieczorek, rozw_podwieczorek, [], lod)
+        lst5 = ranking_new2(kolacja, rozw_kolacja, [], lod)
+        #wybranie najlepszego rozwiązania na tą iteracje
+        lista_do_sortowania = [lst1, lst2, lst3, lst4, lst5]
+        lista_do_sortowania = sort(lista_do_sortowania)
+
+        ktory_posilek_wymieniony_lub_nie = lista_do_sortowania[0][0][2]
+        ile_ma_punktow_to_rozwiazanie = lista_do_sortowania[0][0][1]
+        k = 0
+        while True:
+            cos = lista_do_sortowania[k][0][2]
+            if i == 0:
+                cc = rozwiazanie_startowe[cos]
+                dff = baz[cos][baz[cos]["Nazwa_dania"] == rozwiazanie_startowe[cos]]
+                dc = baz[cos].index[baz[cos]["Nazwa_dania"] == rozwiazanie_startowe[cos]]
+                if dff['Tabu'][dff.index[0]] == 0:
+                    # blokowanie tabu jeśli nie było to zabronione wcześniej
+                    baz[cos].at[dc, 'Tabu'] = na_ile_blokujemy_tabu
+                    dff['Tabu'][dff.index[0]] = na_ile_blokujemy_tabu
+
+            nazwa_posilku = lista_do_sortowania[k][0][0][cos]
+            df = baz[cos][baz[cos]["Nazwa_dania"] == nazwa_posilku]
+            dl = baz[cos].index[baz[cos]["Nazwa_dania"] == nazwa_posilku]
+
+            if df['Tabu'][df.index[0]] <5 and df['Tabu'][df.index[0]] > 0 and lista_do_sortowania[i][0][1] > best_pkt:  # kryterium aspiracji
+                baz[cos].at[dl, 'Tabu'] = na_ile_blokujemy_tabu
+                r = lista_do_sortowania[k][0][0]
+                if lista_do_sortowania[k][0][1] > best_pkt:
+                    best_pkt = lista_do_sortowania[k][0][1]
+                    best_roz_s = lista_do_sortowania[k][0][0]
+                    best_lod = lista_do_sortowania[k][0][3]
+                    best_lista = lista_do_sortowania[k][0][4]
+                break
+
+            if df['Tabu'][df.index[0]] == 0:  # blokowanie tabu jeśli nie było to zabronione wcześniej
+                baz[cos].at[dl, 'Tabu'] = na_ile_blokujemy_tabu
+                r = lista_do_sortowania[k][0][0]
+                if lista_do_sortowania[k][0][1] > best_pkt:
+                    best_pkt = lista_do_sortowania[k][0][1]
+                    best_roz_s = lista_do_sortowania[k][0][0]
+                    best_lod = lista_do_sortowania[k][0][3]
+                break
+            tabu_list_actualization()
+            k += 1
+    return best_roz_s, best_pkt, best_lod, best_lista
+
+def reload_points_for_dishes(lod):
+    lista_posilkow = [sniadania, sniadania2, obiad,podwieczorek, kolacja]
+    for i in lista_posilkow:
+        for j in range(len(i)-1):
+            suma = calculation_points_for_dish_only(lod, j, i)
+            dc = i.index[i["Nazwa_dania"] == j]
+            i.at[dc, "Punkty"] = suma
+
+
+def calculate_when_dish_used(zestawy_wszystkie_dotychczas):
+    p = 0
+    lista_posilkow = [sniadania, sniadania2, obiad, podwieczorek, kolacja]
+    ilosc_zestawow = len(zestawy_wszystkie_dotychczas)
+    for i in zestawy_wszystkie_dotychczas:
+        kara = (ilosc_zestawow-p)*(-30)
+        k = 0
+        for j in i:
+            dl = lista_posilkow[k].index[lista_posilkow[k]["Nazwa_dania"] == j]
+            lista_posilkow[k].at[dl, "Bonus"] = kara
+            k += 1
+        p += 1
+
+def week_set_tabu_product(lodowka):
+    baz = [sniadania, sniadania2, obiad, podwieczorek, kolacja]
+    zestawy = []
+    lista_wszytskich_zakupow_na_caly_tydzien = []
+    actual = '2022-01-01'
+    for dni in range(7):
+        best_roz_s, best_pkt, best_lod, best_lista = tabu_product_wersja_2(lodowka)
+        zestawy.append(best_roz_s)
+        lista_wszytskich_zakupow_na_caly_tydzien.append(best_lista)
+        calculate_when_dish_used(zestawy) #kary dodajemy jako bonus
+        reload_points_for_dishes(best_lod)
+        lodowka = best_lod
+        actual = '2022-01-0' + str(dni + 1)
+        print(actual)
+        print(best_roz_s)
+        print(best_pkt)
+#week_set_tabu_product(lodowka)
 
 def week_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -500):
     wynik = []
@@ -548,6 +692,7 @@ def week_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -500):
         plt.show()
 
         print(actual,'\n',br)
+        print(bp)
         wynik.append(br)
 
         actual = '2022-01-0' + str(iteracja + 2)
