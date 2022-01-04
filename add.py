@@ -1,5 +1,4 @@
 import core
-from core import sklep, lodowka, actual_data
 import pandas as pd
 from copy import deepcopy
 
@@ -33,16 +32,16 @@ def calculation_calories_and_proteins_for_dish(idx: int = 0, baza: str = '', pro
         if len(list[j]) == 2:
             nazwa = list[j][0]
             waga = float(list[j][1])
-            kalorie = float(sklep['Kalorie'][nazwa])
-            bialko = float(sklep['Białko'][nazwa])
+            kalorie = float(core.sklep['Kalorie'][nazwa])
+            bialko = float(core.sklep['Białko'][nazwa])
             K += float(waga/100 * kalorie)
             B += float(waga/100 * bialko)
 
         if len(list[j]) == 3:
             nazwa = list[j][0]
             sztuka = float(list[j][1])
-            kalorie = float(sklep['Kalorie'][nazwa])
-            bialko = float(sklep['Białko'][nazwa])
+            kalorie = float(core.sklep['Kalorie'][nazwa])
+            bialko = float(core.sklep['Białko'][nazwa])
             K += float(sztuka * kalorie)
             B += float(sztuka * bialko)
 
@@ -89,7 +88,7 @@ def append_new_dish(name: str, produkt: str, pora: str):
     :param pora: Pora dnia 1S - siadanie, 2S - sniadanie2, O - obiad, P - podwieczorek, K - Kolacja
     """
     Kal, Bia = calculation_calories_and_proteins_for_dish(0, '', produkt)
-    l = deepcopy(lodowka)
+    l = deepcopy(core.lodowka)
     lod, pkt, lst = core.calculation_points_for_dish(l, 0, '', produkt)
     if pora == "1S":
         df = pd.DataFrame({'Nazwa_dania': [name], 'Produkty': [produkt], 'Kalorie': [Kal], 'Białko': [Bia], "Punkty": [pkt], 'Tabu': [0]})

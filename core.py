@@ -6,7 +6,6 @@ from copy import deepcopy
 import matplotlib.pyplot as plt
 pd.set_option('mode.chained_assignment', None)
 
-pd.set_option('mode.chained_assignment', None)
 
 # Wczytanie baz danych do programu
 sniadania = pd.read_csv("bazy_danych\sniadania.csv", sep = ';')
@@ -716,9 +715,9 @@ def week_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -500):
 
         reload_points_for_dishes(lod)
 
-
-
-week_set(30,1,10,2,metoda_iter = 5)
+#
+#
+# week_set(30,1,10,2,metoda_iter = 5)
 
 # wyświetlanie wykresu i wyniku
 
