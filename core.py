@@ -673,7 +673,7 @@ def week_set_tabu_product(lodowka):
     actual = '2022-01-01'
     for dni in range(7):
         actual = '2022-01-0' + str(dni + 1)
-        for lsti in lista_priorytetów:
+        for lsti in lista_priorytetow:
             if lsti[0] == actual:
                 ktory_posilek = lsti[2]
                 df = ktory_posilek[ktory_posilek['Nazwa_dania'] == lsti[1]]
@@ -685,7 +685,7 @@ def week_set_tabu_product(lodowka):
         calculate_when_dish_used(zestawy) #kary dodajemy jako bonus
         reload_points_for_dishes(best_lod)
         lodowka = best_lod
-        for lsti in lista_priorytetów:
+        for lsti in lista_priorytetow:
             if lsti[0] == actual:
                 ktory_posilek = lsti[2]
                 df = ktory_posilek[ktory_posilek['Nazwa_dania'] == lsti[1]]
