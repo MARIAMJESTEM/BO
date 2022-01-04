@@ -28,7 +28,7 @@ PRO = 1000
 
 actual_data = datetime.date.fromisoformat('2022-01-01')
 
-lista_priorytetow = [('2022-01-02', 'Krewetki z mango', kolacja)]
+lista_priorytetow = [['2022-01-02','Kanapki tradycyjne',kolacja],['2022-01-02', 'Płatki z mlekiem', sniadania],['2022-01-04', 'Krewetki z mango', kolacja]]
 
 
 def calculate_product_to_fridge_points(date, actual):
@@ -76,7 +76,7 @@ def read_sklad(idx = 0, baza = '', produkt = 0):
     :return: lista składu dania
     """
     if produkt == 0:
-        str_list = baza["Produkty"][idx][1:-1]
+        str_list = baza['Produkty'][idx][1:-1]
     else:
         str_list = produkt[1:-1]
     l = len(str_list)
@@ -741,7 +741,7 @@ def week_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -500):
 
 
 
-#week_set(10,1,10,0,metoda_iter = 5)
+# week_set(10,1,10,0,metoda_iter = 5)
 
 #
 #
