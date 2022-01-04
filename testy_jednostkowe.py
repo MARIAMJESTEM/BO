@@ -2,29 +2,7 @@ import unittest
 import pandas as pd
 import numpy as np
 
-from core import calculation_points_for_dish
-from core import aktualization
-from core import roz_start
-
-
-#Wczytanie baz danych do programu
-sniadania = pd.read_csv("bazy_danych\sniadania.csv", sep = ';')
-sniadania2 = pd.read_csv("bazy_danych\sniadanie2.csv", sep = ';')
-obiad = pd.read_csv("bazy_danych\obiad.csv", sep = ';')
-podwieczorek = pd.read_csv("bazy_danych\podwieczorek.csv", sep = ';')
-kolacja = pd.read_csv("bazy_danych\kolacja.csv", sep = ';')
-lodowka = pd.read_csv("bazy_danych\lodowka.csv", sep =';')
-s = pd.read_csv("bazy_danych\produkty_w_sklepie.csv", sep =';')
-
-
-sklep = s.set_index("Nazwa")
-
-sniadania.name = "sniadania"
-sniadania2.name = "sniadania2"
-obiad.name = "obiad"
-podwieczorek.name = "podwieczorek"
-kolacja.name = "kolacja"
-
+from core import calculation_points_for_dish, sniadania, sniadania2, obiad, podwieczorek, kolacja, aktualization
 
 
 lod1 = pd.read_csv("bazy_danych\lodowki_do_testow\lod1.csv", sep = ';')

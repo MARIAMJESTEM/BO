@@ -28,13 +28,15 @@ PRO = 1000
 
 actual_data = datetime.date.fromisoformat('2022-01-01')
 
-lista_priorytetów = [('2022-01-02', 'Krewetki z mango', kolacja)]
+lista_priorytetow = [('2022-01-02', 'Krewetki z mango', kolacja)]
+
 
 def calculate_product_to_fridge_points(date, actual):
     """
     Funkcja licząca punkty dla produktów z lodówki
 
     :param date: Data produktu
+    :param actual: Aktualna data
     :return: Liczba punktów za produkt
     """
     actual_d = datetime.date.fromisoformat(actual)
@@ -47,11 +49,13 @@ def calculate_product_to_fridge_points(date, actual):
     else:
         return (6 - days) * 10
 
+
 def actual_lod(lod, actual):
     """
-    Funkcja zwracająca lodówke  z nową punktacją
+    Funkcja zwracająca lodówke z nową punktacją
 
     :param lod: lodówka aktualna
+    :param actual: Aktualna data
     :return: lodówka nowa
     """
     ll = list(lod.index)
@@ -66,12 +70,13 @@ def read_sklad(idx = 0, baza = '', produkt = 0):
     """
     Funkcja odczytująca produkty z dania i przerabiająca je na listę
 
+    :param produkt:
     :param idx: indeks dania
     :param baza: nazwa bazy z której wyjmujemy produkty
     :return: lista składu dania
     """
     if produkt == 0:
-        str_list = baza['Produkty'][idx][1:-1]
+        str_list = baza["Produkty"][idx][1:-1]
     else:
         str_list = produkt[1:-1]
     l = len(str_list)
@@ -105,7 +110,7 @@ def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 
 
     :param idx: Indeks w bazie
     :param baza: Baza
-    :param produkt: Lista produktów jeśli dodajemy nowy prosukt
+    :param produkt: Lista produktów jeśli dodajemy nowy produkt
     :return: Punkty za danie
     """
      #do usuniecia bo testowe, tak btw to nie potrzebnie pisane tu jest lodowka zamiast lod
@@ -698,7 +703,7 @@ def week_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -500):
         lod = bl[:]
         lod = actual_lod(lod, actual)
 
-        for lsti in lista_priorytetów:
+        for lsti in lista_priorytetow:
             if lsti[0] == actual:
                 bb = lsti[2]
                 df = bb[bb['Nazwa_dania'] == lsti[1]]
