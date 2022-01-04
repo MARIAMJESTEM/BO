@@ -695,8 +695,8 @@ def week_set_tabu_product(lodowka):
         print(actual)
         print(best_roz_s)
         print(best_pkt)
-
-week_set_tabu_product(lodowka)
+#
+# week_set_tabu_product(lodowka)
 
 def week_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -500):
     wynik = []
