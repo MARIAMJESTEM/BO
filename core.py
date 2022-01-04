@@ -1,11 +1,11 @@
-import warnings
-warnings.simplefilter(action='ignore', category=FutureWarning)
 import pandas as pd
 import numpy as np
 import random
 import datetime
 from copy import deepcopy
 import matplotlib.pyplot as plt
+
+pd.set_option('mode.chained_assignment', None)
 
 # Wczytanie baz danych do programu
 sniadania = pd.read_csv("bazy_danych\sniadania.csv", sep = ';')
@@ -125,7 +125,7 @@ def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 
                 p = np.ceil(ns / s)
                 ss = p * s - ns
                 sum += sklep["Punkty"][nazwa] * p
-                cena = np.float(sklep["Cena"][nazwa]) * p
+                cena = float(sklep["Cena"][nazwa]) * p
                 if ss != 0:
                     df = {"Nazwa": list[j][0], "Sztuka": np.nan, "Waga": ss, "Punkty": 0, "Data_waznosci": actual_data + datetime.timedelta(days=14)}
                     lod = lod.append(df, ignore_index=True)
@@ -141,7 +141,7 @@ def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 
                     df = {"Nazwa": list[j][0], "Sztuka": ss, "Waga": np.nan, "Punkty": 0, "Data_waznosci": actual_data + datetime.timedelta(days=14)}
                     lod = lod.append(df, ignore_index=True)
                     lista.append([nazwa,ss, np.nan])
-                cena = np.float(sklep["Cena"][nazwa]) * p
+                cena = float(sklep["Cena"][nazwa]) * p
                 lista.append([nazwa, p, np.nan, cena])
 
 
@@ -157,7 +157,7 @@ def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 
                     lod['Waga'][l.index[0]] = ss
                     lod['Data_waznosci'][l.index[0]] = actual_data + datetime.timedelta(days=14)
                     lod['Data_waznosci'][l.index[0]] = '2022-01-15'
-                    cena = np.float(sklep["Cena"][nazwa]) * p
+                    cena = float(sklep["Cena"][nazwa]) * p
                     lista.append([nazwa, np.nan, p*s, cena])
                 elif list[j][1] == l['Waga'][l.index[0]]:
                     lod = lod.drop([l.index[0]], axis=0)
@@ -173,7 +173,7 @@ def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 
                     ns = list[j][1] - l['Sztuka'][l.index[0]]
                     p = np.ceil(ns / s)
                     ss = p * s - ns
-                    cena = np.float(sklep["Cena"][nazwa]) * p
+                    cena = float(sklep["Cena"][nazwa]) * p
                     lista.append([nazwa, p * s, np.nan, cena])
                     sum += sklep["Punkty"][list[j][0]] * p
                     lod['Sztuka'][l.index[0]] = ss
@@ -401,7 +401,7 @@ def tabu_set(iter, bs, llist, metod, lod, metoda_iter, cut_par):
     :param iter: ilość iteracji
     :param bs: wybór sposobu znalezienia bazy startowej 0 - losowa baza lub 1 - najlepsza baza
     :param llist: długość listy zabronień
-    :param metod: wybór metody wybrania sąsiada  0 - metoda dokładna, 1 - metoda losowa (przybliżona), 2 - metoda losowa
+    :param metod: wybór metody wybrania sąsiada 0 - metoda dokładna, 1 - metoda losowa (przybliżona), 2 - metoda losowa
     :param metoda_iter: ilość wyników wybranych metodą losową
     :param cut_par: wartość parametru przerwania szukania rozwiązania
     :return: Wynik końcowy
@@ -573,7 +573,7 @@ def week_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -500):
 
 
 
-# week_set(10,1,10,0,metoda_iter = 5)
+week_set(30,1,10,2,metoda_iter = 5)
 
 # wyświetlanie wykresu i wyniku
 
@@ -581,8 +581,3 @@ def week_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -500):
 
 # dodanie pozycji do baz
 # przeładowanie podwieczorków
-
-
-#dodać pieduły sprawdzające poprawności
-#zrobić dokumentacje
-#przyspieszyć procesy
