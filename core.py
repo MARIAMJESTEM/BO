@@ -651,11 +651,13 @@ def calculate_when_dish_used(zestawy_wszystkie_dotychczas):
     lista_posilkow = [sniadania, sniadania2, obiad, podwieczorek, kolacja]
     ilosc_zestawow = len(zestawy_wszystkie_dotychczas)
     for i in zestawy_wszystkie_dotychczas:
-        kara = (ilosc_zestawow-p)*(-30)
+        kara = -(150 -(ilosc_zestawow-p-1)*(-20))
         k = 0
         for j in i:
             dl = lista_posilkow[k].index[lista_posilkow[k]["Nazwa_dania"] == j]
-            lista_posilkow[k].at[dl, "Bonus"] = kara
+            ile_jest_dotychczas = lista_posilkow[k][lista_posilkow[k]["Nazwa_dania"] == j] #zabezpieczenie jakbyśmy w innym miejscu dodawali inny bonus
+
+            lista_posilkow[k].at[dl, "Bonus"] = kara + ile_jest_dotychczas["Bonus"]
             k += 1
         p += 1
 
@@ -665,17 +667,31 @@ def week_set_tabu_product(lodowka):
     lista_wszytskich_zakupow_na_caly_tydzien = []
     actual = '2022-01-01'
     for dni in range(7):
+        actual = '2022-01-0' + str(dni + 1)
+        for lsti in lista_priorytetów:
+            if lsti[0] == actual:
+                ktory_posilek = lsti[2]
+                df = ktory_posilek[ktory_posilek['Nazwa_dania'] == lsti[1]]
+                dl = ktory_posilek.index[ktory_posilek['Nazwa_dania'] == lsti[1]]
+                ktory_posilek.at[dl, "Bonus"] = 1000 + df["Bonus"]
         best_roz_s, best_pkt, best_lod, best_lista = tabu_product_wersja_2(lodowka)
         zestawy.append(best_roz_s)
         lista_wszytskich_zakupow_na_caly_tydzien.append(best_lista)
         calculate_when_dish_used(zestawy) #kary dodajemy jako bonus
         reload_points_for_dishes(best_lod)
         lodowka = best_lod
-        actual = '2022-01-0' + str(dni + 1)
+        for lsti in lista_priorytetów:
+            if lsti[0] == actual:
+                ktory_posilek = lsti[2]
+                df = ktory_posilek[ktory_posilek['Nazwa_dania'] == lsti[1]]
+                dl = ktory_posilek.index[ktory_posilek['Nazwa_dania'] == lsti[1]]
+                ktory_posilek.at[dl, "Bonus"] =  df["Bonus"] -1000
+
         print(actual)
         print(best_roz_s)
         print(best_pkt)
-#week_set_tabu_product(lodowka)
+
+week_set_tabu_product(lodowka)
 
 def week_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -500):
     wynik = []
@@ -684,6 +700,7 @@ def week_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -500):
     actual = '2022-01-01'
     lod = actual_lod(lod,actual)
     for iteracja in range(7):
+
         w, bp, br, bl = tabu_set(iter, bs, llist, metod, lod, metoda_iter, cut_par)
 
         plt.plot(w)
@@ -708,6 +725,7 @@ def week_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -500):
                 df = bb[bb['Nazwa_dania'] == lsti[1]]
                 bb['Bonus'][df.index[0]] = 0
 
+
         for i in range(len(wynik)):  # funkcja kary
             for j, b in zip(wynik[i], baz):
                 df = b[b['Nazwa_dania'] == j]
@@ -715,9 +733,15 @@ def week_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -500):
 
         reload_points_for_dishes(lod)
 
+
+
+
+#week_set(10,1,10,0,metoda_iter = 5)
+
 #
 #
 # week_set(30,1,10,2,metoda_iter = 5)
+
 
 # wyświetlanie wykresu i wyniku
 
