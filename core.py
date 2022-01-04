@@ -28,13 +28,19 @@ PRO = 1000
 
 actual_data = datetime.date.fromisoformat('2022-01-01')
 
+<<<<<<< HEAD
 lista_priorytetów = [['2022-01-01', 'Pieczona owsianka brownie', sniadania], ['2022-01-02', 'Bułki z pomidorem i mozarella', kolacja],['2022-01-03', 'Kurczak w sosie curry',obiad]]
+=======
+lista_priorytetow = [('2022-01-02', 'Krewetki z mango', kolacja)]
+
+>>>>>>> origin/main
 
 def calculate_product_to_fridge_points(date, actual):
     """
     Funkcja licząca punkty dla produktów z lodówki
 
     :param date: Data produktu
+    :param actual: Aktualna data
     :return: Liczba punktów za produkt
     """
     actual_d = datetime.date.fromisoformat(actual)
@@ -47,11 +53,13 @@ def calculate_product_to_fridge_points(date, actual):
     else:
         return (6 - days) * 10
 
+
 def actual_lod(lod, actual):
     """
-    Funkcja zwracająca lodówke  z nową punktacją
+    Funkcja zwracająca lodówke z nową punktacją
 
     :param lod: lodówka aktualna
+    :param actual: Aktualna data
     :return: lodówka nowa
     """
     ll = list(lod.index)
@@ -66,12 +74,13 @@ def read_sklad(idx=0, baza='', produkt = 0):
     """
     Funkcja odczytująca produkty z dania i przerabiająca je na listę
 
+    :param produkt:
     :param idx: indeks dania
     :param baza: nazwa bazy z której wyjmujemy produkty
     :return: lista składu dania
     """
     if produkt == 0:
-        str_list = baza['Produkty'][idx][1:-1]
+        str_list = baza["Produkty"][idx][1:-1]
     else:
         str_list = produkt[1:-1]
     l = len(str_list)
@@ -105,7 +114,7 @@ def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 
 
     :param idx: Indeks w bazie
     :param baza: Baza
-    :param produkt: Lista produktów jeśli dodajemy nowy prosukt
+    :param produkt: Lista produktów jeśli dodajemy nowy produkt
     :return: Punkty za danie
     """
     lista = []
@@ -585,8 +594,12 @@ def week_set_tabu_product(lodowka):
 
     for dni in range(7):
         actual = '2022-01-0' + str(dni + 1)
+<<<<<<< HEAD
         lodowka = actual_lod(lodowka, actual)
         for lsti in lista_priorytetów:
+=======
+        for lsti in lista_priorytetow:
+>>>>>>> origin/main
             if lsti[0] == actual:
                 ktory_posilek = lsti[2]
                 df = ktory_posilek[ktory_posilek['Nazwa_dania'] == lsti[1]]
@@ -598,7 +611,7 @@ def week_set_tabu_product(lodowka):
         calculate_when_dish_used(zestawy) #kary dodajemy jako bonus
         reload_points_for_dishes(best_lod)
         lodowka = best_lod
-        for lsti in lista_priorytetów:
+        for lsti in lista_priorytetow:
             if lsti[0] == actual:
                 ktory_posilek = lsti[2]
                 df = ktory_posilek[ktory_posilek['Nazwa_dania'] == lsti[1]]
@@ -632,7 +645,7 @@ def week_set(iter, bs, llist, metod, metoda_iter = 4, cut_par = -500):
         lod = bl[:]
         lod = actual_lod(lod, actual)
 
-        for lsti in lista_priorytetów:
+        for lsti in lista_priorytetow:
             if lsti[0] == actual:
                 bb = lsti[2]
                 df = bb[bb['Nazwa_dania'] == lsti[1]]
