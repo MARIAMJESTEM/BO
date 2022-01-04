@@ -40,8 +40,8 @@ Dodakowo naszym zadaniem było wykorzystanie metody metaheurystycznej **Tabu Sea
 - [x] Bazy danych 
 - [x] Dodawanie produktów i dań 
 - [x] Obliczanie punktów, kalorii i białka za konkretne danie
-- [] Blokowanie powtarzania tych samych dań 
-- [] Promowanie odpowiednich dań na dany dzień
+- [x] Blokowanie powtarzania tych samych dań 
+- [x] Promowanie odpowiednich dań na dany dzień
 - [] Naprawa błędów i bugów
 - [] Gui
 - [] Testy jednostkowe
