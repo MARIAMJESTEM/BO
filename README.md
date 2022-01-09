@@ -42,9 +42,9 @@ Dodakowo naszym zadaniem było wykorzystanie metody metaheurystycznej **Tabu Sea
 - [x] Obliczanie punktów, kalorii i białka za konkretne danie
 - [x] Blokowanie powtarzania tych samych dań 
 - [x] Promowanie odpowiednich dań na dany dzień
-- [] Naprawa błędów i bugów
+- [x] Naprawa błędów i bugów
 - [] Gui
-- [] Testy jednostkowe
+- [x] Testy jednostkowe
 
 ## Technologie
 Aplikacja powstaje w **Pythonie** wersji **3.9** (powinna działać we wczesniejszych również), zostały użyne dodatkowo biblioteki:
