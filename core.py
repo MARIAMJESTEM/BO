@@ -30,6 +30,25 @@ actual_data = datetime.date.fromisoformat('2022-01-01')
 lista_priorytetów = []
 
 
+def change_pkt(lst_pkt):
+    dl = len(lst_pkt)
+    w_up = 0
+    w_down = 0
+    w_stay = 0
+    for i in range(dl - 1):
+        if lst_pkt[i + 1] > lst_pkt[i]:
+            w_up += 1
+        elif lst_pkt[i + 1] == lst_pkt[i]:
+            w_stay += 1
+        else:
+            w_down += 1
+
+    p_up = (w_up / dl) * 100
+    p_stay = (w_stay / dl) * 100
+    p_down = (w_down / dl) * 100
+
+    return round(p_up, 1), round(p_stay, 1), round(p_down, 1)
+
 def calculate_product_to_fridge_points(date, actual):
     """
     Funkcja licząca punkty dla produktów z lodówki
@@ -144,7 +163,7 @@ def calculation_points_for_dish(lod = 0, idx: int = 0, baza: str = '',produkt = 
                 if ss != 0:
                     df = {"Nazwa": list[j][0], "Sztuka": ss, "Waga": np.nan, "Punkty": 0, "Data_waznosci": actual_data + datetime.timedelta(days=14)}
                     lod = lod.append(df, ignore_index=True)
-                    lista.append([nazwa,ss, np.nan])
+                    #lista.append([nazwa,ss, np.nan])
                 cena = float(sklep["Cena"][nazwa]) * p
                 lista.append([nazwa, p, np.nan, cena])
 
@@ -302,7 +321,7 @@ def aktualization(result,lod_s):
     suma -= punkty_ujemne
     return lod, suma, lista_zakupow, suma_kalorii
 
-
+kara_cal_global = 5
 def counting_calories_per_set(set_n, calories_per_day):
     """Funkcja liczy sume kalorii za poszczególne dania w podanym zestawie i wylicza punkty ujemne za kalorie które
     się różnią od docelowych
@@ -310,7 +329,7 @@ def counting_calories_per_set(set_n, calories_per_day):
     :param set_n: zestaw dań
     :param calories_per_day: docelowa ilość kalorii na jeden dzień"""
     bazy = [sniadania, sniadania2, obiad, podwieczorek, kolacja]
-    kara_cal = 5
+    kara_cal = kara_cal_global
     p = 0
     suma = 0
     for i in set_n:
@@ -318,7 +337,7 @@ def counting_calories_per_set(set_n, calories_per_day):
         suma += df.iloc[0]["Kalorie"]
         p += 1
     difference_with_calories = np.abs(calories_per_day - suma)
-    punkty_ujemne = difference_with_calories/kara_cal
+    punkty_ujemne = int(difference_with_calories/kara_cal)
 
     return suma, punkty_ujemne
 
@@ -641,24 +660,53 @@ def reload_points_for_dishes(lod):
             suma = calculation_points_for_dish_only(lod, j, i)
             i.at[j, "Punkty"] = suma
 
-
+kara_global = -150
 def calculate_when_dish_used(zestawy_wszystkie_dotychczas):
     """Funkcja dodaje kary za posiłki które zostały już użyte w wyliczonych zestawach
     Im bliżej aktualnego dnia tym kary są mniejsze
     :param zestawy_wszystkie_dotychczas: lista z zestawami dań już użytymi"""
     p = 0
-    kara = -150
+    kara = kara_global
+    w_kara = int(kara/5)
     lista_posilkow = [sniadania, sniadania2, obiad, podwieczorek, kolacja]
     ilosc_zestawow = len(zestawy_wszystkie_dotychczas)
     for i in zestawy_wszystkie_dotychczas:
-        kara = -(kara + (ilosc_zestawow-p-1)*(-20))
+        kara = -(kara + (ilosc_zestawow-p-1)*w_kara)
         k = 0
         for j in i:
-            dl = lista_posilkow[k].index[lista_posilkow[k]["Nazwa_dania"] == j]
-            lista_posilkow[k].at[dl, "Bonus"] = kara
-            k += 1
+            if kara > 0:
+                dl = lista_posilkow[k].index[lista_posilkow[k]["Nazwa_dania"] == j]
+                lista_posilkow[k].at[dl, "Bonus"] = 0
+                k += 1
+            else:
+                dl = lista_posilkow[k].index[lista_posilkow[k]["Nazwa_dania"] == j]
+                lista_posilkow[k].at[dl, "Bonus"] = kara
+                k += 1
+
         p += 1
 
+def update_list(lista_zakupow):
+    nowa_lista = []
+    lista_nazw = []
+
+    iter = 0
+    for i in lista_zakupow:
+        if i[0] not in lista_nazw:
+            nowa_lista.append(i)
+            lista_nazw.append(i[0])
+            lista_nazw.append(iter)
+            iter += 1
+        else:
+            index = lista_nazw.index(i[0])
+            index_w_liscie_docelowej = lista_nazw[index+1]
+            stare = nowa_lista[index_w_liscie_docelowej]
+            if stare[1] != np.nan:
+                stare[1] += i[1]
+            if stare[2] != np.nan:
+                stare[2] += i[2]
+            stare[3] += i[3]
+            nowa_lista[index_w_liscie_docelowej] = stare
+    return nowa_lista
 
 def week_set_tabu_product(lodowka, ilosc_iteracji, na_ile_blokujemy_tabu, wybor_sposobu_znalezienia_bazy_startowej,  metod, metoda_iter):
     """Funkcja wylicza zestawy dań dla całego tygodnia na podstawie zestawu zwracanego przez funkcję tabu_product_wersja_2
@@ -668,8 +716,12 @@ def week_set_tabu_product(lodowka, ilosc_iteracji, na_ile_blokujemy_tabu, wybor_
     :param metod: wybór metody
     :param metoda_iter: długość metody losowej
     :param wybor_sposobu_znalezienia_bazy_startowej: 0 losowy, 1 najlepsza baza"""
+    zestawy_najlepsze_punkty = []
+    wykresy = []
+    kalorie = []
+    iteracje = []
     iter_all = 0
-    estawy = []
+    zestawy = []
     lista_wszytskich_zakupow_na_caly_tydzien = []
     for dni in range(7):
         actual = '2022-01-0' + str(dni + 1)
@@ -687,17 +739,19 @@ def week_set_tabu_product(lodowka, ilosc_iteracji, na_ile_blokujemy_tabu, wybor_
         reload_points_for_dishes(best_lod)
         lodowka = best_lod
         iter_all += iteration
-
-        print(actual)
-        print(best_roz_s)
-        print(best_pkt)
-        print("Suma kalorii : ", best_suma_kalorii)
-        print("Ile trzeba zapłacić za dokupienie produktów na jeden dzień: ", counting_cash_to_spend_on_groceries(best_lista))
-        plt.plot(punkty)
-        plt.show()
-
-    print(lista_wszytskich_zakupow_na_caly_tydzien)
-
+        wykresy.append(punkty)
+        zestawy_najlepsze_punkty.append(best_pkt)
+        kalorie.append(best_suma_kalorii)
+        iteracje.append(ilosc_iteracji)
+        #print(actual)
+        #print(best_roz_s)
+        #print(best_pkt)
+        #print("Suma kalorii : ", best_suma_kalorii)
+        #print("Ile trzeba zapłacić za dokupienie produktów na jeden dzień: ", counting_cash_to_spend_on_groceries(best_lista))
+        #plt.plot(punkty)
+        #plt.show()
+    lista_wszytskich_zakupow_na_caly_tydzien = update_list(lista_wszytskich_zakupow_na_caly_tydzien)
+    return wykresy, zestawy_najlepsze_punkty, zestawy, lista_wszytskich_zakupow_na_caly_tydzien, kalorie, iteracje
 
 def week_set(lodowka, ilosc_iteracji, na_ile_blokujemy_liste, wybor_sposobu_znalezienia_bazy_startowej,  metod, metoda_iter):
     """Funkcja wylicza zestawy dań dla całego tygodnia na podstawie zestawu zwracanego przez funkcję tabu_product_wersja_2
@@ -708,6 +762,10 @@ def week_set(lodowka, ilosc_iteracji, na_ile_blokujemy_liste, wybor_sposobu_znal
     :param metoda_iter: wybór ilości dla metody iteracyjnej
     :cut_par: moment przerwania iteracji
     :param wybor_sposobu_znalezienia_bazy_startowej: 0 losowy, 1 najlepsza baza"""
+    zestawy_najlepsze_punkty = []
+    wykresy = []
+    kalorie = []
+    iteracje = []
     iter_all = 0
     zestawy = []
     lista_wszytskich_zakupow_na_caly_tydzien = []
@@ -720,27 +778,32 @@ def week_set(lodowka, ilosc_iteracji, na_ile_blokujemy_liste, wybor_sposobu_znal
                 dl = ktory_posilek.index[ktory_posilek['Nazwa_dania'] == lsti[1]]
                 ktory_posilek.at[dl, "Bonus"] = 1000
         best_roz_s, best_pkt, best_lod, best_lista, best_suma_kalorii, punkty, iteration = tabu_set(ilosc_iteracji,wybor_sposobu_znalezienia_bazy_startowej,na_ile_blokujemy_liste,metod,lodowka,actual,metoda_iter)
+        kalorie.append(best_suma_kalorii)
+        iteracje.append(iteration)
         zestawy.append(best_roz_s)
+        zestawy_najlepsze_punkty.append(best_pkt)
         for d in best_lista:
             lista_wszytskich_zakupow_na_caly_tydzien.append(d)
         calculate_when_dish_used(zestawy)
         reload_points_for_dishes(best_lod)
         lodowka = best_lod
         iter_all += iteration
+        wykresy.append(punkty)
 
-        print(actual)
-        print(best_roz_s)
-        print(best_pkt)
-        print("Suma kalorii : ", best_suma_kalorii)
-        print("Ile trzeba zapłacić za dokupienie produktów na jeden dzień: ", counting_cash_to_spend_on_groceries(best_lista))
-        plt.plot(punkty)
-        plt.show()
-
+        #print(actual)
+        #print(best_roz_s)
+        #print(best_pkt)
+        #print("Suma kalorii : ", best_suma_kalorii)
+        #print("Ile trzeba zapłacić za dokupienie produktów na jeden dzień: ", counting_cash_to_spend_on_groceries(best_lista))
+        #plt.plot(punkty)
+        #plt.show()
+    lista_wszytskich_zakupow_na_caly_tydzien = update_list(lista_wszytskich_zakupow_na_caly_tydzien)
+    return wykresy, zestawy_najlepsze_punkty, zestawy, lista_wszytskich_zakupow_na_caly_tydzien, kalorie, iteracje
 
 
 ####################################################################
 
 """Testy poprawności działania funkcji"""
 
-week_set_tabu_product(lodowka)
+#week_set_tabu_product(lodowka)
 
