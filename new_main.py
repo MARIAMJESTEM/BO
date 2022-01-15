@@ -226,26 +226,33 @@ def open_wynik():
     core.kara_cal_global = kara_kalorie
 #-----------------------Wywołanie funkcji dających wynik----------------------------------------
     if str(clicked11.get()) == 'set':
-        wykresy, najlepsze_punkty, menu, lista_zakupow, kalorie, iteracje = core.week_set(lodowka,
+        wykresy, najlepsze_punkty, menu, lista_zakupow, kalorie, iteracje, cena_d = core.week_set(lodowka,
                                         liczba_iteracji, blokada, rozwiazanie_startowe, sasiedzi, metoda_iter)
     else:
-        wykresy, najlepsze_punkty, menu, lista_zakupow, kalorie, iteracje= core.week_set_tabu_product(lodowka,
+        wykresy, najlepsze_punkty, menu, lista_zakupow, kalorie, iteracje, cena_d = core.week_set_tabu_product(lodowka,
                                         liczba_iteracji, blokada, rozwiazanie_startowe, sasiedzi,metoda_iter)
 
     top2 = Toplevel()
     top2.title("Zobacz wynik")
-    label6 = Label(top2, text='Menu')
+    label6 = Label(top2, text='Menu', font = ("Calibri", 20))
     label6.grid(row=0, column=3)
     for i in range(7):
-        label = Label(top2, text='Dzień {}'.format(i + 1), bg=bg)
-        label2 = Label(top2, text='Kalorie: {}'.format(round(kalorie[i])), bg='green')
-        label.grid(row=1, column=i)
-        label2.grid(row=8, column=i)
+        label = Label(top2, text='Dzień {}'.format(i + 1), font = ("Calibri", 16))
+        label2 = Label(top2, text='Kalorie: {}'.format(round(kalorie[i])), font = ("Calibri", 14))
+        label3 = Label(top2, text = 'Cena: {}'.format(round(cena_d[i])), font = ("Calibri", 14))
+        l = Label(top2, text = '')
+        z = Label(top2, text = '--------------------')
+        l.grid(row = 1, column = i)
+        label.grid(row=2, column = i)
+        z.grid(row = 9, column = i)
+        label2.grid(row=10, column = i)
+        label3.grid(row = 11, column = i)
 
     for i in range(len(menu)):
         for j in range(len(menu[i])):
-            label = Label(top2, text=str(menu[i][j]))
-            label.grid(row=j + 2, column=i)
+            label = Label(top2, text=str(menu[i][j]), font = ("Calibri", 12), width = 30)
+            label.grid(row=j + 3, column=i)
+
     def wykres1():
         plt.plot(wykresy[0])
         plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[0])))
@@ -329,7 +336,7 @@ def open_wynik():
     glupia_biblioteka2.grid(row=13, column=6)
     button_zakupy = Button(top2, text="Wyświetl listę zakupów", fg=fg, bg=bg, activebackground=ab,
                           command=zakupy).grid(row=10, column=6)
-    enter_button = Button(top2, text="Statystyki dla nerdów", fg=fg, bg=bg, activebackground=ab,
+    enter_button = Button(top2, text="Szczegółowe statystyki", fg=fg, bg=bg, activebackground=ab,
                           command=statystyki).grid(row=11, column=6)
     button_quit_top = Button(top2, text='Wyjdź', fg=fg, bg=bg, activebackground=ab,
                              command=top2.destroy).grid(row=12, column=6)

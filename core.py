@@ -722,6 +722,7 @@ def week_set_tabu_product(lodowka, ilosc_iteracji, na_ile_blokujemy_tabu, wybor_
     iteracje = []
     iter_all = 0
     zestawy = []
+    cena_d = []
     lista_wszytskich_zakupow_na_caly_tydzien = []
     for dni in range(7):
         actual = '2022-01-0' + str(dni + 1)
@@ -743,15 +744,10 @@ def week_set_tabu_product(lodowka, ilosc_iteracji, na_ile_blokujemy_tabu, wybor_
         zestawy_najlepsze_punkty.append(best_pkt)
         kalorie.append(best_suma_kalorii)
         iteracje.append(ilosc_iteracji)
-        #print(actual)
-        #print(best_roz_s)
-        #print(best_pkt)
-        #print("Suma kalorii : ", best_suma_kalorii)
-        #print("Ile trzeba zapłacić za dokupienie produktów na jeden dzień: ", counting_cash_to_spend_on_groceries(best_lista))
-        #plt.plot(punkty)
-        #plt.show()
+        cena_d.append(counting_cash_to_spend_on_groceries(best_lista))
+
     lista_wszytskich_zakupow_na_caly_tydzien = update_list(lista_wszytskich_zakupow_na_caly_tydzien)
-    return wykresy, zestawy_najlepsze_punkty, zestawy, lista_wszytskich_zakupow_na_caly_tydzien, kalorie, iteracje
+    return wykresy, zestawy_najlepsze_punkty, zestawy, lista_wszytskich_zakupow_na_caly_tydzien, kalorie, iteracje, cena_d
 
 def week_set(lodowka, ilosc_iteracji, na_ile_blokujemy_liste, wybor_sposobu_znalezienia_bazy_startowej,  metod, metoda_iter):
     """Funkcja wylicza zestawy dań dla całego tygodnia na podstawie zestawu zwracanego przez funkcję tabu_product_wersja_2
@@ -769,6 +765,7 @@ def week_set(lodowka, ilosc_iteracji, na_ile_blokujemy_liste, wybor_sposobu_znal
     iter_all = 0
     zestawy = []
     lista_wszytskich_zakupow_na_caly_tydzien = []
+    cena_d = []
     for dni in range(7):
         actual = '2022-01-0' + str(dni + 1)
         lodowka = actual_lod(lodowka, actual)
@@ -789,16 +786,10 @@ def week_set(lodowka, ilosc_iteracji, na_ile_blokujemy_liste, wybor_sposobu_znal
         lodowka = best_lod
         iter_all += iteration
         wykresy.append(punkty)
+        cena_d.append(counting_cash_to_spend_on_groceries(best_lista))
 
-        #print(actual)
-        #print(best_roz_s)
-        #print(best_pkt)
-        #print("Suma kalorii : ", best_suma_kalorii)
-        #print("Ile trzeba zapłacić za dokupienie produktów na jeden dzień: ", counting_cash_to_spend_on_groceries(best_lista))
-        #plt.plot(punkty)
-        #plt.show()
     lista_wszytskich_zakupow_na_caly_tydzien = update_list(lista_wszytskich_zakupow_na_caly_tydzien)
-    return wykresy, zestawy_najlepsze_punkty, zestawy, lista_wszytskich_zakupow_na_caly_tydzien, kalorie, iteracje
+    return wykresy, zestawy_najlepsze_punkty, zestawy, lista_wszytskich_zakupow_na_caly_tydzien, kalorie, iteracje, cena_d
 
 
 ####################################################################
