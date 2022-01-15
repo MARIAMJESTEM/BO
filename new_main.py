@@ -9,7 +9,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 
 root = Tk()
-root.title("Menu")
+root.title("Ustawienia")
 x = 2
 y = 25
 fg = 'black'
@@ -37,7 +37,7 @@ def open_preferencje():
         e1.delete(0, END)
         e2.delete(0, END)
         e3.delete(0, END)
-
+    print(core.lista_priorytetów)
     enter_button = Button(top, text="Dodaj", height=x, width=y, fg=fg, bg=bg, activebackground=ab,
                           command=dodaj_preferencje).pack()
     button_quit_top = Button(top, text='Wyjdź', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
@@ -231,115 +231,232 @@ def open_wynik():
     else:
         wykresy, najlepsze_punkty, menu, lista_zakupow, kalorie, iteracje, cena_d = core.week_set_tabu_product(lodowka,
                                         liczba_iteracji, blokada, rozwiazanie_startowe, sasiedzi,metoda_iter)
-
+#----------------------------------menu wynikow--------------------------------------------------------
     top2 = Toplevel()
     top2.title("Zobacz wynik")
-    label6 = Label(top2, text='Menu', font = ("Calibri", 20))
-    label6.grid(row=0, column=3)
-    for i in range(7):
-        label = Label(top2, text='Dzień {}'.format(i + 1), font = ("Calibri", 16))
-        label2 = Label(top2, text='Kalorie: {}'.format(round(kalorie[i])), font = ("Calibri", 14))
-        label3 = Label(top2, text = 'Cena: {}'.format(round(cena_d[i])), font = ("Calibri", 14))
-        l = Label(top2, text = '')
-        z = Label(top2, text = '--------------------')
-        l.grid(row = 1, column = i)
-        label.grid(row=2, column = i)
-        z.grid(row = 9, column = i)
-        label2.grid(row=10, column = i)
-        label3.grid(row = 11, column = i)
+    frame2 = Frame(top2)
+    frame2.pack()
+    def bar_menu():
+        for widget in frame2.winfo_children():
+            widget.destroy()
+        label6 = Label(frame2, text='Menu', font=("Calibri", 20))
+        label6.grid(row=0, column=3)
+        for i in range(7):
+            label = Label(frame2, text='Dzień {}'.format(i + 1), font=("Calibri", 16))
+            label2 = Label(frame2, text='Kalorie: {}'.format(round(kalorie[i])), font=("Calibri", 14))
+            label3 = Label(frame2, text='Cena: {}'.format(round(cena_d[i])), font=("Calibri", 14))
+            l = Label(frame2, text='')
+            z = Label(frame2, text='--------------------')
+            l.grid(row=1, column=i)
+            label.grid(row=2, column=i)
+            z.grid(row=9, column=i)
+            label2.grid(row=10, column=i)
+            label3.grid(row=11, column=i)
 
-    for i in range(len(menu)):
-        for j in range(len(menu[i])):
-            label = Label(top2, text=str(menu[i][j]), font = ("Calibri", 12), width = 30)
-            label.grid(row=j + 3, column=i)
+        for i in range(len(menu)):
+            for j in range(len(menu[i])):
+                label = Label(frame2, text=str(menu[i][j]), font=("Calibri", 12), width=30)
+                label.grid(row=j + 3, column=i)
 
-    def wykres1():
-        plt.plot(wykresy[0])
-        plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[0])))
-        plt.show()
-    def wykres2():
-        plt.plot(wykresy[1])
-        plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[1])))
-        plt.show()
-    def wykres3():
-        plt.plot(wykresy[2])
-        plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[2])))
-        plt.show()
-    def wykres4():
-        plt.plot(wykresy[3])
-        plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[3])))
-        plt.show()
-    def wykres5():
-        plt.plot(wykresy[4])
-        plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[4])))
-        plt.show()
-    def wykres6():
-        plt.plot(wykresy[5])
-        plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[5])))
-        plt.show()
-    def wykres7():
-        plt.plot(wykresy[6])
-        plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[6])))
-        plt.show()
-    def zakupy():
-        top3 = Toplevel()
-        top3.title("Lista zakupów")
-        label1 = Label(top3, text='Nazwa produktu', bg=bg)
+#----------------------------------------------------------------------------------------------------------
+
+    def bar_statystyki():
+        for widget in frame2.winfo_children():
+            widget.destroy()
+        def wykres1():
+            plt.plot(wykresy[0])
+            plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[0])))
+            plt.show()
+        def wykres2():
+            plt.plot(wykresy[1])
+            plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[1])))
+            plt.show()
+        def wykres3():
+            plt.plot(wykresy[2])
+            plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[2])))
+            plt.show()
+        def wykres4():
+            plt.plot(wykresy[3])
+            plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[3])))
+            plt.show()
+        def wykres5():
+            plt.plot(wykresy[4])
+            plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[4])))
+            plt.show()
+        def wykres6():
+            plt.plot(wykresy[5])
+            plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[5])))
+            plt.show()
+        def wykres7():
+            plt.plot(wykresy[6])
+            plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[6])))
+            plt.show()
+
+        for i in range(7):
+            label = Label(frame2, text='Najlepszy wynik: {}'.format(round(najlepsze_punkty[i])))
+            label.grid(row=14, column=i)
+            label = Label(frame2, text='Liczba iteracji: {}'.format(round(iteracje[i])))
+            label.grid(row=15, column=i)
+
+            p_up, p_stay, p_down = core.change_pkt(wykresy[i])
+            label = Label(frame2, text='Procent popraw: {}%'.format(p_up))
+            label.grid(row=17, column=i)
+            label = Label(frame2, text='Procent bez zmian: {}%'.format(p_stay))
+            label.grid(row=18, column=i)
+            label = Label(frame2, text='Procent pogorszeń: {}%'.format(p_down))
+            label.grid(row=19, column=i)
+        button = Button(frame2, text='Pokaż wykres', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
+                        command=wykres1).grid(row=16, column=0)
+        button = Button(frame2, text='Pokaż wykres', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
+                        command=wykres2).grid(row=16, column=1)
+        button = Button(frame2, text='Pokaż wykres', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
+                        command=wykres3).grid(row=16, column=2)
+        button = Button(frame2, text='Pokaż wykres', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
+                        command=wykres4).grid(row=16, column=3)
+        button = Button(frame2, text='Pokaż wykres', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
+                        command=wykres5).grid(row=16, column=4)
+        button = Button(frame2, text='Pokaż wykres', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
+                        command=wykres6).grid(row=16, column=5)
+        button = Button(frame2, text='Pokaż wykres', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
+                        command=wykres7).grid(row=16, column=6)
+
+    def bar_zakupy():
+        for widget in frame2.winfo_children():
+            widget.destroy()
+        label1 = Label(frame2, text='Nazwa produktu', bg=bg)
         label1.grid(row=0, column=0)
-        label2 = Label(top3, text='Liczba sztuk', bg=bg)
+        label2 = Label(frame2, text='Liczba sztuk', bg=bg)
         label2.grid(row=0, column=1)
-        label3 = Label(top3, text='Waga', bg=bg)
+        label3 = Label(frame2, text='Waga', bg=bg)
         label3.grid(row=0, column=2)
-        label4 = Label(top3, text='Cena', bg=bg)
+        label4 = Label(frame2, text='Cena', bg=bg)
         label4.grid(row=0, column=3)
         for i in range(len(lista_zakupow)):
             for j in range(4):
                 if j == 3:
-                    label5 = Label(top3, text=str(round(lista_zakupow[i][j], 2)))
+                    label5 = Label(frame2, text=str(round(lista_zakupow[i][j], 2)))
                     label5.grid(row=i + 1, column=j)
                 else:
-                    label5 = Label(top3, text=str(lista_zakupow[i][j]))
+                    label5 = Label(frame2, text=str(lista_zakupow[i][j]))
                     label5.grid(row=i + 1, column=j)
 
-    def statystyki():
-        for i in range(7):
-            label = Label(top2, text='Najlepszy wynik: {}'.format(round(najlepsze_punkty[i])))
-            label.grid(row=14, column=i)
-            label = Label(top2, text='Liczba iteracji: {}'.format(round(iteracje[i])))
-            label.grid(row=15, column=i)
 
-            p_up, p_stay, p_down = core.change_pkt(wykresy[i])
-            label = Label(top2, text='Procent popraw: {}%'.format(p_up))
-            label.grid(row=17, column=i)
-            label = Label(top2, text='Procent bez zmian: {}%'.format(p_stay))
-            label.grid(row=18, column=i)
-            label = Label(top2, text='Procent pogorszeń: {}%'.format(p_down))
-            label.grid(row=19, column=i)
-        button = Button(top2, text='Pokaż wykres', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
-                        command=wykres1).grid(row=16, column=0)
-        button = Button(top2, text='Pokaż wykres', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
-                        command=wykres2).grid(row=16, column=1)
-        button = Button(top2, text='Pokaż wykres', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
-                        command=wykres3).grid(row=16, column=2)
-        button = Button(top2, text='Pokaż wykres', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
-                        command=wykres4).grid(row=16, column=3)
-        button = Button(top2, text='Pokaż wykres', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
-                        command=wykres5).grid(row=16, column=4)
-        button = Button(top2, text='Pokaż wykres', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
-                        command=wykres6).grid(row=16, column=5)
-        button = Button(top2, text='Pokaż wykres', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
-                        command=wykres7).grid(row=16, column=6)
+    my_menu = Menu(top2)
+    my_menu.add_command(label="Menu", command=bar_menu)
+    my_menu.add_command(label="Statystyki", command=bar_statystyki)
+    my_menu.add_command(label="Lista zakupów", command=bar_zakupy)
 
-    glupia_biblioteka = Label(top2, text='')
-    glupia_biblioteka.grid(row=9, column=6)
-    glupia_biblioteka2 = Label(top2, text='')
-    glupia_biblioteka2.grid(row=13, column=6)
-    button_zakupy = Button(top2, text="Wyświetl listę zakupów", fg=fg, bg=bg, activebackground=ab,
-                          command=zakupy).grid(row=10, column=6)
-    enter_button = Button(top2, text="Szczegółowe statystyki", fg=fg, bg=bg, activebackground=ab,
-                          command=statystyki).grid(row=11, column=6)
-    button_quit_top = Button(top2, text='Wyjdź', fg=fg, bg=bg, activebackground=ab,
-                             command=top2.destroy).grid(row=12, column=6)
+    top2.config(menu=my_menu)
+#---------------------------START------------------------------------------------------------------------------
+    bar_menu()
+    # label6 = Label(frame2, text='Menu', font = ("Calibri", 20))
+    # label6.grid(row=0, column=3)
+    # for i in range(7):
+    #     label = Label(frame2, text='Dzień {}'.format(i + 1), font = ("Calibri", 16))
+    #     label2 = Label(frame2, text='Kalorie: {}'.format(round(kalorie[i])), font = ("Calibri", 14))
+    #     label3 = Label(frame2, text = 'Cena: {}'.format(round(cena_d[i])), font = ("Calibri", 14))
+    #     l = Label(frame2, text = '')
+    #     z = Label(frame2, text = '--------------------')
+    #     l.grid(row = 1, column = i)
+    #     label.grid(row=2, column = i)
+    #     z.grid(row = 9, column = i)
+    #     label2.grid(row=10, column = i)
+    #     label3.grid(row = 11, column = i)
+    #
+    # for i in range(len(menu)):
+    #     for j in range(len(menu[i])):
+    #         label = Label(frame2, text=str(menu[i][j]), font=("Calibri", 12), width = 30)
+    #         label.grid(row=j + 3, column=i)
+
+
+#----------------------------------------------------------------------------------------------------------
+    # def wykres1():
+    #     plt.plot(wykresy[0])
+    #     plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[0])))
+    #     plt.show()
+    # def wykres2():
+    #     plt.plot(wykresy[1])
+    #     plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[1])))
+    #     plt.show()
+    # def wykres3():
+    #     plt.plot(wykresy[2])
+    #     plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[2])))
+    #     plt.show()
+    # def wykres4():
+    #     plt.plot(wykresy[3])
+    #     plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[3])))
+    #     plt.show()
+    # def wykres5():
+    #     plt.plot(wykresy[4])
+    #     plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[4])))
+    #     plt.show()
+    # def wykres6():
+    #     plt.plot(wykresy[5])
+    #     plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[5])))
+    #     plt.show()
+    # def wykres7():
+    #     plt.plot(wykresy[6])
+    #     plt.title('Najlepszy wynik: {}'.format(round(najlepsze_punkty[6])))
+    #     plt.show()
+    # def zakupy():
+    #     top3 = Toplevel()
+    #     top3.title("Lista zakupów")
+    #     label1 = Label(top3, text='Nazwa produktu', bg=bg)
+    #     label1.grid(row=0, column=0)
+    #     label2 = Label(top3, text='Liczba sztuk', bg=bg)
+    #     label2.grid(row=0, column=1)
+    #     label3 = Label(top3, text='Waga', bg=bg)
+    #     label3.grid(row=0, column=2)
+    #     label4 = Label(top3, text='Cena', bg=bg)
+    #     label4.grid(row=0, column=3)
+    #     for i in range(len(lista_zakupow)):
+    #         for j in range(4):
+    #             if j == 3:
+    #                 label5 = Label(top3, text=str(round(lista_zakupow[i][j], 2)))
+    #                 label5.grid(row=i + 1, column=j)
+    #             else:
+    #                 label5 = Label(top3, text=str(lista_zakupow[i][j]))
+    #                 label5.grid(row=i + 1, column=j)
+
+    # def statystyki():
+    #     for i in range(7):
+    #         label = Label(top2, text='Najlepszy wynik: {}'.format(round(najlepsze_punkty[i])))
+    #         label.grid(row=14, column=i)
+    #         label = Label(top2, text='Liczba iteracji: {}'.format(round(iteracje[i])))
+    #         label.grid(row=15, column=i)
+    #
+    #         p_up, p_stay, p_down = core.change_pkt(wykresy[i])
+    #         label = Label(top2, text='Procent popraw: {}%'.format(p_up))
+    #         label.grid(row=17, column=i)
+    #         label = Label(top2, text='Procent bez zmian: {}%'.format(p_stay))
+    #         label.grid(row=18, column=i)
+    #         label = Label(top2, text='Procent pogorszeń: {}%'.format(p_down))
+    #         label.grid(row=19, column=i)
+    #     button = Button(top2, text='Pokaż wykres', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
+    #                     command=wykres1).grid(row=16, column=0)
+    #     button = Button(top2, text='Pokaż wykres', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
+    #                     command=wykres2).grid(row=16, column=1)
+    #     button = Button(top2, text='Pokaż wykres', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
+    #                     command=wykres3).grid(row=16, column=2)
+    #     button = Button(top2, text='Pokaż wykres', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
+    #                     command=wykres4).grid(row=16, column=3)
+    #     button = Button(top2, text='Pokaż wykres', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
+    #                     command=wykres5).grid(row=16, column=4)
+    #     button = Button(top2, text='Pokaż wykres', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
+    #                     command=wykres6).grid(row=16, column=5)
+    #     button = Button(top2, text='Pokaż wykres', height=x, width=y, fg=fg, bg=bg, activebackground=ab,
+    #                     command=wykres7).grid(row=16, column=6)
+
+    # glupia_biblioteka = Label(top2, text='')
+    # glupia_biblioteka.grid(row=9, column=6)
+    # glupia_biblioteka2 = Label(top2, text='')
+    # glupia_biblioteka2.grid(row=13, column=6)
+    # button_zakupy = Button(top2, text="Wyświetl listę zakupów", fg=fg, bg=bg, activebackground=ab,
+    #                       command=zakupy).grid(row=10, column=6)
+    # enter_button = Button(top2, text="Szczegółowe statystyki", fg=fg, bg=bg, activebackground=ab,
+    #                       command=statystyki).grid(row=11, column=6)
+    # button_quit_top = Button(top2, text='Wyjdź', fg=fg, bg=bg, activebackground=ab,
+    #                          command=top2.destroy).grid(row=12, column=6)
 
 
 
