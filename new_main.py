@@ -412,15 +412,16 @@ def ustawienia():
 
     button15 = Button(frame, text='Usuń preferencję', height=x, width=y, fg=fg, bg=bg, activebackground=ab, command=usun_preferencje).grid(row=9, column=0)
 
-    label16 = Label(frame, text='Preferencje').grid(row=0, column=8, columnspan=3)
-    label17 = Label(frame, text='Data', width=y).grid(row=1, column=8)
-    label18 = Label(frame, text='Nazwa posiłku', width=y).grid(row=1, column=9)
-    label19 = Label(frame, text='Pora posiłku', width=y).grid(row=1, column=10)
-    licznik_p = 0
-    for i in core.lista_priorytetów:
-        label3000 = Label(frame, text=''.format(i[0])).grid(row=2 + licznik_p, column=8)
-        label3001 = Label(frame, text=''.format(i[1])).grid(row=2 + licznik_p, column=9)
-        label3002 = Label(frame, text=''.format(i[2])).grid(row=2 + licznik_p, column=10)
+    #label16 = Label(frame, text='Preferencje').grid(row=0, column=8, columnspan=3)
+    #label17 = Label(frame, text='Data', width=y).grid(row=1, column=8)
+    #label18 = Label(frame, text='Nazwa posiłku', width=y).grid(row=1, column=9)
+    #label19 = Label(frame, text='Pora posiłku', width=y).grid(row=1, column=10)
+    #licznik_p = 0
+    #for i in core.lista_priorytetów:
+    #    label3000 = Label(frame, text=''.format(i[0])).grid(row=2 + licznik_p, column=8)
+    #    label3001 = Label(frame, text=''.format(i[1])).grid(row=2 + licznik_p, column=9)
+    #    label3002 = Label(frame, text=''.format(i[2])).grid(row=2 + licznik_p, column=10)
+    #    licznik_p += 1
 
     button12 = Button(frame, text='Pokaż wynik', height=x, width=y, fg=fg, bg=bg, activebackground=ab, command=open_wynik).grid(row=7, column=6)
     button_quit = Button(frame, text='Wyjdź', height=x, width=y, fg=fg, bg=bg, activebackground=ab, command=root.quit).grid(row=9, column=6)
