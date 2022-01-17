@@ -43,7 +43,7 @@ Dodakowo naszym zadaniem było wykorzystanie metody metaheurystycznej **Tabu Sea
 - [x] Blokowanie powtarzania tych samych dań 
 - [x] Promowanie odpowiednich dań na dany dzień
 - [x] Naprawa błędów i bugów
-- [] Gui
+- [x] Gui
 - [x] Testy jednostkowe
 
 ## Technologie
