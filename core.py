@@ -26,8 +26,8 @@ CAL = 3000
 
 actual_data = datetime.date.fromisoformat('2022-01-01')
 
-# lista_priorytetów = [['2022-01-01', 'Pieczona owsianka brownie', sniadania], ['2022-01-02', 'Bułki z pomidorem i mozarella', kolacja],['2022-01-03', 'Kurczak w sosie curry',obiad]]
-lista_priorytetów = []
+lista_priorytetów = [['2022-01-01', 'Pieczona owsianka brownie', sniadania],['2022-01-07', 'Sałatka BLT', kolacja]]
+#lista_priorytetów = []
 
 
 def change_pkt(lst_pkt):
