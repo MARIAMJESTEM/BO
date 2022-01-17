@@ -202,8 +202,10 @@ def ustawienia():
         core.CAL = int(e1.get())
 
         if str(clicked3.get()) == 'lodówka 1':
-            lodowka = pd.read_csv("bazy_danych\lodowki_do_testow\lod1.csv", sep=';')
+            lodowka = pd.read_csv("bazy_danych\lodowka.csv", sep =';')
         elif str(clicked3.get()) == 'lodówka 2':
+            lodowka = pd.read_csv("bazy_danych\lodowki_do_testow\lod1.csv", sep=';')
+        elif str(clicked3.get()) == 'lodówka 3':
             lodowka = pd.read_csv("bazy_danych\lodowki_do_testow\lod2.csv", sep=';')
         else:
             lodowka = pd.read_csv("bazy_danych\lodowki_do_testow\lod3.csv", sep=';')
@@ -247,9 +249,9 @@ def ustawienia():
             label6 = Label(frame2, text='Menu', font=("Calibri", 20))
             label6.grid(row=0, column=3)
             for i in range(7):
-                label = Label(frame2, text='Dzień {}'.format(i + 1), font=("Calibri", 16))
-                label2 = Label(frame2, text='Kalorie: {}'.format(round(kalorie[i])), font=("Calibri", 14))
-                label3 = Label(frame2, text='Cena: {}'.format(round(cena_d[i])), font=("Calibri", 14))
+                label = Label(frame2, text='Dzień {}'.format(i + 1), font=("Calibri", 12))
+                label2 = Label(frame2, text='Kalorie: {}'.format(round(kalorie[i])), font=("Calibri", 12))
+                label3 = Label(frame2, text='Cena: {}'.format(round(cena_d[i])), font=("Calibri", 12))
                 l = Label(frame2, text='')
                 z = Label(frame2, text='--------------------')
                 l.grid(row=1, column=i)
@@ -260,7 +262,7 @@ def ustawienia():
 
             for i in range(len(menu)):
                 for j in range(len(menu[i])):
-                    label = Label(frame2, text=str(menu[i][j]), font=("Calibri", 12), width=30)
+                    label = Label(frame2, text=str(menu[i][j]), font=("Calibri", 10), width=30)
                     label.grid(row=j + 3, column=i)
 
 
